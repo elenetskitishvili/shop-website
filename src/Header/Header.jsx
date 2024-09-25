@@ -8,22 +8,22 @@ function Header() {
       <nav className="nav">
         <ul className="nav__list">
           <li className="nav__item ">
-            <a className="nav__link" href="#">
+            <a className="nav__link" href="/">
               Home
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="#">
+            <a className="nav__link" href="/">
               About us
             </a>
           </li>
           <li className="nav__item nav__item--active">
-            <a className="nav__link" href="#">
+            <a className="nav__link" href="/">
               Our soaps
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="#">
+            <a className="nav__link" href="/">
               Contact
             </a>
           </li>

@@ -9,22 +9,22 @@ function Footer() {
       <nav className="footer__nav">
         <ul className="footer__nav-list">
           <li className="footer__nav-item">
-            <a href="#" className="footer__nav-link">
+            <a href="/" className="footer__nav-link">
               FAQ
             </a>
           </li>
           <li className="footer__nav-item">
-            <a href="#" className="footer__nav-link">
+            <a href="/" className="footer__nav-link">
               Shipping & Returns
             </a>
           </li>
           <li className="footer__nav-item">
-            <a href="#" className="footer__nav-link">
+            <a href="/" className="footer__nav-link">
               Privacy Policy
             </a>
           </li>
           <li className="footer__nav-item">
-            <a href="#" className="footer__nav-link">
+            <a href="/" className="footer__nav-link">
               Terms & Conditions
             </a>
           </li>

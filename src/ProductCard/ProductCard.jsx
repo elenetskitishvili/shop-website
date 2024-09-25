@@ -8,7 +8,7 @@ function ProductCard({ name, description, image }) {
       <div className="product__details">
         <h3 className="product__name">{name}</h3>
         <p className="product__description">{description}</p>
-        <a href="#" className="btn-cta">
+        <a href="/" className="btn-cta">
           Add to Cart
         </a>
       </div>
