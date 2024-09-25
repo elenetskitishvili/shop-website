@@ -10,28 +10,28 @@ function Footer() {
         <ul className="footer__nav-list">
           <li className="footer__nav-item">
             <a href="#" className="footer__nav-link">
-              Opera Singing
+              FAQ
             </a>
           </li>
           <li className="footer__nav-item">
             <a href="#" className="footer__nav-link">
-              Ice-skating
+              Shipping & Returns
             </a>
           </li>
           <li className="footer__nav-item">
             <a href="#" className="footer__nav-link">
-              Swimming
+              Privacy Policy
             </a>
           </li>
           <li className="footer__nav-item">
             <a href="#" className="footer__nav-link">
-              Reading
+              Terms & Conditions
             </a>
           </li>
         </ul>
       </nav>
 
-      <p>&copy; {currentYear} Developed By Elene Tskitishvili</p>
+      <p>&copy; {currentYear} Handmade Soaps. All rights reserved.</p>
     </footer>
   );
 }

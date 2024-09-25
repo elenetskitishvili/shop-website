@@ -1,14 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"); */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 :root {
-  --color-primary: #eb2f64;
-  --color-primary-light: #ff3366;
-  --color-primary-dark: #ba265d;
-  --color-grey-light: #ecf0f1;
+  --color-primary: #ae38bf;
+  --color-primary-dark: #822a8f;
   --color-text: #444;
+  --color-text-light: #525252;
+
   --font-family-base: "Open Sans", sans-serif;
-  --shadow-light: 0 1rem 4rem rgba(0, 0, 0, 0.05);
+  --font-family-heading: "Playfair Display";
+
+  --radius-md: 1.4rem;
+  --radius-sm: 0.8rem;
+
+  --shadow-light: 0 0px 2rem rgba(0, 0, 0, 0.1);
   --shadow-card: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  --shadow-card-dark: 0 0.4rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 *,
