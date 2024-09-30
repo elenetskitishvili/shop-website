@@ -1,14 +1,22 @@
+// src/App.js
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Header/Header";
-import Content from "./MainContent/MainContent";
 import Footer from "./Footer/Footer";
+import About from "./pages/About/About";
+import Products from "./pages/Products/Products";
+import Contact from "./pages/Contact/Contact";
 import "./App.css";
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <Content />
+      <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Products />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       <Footer />
     </div>
   );

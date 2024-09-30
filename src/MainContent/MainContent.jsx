@@ -1,6 +1,6 @@
 import React from "react";
 import "./MainContent.css";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "../pages/Products/ProductCard/ProductCard";
 
 const productsData = [
   {

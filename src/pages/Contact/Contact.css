@@ -1,0 +1,124 @@
+.section-contact {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5.2rem;
+}
+
+.section-contact__title {
+  margin-bottom: 2.4rem;
+}
+.section-contact__text {
+  margin-bottom: 2.4rem;
+  font-size: 1.8rem;
+  color: var(--color-secondary-darkest);
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+}
+.contact__list,
+.contact__form {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.contact__item {
+  display: flex;
+  align-items: center;
+}
+
+.contact__label {
+  font-size: 1.8rem;
+  display: inline-block;
+  color: var(--color-secondary-darkest);
+  font-weight: 600;
+  margin-right: 0.8rem;
+}
+
+.contact__link:link,
+.contact__link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact__media-links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding-left: 1.2rem;
+}
+
+.contact__icon {
+  font-size: 2.4rem;
+  color: var(--color-secondary-darkest);
+}
+
+.contact__form-wrapper {
+  width: 100%;
+}
+
+.contact__form-group {
+  width: 100%;
+}
+
+.contact__input {
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255);
+  box-shadow: var(--shadow-light);
+  border: none;
+  border-bottom: 4px solid transparent;
+  width: 90%;
+  display: block;
+}
+
+.contact__input:focus {
+  outline: none;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid var(--color-secondary);
+}
+
+.contact__input:focus:invalid {
+  border-bottom: 4px solid var(--color-accent);
+}
+
+::placeholder {
+  color: var(--color-text-lightest);
+}
+
+.contact__form-label {
+  display: block;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact__input:placeholder-shown + .contact__form-label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem);
+}
+
+.contact__submit {
+  font-size: 1.6rem;
+  padding: 1.2rem 2.4rem;
+  color: #fff;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.contact__submit:hover {
+  background-color: var(--color-secondary-darker);
+}

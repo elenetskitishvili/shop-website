@@ -8,14 +8,6 @@
   width: 100%;
 }
 
-.heading-primary {
-  font-family: var(--font-family-heading);
-  font-size: 3.2rem;
-  color: var(--color-primary);
-  letter-spacing: -1px;
-  font-weight: 500;
-}
-
 .nav {
   font-size: 1.8rem;
 }
@@ -30,6 +22,7 @@
   padding: 2.4rem 1.8rem;
   transition: all 0.3s ease-in-out;
   color: var(--color-text-light);
+  cursor: pointer;
 }
 
 .nav__item:hover,

@@ -1,4 +1,6 @@
+// src/Header/Header.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
@@ -7,25 +9,20 @@ function Header() {
       <h1 className="heading-primary">Handmade Soaps</h1>
       <nav className="nav">
         <ul className="nav__list">
-          <li className="nav__item ">
-            <a className="nav__link" href="/">
-              Home
-            </a>
-          </li>
           <li className="nav__item">
-            <a className="nav__link" href="/">
+            <Link className="nav__link" to="/about">
               About us
-            </a>
-          </li>
-          <li className="nav__item nav__item--active">
-            <a className="nav__link" href="/">
-              Our soaps
-            </a>
+            </Link>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="/">
+            <Link className="nav__link" to="/">
+              Our soaps
+            </Link>
+          </li>
+          <li className="nav__item">
+            <Link className="nav__link" to="/contact">
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
