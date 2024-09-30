@@ -100,8 +100,8 @@ body {
   overflow: auto;
 }
 
-.main__about,
-.main__contact {
+.main-about,
+.main-contact {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

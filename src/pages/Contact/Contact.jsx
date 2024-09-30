@@ -4,7 +4,7 @@ import "./Contact.css";
 function Contact() {
   return (
     <main
-      className="main main__contact"
+      className="main main-contact"
       style={{
         backgroundImage: `linear-gradient(rgba(253, 253, 253, 0.9), rgba(253, 253, 253, 0.9)), url('/images/bg-img-2.jpg')`,
       }}

@@ -4,9 +4,9 @@ import "./About.css";
 function About() {
   return (
     <main
-      className="main main__about"
+      className="main main-about"
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('/images/bg-img-1.jpg')`,
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('/images/bg-img-1.jpg')`,
       }}
     >
       <section className="section-about">
