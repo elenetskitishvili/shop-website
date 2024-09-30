@@ -1,4 +1,3 @@
-// src/Header/Header.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
@@ -22,6 +21,11 @@ function Header() {
           <li className="nav__item">
             <Link className="nav__link" to="/contact">
               Contact
+            </Link>
+          </li>
+          <li className="nav__item">
+            <Link className="nav__link" to="/assignment-3">
+              Assignment 3
             </Link>
           </li>
         </ul>

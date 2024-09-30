@@ -1,0 +1,26 @@
+.assignment {
+  flex: 1;
+  margin: 6.2rem auto 0;
+}
+table {
+  border-collapse: collapse;
+  color: #1e1b4b;
+}
+
+th,
+td {
+  border: 1px solid #3730a3;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+thead {
+  background-color: #c7d2fe;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #eef2ff;
+}
+tbody tr:nth-child(even) {
+  background-color: #e0e7ff;
+}
