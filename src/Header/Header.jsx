@@ -35,6 +35,11 @@ function Header() {
           </li>
         </ul>
       </nav>
+
+      <Link className="user" to="/profile">
+        <img className="user__img" src="/images/user.jpg" alt="user" />
+        <span className="user__name">Elene</span>
+      </Link>
     </header>
   );
 }

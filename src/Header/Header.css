@@ -53,6 +53,33 @@
   color: inherit;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  height: 100%;
+  padding: 0 2.4rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.user:hover {
+  background-color: var(--color-background);
+}
+.user__img {
+  height: 4.2rem;
+  width: auto;
+  border-radius: 50%;
+}
+
+.user__name {
+  font-size: 1.8rem;
+}
+
 @media only screen and (max-width: 28em) {
   .nav {
     font-size: 1.4rem;
