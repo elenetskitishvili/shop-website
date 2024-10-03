@@ -7,6 +7,8 @@
 
   --color-secondary: #14b8a6;
   --color-secondary-light: #2dd4bf;
+  --color-secondary-lighter: #ccfbf1;
+  --color-secondary-lightest: #f0fdfa;
   --color-secondary-dark: #0d9488;
   --color-secondary-darker: #0f766e;
 
@@ -15,6 +17,8 @@
   --color-text: #444;
   --color-text-light: #525252;
   --color-text-lightest: #999;
+
+  --color-border: #e0e0e0;
 
   --font-family-base: "Open Sans", sans-serif;
   --font-family-heading: "Playfair Display";

@@ -19,6 +19,11 @@ function Header() {
             </Link>
           </li>
           <li className="nav__item">
+            <Link className="nav__link" to="/blogs">
+              Blogs
+            </Link>
+          </li>
+          <li className="nav__item">
             <Link className="nav__link" to="/contact">
               Contact
             </Link>

@@ -4,6 +4,7 @@ import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import About from "./pages/About/About";
 import Products from "./pages/Products/Products";
+import Blogs from "./pages/Blogs/Blogs";
 import Contact from "./pages/Contact/Contact";
 import Assignment3 from "./pages/Assignment3/Assignment3";
 import "./App.css";
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/" element={<Products />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/assignment-3" element={<Assignment3 />} />
       </Routes>
