@@ -12,14 +12,14 @@ const obj = {
 
 const Assignment3 = () => {
   const list = Object.entries(obj).reduce((acc, [key, value], index) => {
-    acc.push(
+    return [
+      ...acc,
       <tr key={index}>
         <td>{key}</td>
         <td>{value}</td>
         <td>{index}</td>
-      </tr>
-    );
-    return acc;
+      </tr>,
+    ];
   }, []);
 
   return (
