@@ -11,8 +11,12 @@ This React project serves as a learning exercise, showcasing handmade soaps. The
 
 The main components of this project are:
 
-- `App.js`: The main container for the application.
-- `Header.jsx`: Contains the navigation links.
-- `MainContent.jsx`: Holds the main content of the page.
-- `ProductCard.jsx`: A reusable component that displays individual product details, including the image, title, and a short description.
-- `Footer.jsx`: Displays the footer information.
+- **`App.js`**: The main container for the application.
+- **`Header.jsx`**: Contains the navigation links.
+- **`pages`**: Contains different page components.
+  - **`About`**: Displays information about the company.
+  - **`Blogs`**: Displays a list of blog posts.
+  - **`Contact`**: Provides a form to contact the company.
+  - **`Products`**: Displays a list of soaps with individual product details.
+  - **`Profile`**: Displays user information in a read-only format.
+- **`Footer.jsx`**: Displays the footer information.
