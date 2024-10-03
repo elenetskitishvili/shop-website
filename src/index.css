@@ -33,6 +33,7 @@
   --shadow-light: 0 0px 2rem rgba(0, 0, 0, 0.1);
   --shadow-card: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
   --shadow-card-dark: 0 0.4rem 1rem rgba(0, 0, 0, 0.2);
+  --shadow-input: 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
 *,

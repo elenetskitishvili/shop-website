@@ -59,4 +59,11 @@
   font-family: inherit;
   color: inherit;
   background-color: var(--color-background);
+  border-bottom: 4px solid transparent;
+}
+
+.profile__input:focus {
+  outline: none;
+  box-shadow: var(--shadow-input);
+  border-bottom: 4px solid var(--color-primary-light);
 }
