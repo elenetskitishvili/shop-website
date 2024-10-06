@@ -49,7 +49,7 @@ function Products() {
             </ul>
           </>
         )}
-        {error && <span className='section-products__intro'> {error}</span>}
+        {error && <p className='section-products__intro'> {error}</p>}
       </section>
     </main>
   );
