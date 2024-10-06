@@ -9,8 +9,6 @@ const url = "https://dummyjson.com/posts";
 function Blogs() {
   const [blogList, setBlogList] = useState([]);
 
-  console.log("blog list:", blogList);
-
   useEffect(() => {
     async function fetchBlogs() {
       try {
