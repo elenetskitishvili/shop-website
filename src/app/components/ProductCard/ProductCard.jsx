@@ -1,18 +1,20 @@
-import React from "react";
-import "./ProductCard.css";
+import React from 'react';
+import './ProductCard.css';
 
-function ProductCard({ productObj }) {
+function ProductCard({ productsObj }) {
+  console.log(productsObj);
   return (
-    <li className="product">
+    <li className='product'>
       <img
-        className="product__img"
-        src={productObj.image}
-        alt={productObj.name}
+        className='product__img'
+        src={productsObj.images}
+        alt={productsObj.title}
       />
-      <div className="product__details">
-        <h3 className="heading-tertiary">{productObj.name}</h3>
-        <p className="product__description">{productObj.description}</p>
-        <a href="/" className="btn btn-cta">
+      <div className='product__details'>
+        <h3 className='heading-tertiary'>{productsObj.title}</h3>
+        <p className='product__description'>{productsObj.description}</p>
+        <span>$ {productsObj.price}</span>
+        <a href='/' className='btn btn-cta'>
           Add to Cart
         </a>
       </div>

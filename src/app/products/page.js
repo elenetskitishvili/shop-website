@@ -1,58 +1,41 @@
-import React from "react";
-import "./products.css";
-import ProductCard from "../components/ProductCard/ProductCard";
+'use client';
+import React, { useState, useEffect } from 'react';
 
-const productsData = [
-  {
-    name: "Rose Petal Bliss",
-    description:
-      "A gentle, rose-infused soap that nourishes and hydrates, leaving your skin soft and delicately scented.",
-    image: "images/product-1.jpg",
-  },
-  {
-    name: "Midnight Swirl",
-    description:
-      "A black and white soap with activated charcoal for a deep cleanse and shea butter for a silky, smooth feel.",
-    image: "images/product-2.jpg",
-  },
-  {
-    name: "Exotic Spice",
-    description:
-      "An aromatic set combining scents of cinnamon, clove, vanilla, and sandalwood. Perfect for those who enjoy warm, spicy fragrances.",
-    image: "images/product-3.jpg",
-  },
-  {
-    name: "Luxury Indulgence",
-    description:
-      "An opulent set with soaps made from shea butter, cocoa butter, silk protein, and argan oil. Perfect for a deeply moisturizing and pampering experience.",
-    image: "images/product-4.jpg",
-  },
-  {
-    name: "Woodland Harmony",
-    description:
-      "An earthy set with scents of cedarwood, pine, sandalwood, and patchouli. Ideal for those who enjoy the calming aroma of the forest.",
-    image: "images/product-5.jpg",
-  },
-  {
-    name: "Ocean Breeze",
-    description:
-      "A refreshing set featuring sea salt, ocean mist, algae, and kelp-infused soaps. Perfect for a beach-inspired cleanse that leaves your skin feeling revitalized.",
-    image: "images/product-6.jpg",
-  },
-];
+import './products.css';
+import ProductCard from '../components/ProductCard/ProductCard';
 
 function Products() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch('https://dummyjson.com/products');
+      const data = await res.json();
+      setProducts(data.products);
+    };
+    fetchProducts();
+  }, []);
+
+  const productsData = [
+    {
+      name: 'Rose Petal Bliss',
+      description:
+        'A gentle, rose-infused soap that nourishes and hydrates, leaving your skin soft and delicately scented.',
+      image: 'images/product-1.jpg',
+    },
+  ];
+
   return (
-    <main className="main main-products">
-      <section className="section-products">
-        <p className="section-products__intro">
+    <main className='main main-products'>
+      <section className='section-products'>
+        <p className='section-products__intro'>
           Discover our collection of handmade soaps, crafted with natural
           ingredients to nourish your skin
         </p>
 
-        <ul className="products">
-          {productsData.map((product) => (
-            <ProductCard productObj={product} key={product.name} />
+        <ul className='products'>
+          {products.map((product) => (
+            <ProductCard productsObj={product} key={product.id} />
           ))}
         </ul>
       </section>
