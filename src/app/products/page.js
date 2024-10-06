@@ -15,8 +15,8 @@ function Products() {
         setIsLoading(true);
         const res = await fetch('https://dummyjson.com/products');
 
-        // if (!Response.ok)
-        //   throw new Error('Somthing went wrong with fetching Products');
+        if (!res.ok)
+          throw new Error('Somthing went wrong with fetching Products');
 
         const data = await res.json();
 
