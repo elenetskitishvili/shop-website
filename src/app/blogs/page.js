@@ -14,8 +14,7 @@ function Blogs() {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        const blogsLimited = data.posts.slice(0, 25);
-        setBlogList(blogsLimited);
+        setBlogList(data.posts);
       } catch (error) {
         console.log(error);
         setBlogList([]);
