@@ -9,7 +9,7 @@ const url = "https://dummyjson.com/posts";
 function Blogs() {
   const [blogList, setBlogList] = useState([]);
 
-  console.log("blog list:", blogList);
+  // console.log("blog list:", blogList);
 
   useEffect(() => {
     async function fetchBlogs() {
@@ -50,7 +50,7 @@ function Blogs() {
                 <p>{blog.reactions.dislikes} dislikes</p>
               </div>
               <div className="blog__button btn">
-                <a href="#" className="btn">
+                <a href={`/blogs/${blog.id}`} className="btn">
                   Read More
                 </a>
               </div>
