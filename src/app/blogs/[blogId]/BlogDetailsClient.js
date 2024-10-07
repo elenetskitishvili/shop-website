@@ -41,18 +41,18 @@ export default function BlogDetailsClient({ params }) {
   }
 
   return (
-    <article className="blogPost">
-      <header className="header">
+    <article className="blog">
+      <header className="blog__header">
         <h1 className="title">{blog.title}</h1>
         <div className="meta">
           <span className="views">{blog.views} views</span>
           <span className="userId">Author ID: {blog.userId}</span>
         </div>
       </header>
-      <div className="content">
+      <div className="blog__content">
         <p>{blog.body}</p>
       </div>
-      <footer className="footer">
+      <footer className="blog__footer">
         <div className="tags">
           {blog.tags.map((tag, index) => (
             <span key={index} className="tag">
