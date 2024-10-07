@@ -1,86 +1,28 @@
+"use client";
+
 import React from "react";
 import "./blogs.css";
+import { useEffect, useState } from "react";
+
+const url = "https://dummyjson.com/posts";
 
 function Blogs() {
-  const blogPosts = [
-    {
-      id: 16,
-      title: "Best Soap Bars for Men",
-      image: "images/blogs/blog-1.jpg",
-    },
+  const [blogList, setBlogList] = useState([]);
 
-    {
-      id: 2,
-      title: "How to Make Your Own Soap",
-      image: "images/blogs/blog-2.jpg",
-    },
-    {
-      id: 3,
-      title: "5 Benefits of Handmade Soap",
-      image: "images/blogs/blog-3.jpg",
-    },
-    {
-      id: 4,
-      title: "The History of Soap Making",
-      image: "images/blogs/blog-4.jpg",
-    },
-    {
-      id: 5,
-      title: "Top Essential Oils for Soap",
-      image: "images/blogs/blog-5.jpg",
-    },
-    {
-      id: 6,
-      title: "Why Natural Soaps Are Better for Your Skin",
-      image: "images/blogs/blog-6.jpg",
-    },
-    {
-      id: 7,
-      title: "10 DIY Soap Recipes for Beginners",
-      image: "images/blogs/blog-7.jpg",
-    },
-    {
-      id: 8,
-      title: "How to Choose the Best Soap for Your Skin Type",
-      image: "images/blogs/blog-8.jpg",
-    },
-    {
-      id: 9,
-      title: "How to Package Handmade Soaps for Sale",
-      image: "images/blogs/blog-9.jpg",
-    },
-    {
-      id: 10,
-      title: "The Benefits of Organic Soap",
-      image: "images/blogs/blog-10.jpg",
-    },
-    {
-      id: 11,
-      title: "Soap Making for Kids: Fun and Easy Recipes",
-      image: "images/blogs/blog-11.jpg",
-    },
-    {
-      id: 12,
-      title: "The Difference Between Cold and Hot Process Soap",
-      image: "images/blogs/blog-12.jpg",
-    },
-    {
-      id: 13,
-      title: "How to Use Exfoliants in Soap",
-      image: "images/blogs/blog-13.jpg",
-    },
-    {
-      id: 14,
-      title: "5 Common Mistakes in Soap Making",
-      image: "images/blogs/blog-14.jpg",
-    },
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setBlogList(data.posts);
+      } catch (error) {
+        console.log(error);
+        setBlogList([]);
+      }
+    }
 
-    {
-      id: 15,
-      title: "The Best Soaps for Sensitive Skin",
-      image: "images/blogs/blog-15.jpg",
-    },
-  ];
+    fetchBlogs();
+  }, []);
 
   return (
     <main className="main main-blogs">
@@ -89,10 +31,26 @@ function Blogs() {
           Discover the Latest in Soap Making
         </p>
         <ul className="blogs">
-          {blogPosts.map((blog) => (
+          {blogList.map((blog) => (
             <li className="blog" key={blog.id}>
-              <img className="blog__img" src={blog.image} alt={blog.title} />
               <h4 className="blog__title">{blog.title}</h4>
+              <p className="blog__desc">{blog.body}</p>
+              <div className="blog__tags">
+                {blog.tags.map((tag, index) => (
+                  <span key={index} className="blog__tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="blog__reactions">
+                <p>{blog.reactions.likes} like</p>
+                <p>{blog.reactions.dislikes} dislikes</p>
+              </div>
+              <div className="blog__button btn">
+                <a href={`/blogs/${blog.id}`} className="btn">
+                  Read More
+                </a>
+              </div>
             </li>
           ))}
         </ul>

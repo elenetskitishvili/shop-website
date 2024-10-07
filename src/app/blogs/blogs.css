@@ -47,4 +47,29 @@
 .blog__title {
   color: var(--color-secondary-dark);
   font-size: 1.8rem;
+  text-align: center;
+}
+
+.blog__desc {
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog__tags {
+  display: flex;
+  gap: 2rem;
+}
+
+.blog__reactions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.blog__button a{
+  background-color: var(--color-secondary-dark);
 }
