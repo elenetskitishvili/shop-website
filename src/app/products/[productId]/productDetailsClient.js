@@ -7,37 +7,35 @@ function ProductDetails({ params }) {
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(productId);
-  useEffect(() => {
-    setIsLoading(true);
 
-    fetch(`https://dummyjson.com/products/${productId}`)
-      .then((res) => {
-        if (!res.ok) {
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/${productId}`
+        );
+        if (!response.ok) {
           throw new Error("Something went wrong with fetching Products");
         }
-        return res.json();
-      })
-      .then((data) => {
+        const data = await response.json();
         if (data.Response === "False") {
           throw new Error("Products not found!");
         }
-
         setProduct(data);
-      })
-      .catch((err) => {
+      } catch (err) {
         setError(err.message);
-      })
-      .finally(() => {
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchProduct();
   }, [productId]);
 
   return (
     <>
       <div className="product__wrapper">
-        {console.log(product.images)}
-
         <div>
           {product && product.images && (
             <img
@@ -59,4 +57,5 @@ function ProductDetails({ params }) {
     </>
   );
 }
+
 export default ProductDetails;
