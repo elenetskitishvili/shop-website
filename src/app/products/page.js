@@ -1,60 +1,54 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
+
 import "./products.css";
 import ProductCard from "../components/ProductCard/ProductCard";
 
-const productsData = [
-  {
-    name: "Rose Petal Bliss",
-    description:
-      "A gentle, rose-infused soap that nourishes and hydrates, leaving your skin soft and delicately scented.",
-    image: "images/product-1.jpg",
-  },
-  {
-    name: "Midnight Swirl",
-    description:
-      "A black and white soap with activated charcoal for a deep cleanse and shea butter for a silky, smooth feel.",
-    image: "images/product-2.jpg",
-  },
-  {
-    name: "Exotic Spice",
-    description:
-      "An aromatic set combining scents of cinnamon, clove, vanilla, and sandalwood. Perfect for those who enjoy warm, spicy fragrances.",
-    image: "images/product-3.jpg",
-  },
-  {
-    name: "Luxury Indulgence",
-    description:
-      "An opulent set with soaps made from shea butter, cocoa butter, silk protein, and argan oil. Perfect for a deeply moisturizing and pampering experience.",
-    image: "images/product-4.jpg",
-  },
-  {
-    name: "Woodland Harmony",
-    description:
-      "An earthy set with scents of cedarwood, pine, sandalwood, and patchouli. Ideal for those who enjoy the calming aroma of the forest.",
-    image: "images/product-5.jpg",
-  },
-  {
-    name: "Ocean Breeze",
-    description:
-      "A refreshing set featuring sea salt, ocean mist, algae, and kelp-infused soaps. Perfect for a beach-inspired cleanse that leaves your skin feeling revitalized.",
-    image: "images/product-6.jpg",
-  },
-];
-
 function Products() {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch("https://dummyjson.com/products");
+
+        if (!res.ok)
+          throw new Error("Somthing went wrong with fetching Products");
+
+        const data = await res.json();
+        if (data.Response === "False") throw new Error("Products not found!");
+        setProducts(data.products);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <main className="main main-products">
       <section className="section-products">
-        <p className="section-products__intro">
-          Discover our collection of handmade soaps, crafted with natural
-          ingredients to nourish your skin
-        </p>
+        {isLoading && <p className="section-products__intro">Loading...</p>}
+        {!isLoading && !error && (
+          <>
+            <p className="section-products__intro">
+              Discover our collection of handmade soaps, crafted with natural
+              ingredients to nourish your skin
+            </p>
 
-        <ul className="products">
-          {productsData.map((product) => (
-            <ProductCard productObj={product} key={product.name} />
-          ))}
-        </ul>
+            <ul className="products">
+              {products.map((product) => (
+                <ProductCard productsObj={product} key={product.id} />
+              ))}
+            </ul>
+          </>
+        )}
+        {error && <p className="section-products__intro"> {error}</p>}
       </section>
     </main>
   );
