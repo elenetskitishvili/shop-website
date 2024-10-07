@@ -1,8 +1,8 @@
 .main-profile {
   background: linear-gradient(
     to top,
-    var(--color-primary-lighter),
-    var(--color-primary-lightest)
+    var(--color-primary-light),
+    var(--color-primary-lighter)
   );
 }
 

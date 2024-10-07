@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import ProductCard from "../../components/ProductCard/ProductCard";
 import "./product.css";
 
 function ProductDetails({ params }) {
@@ -10,35 +9,52 @@ function ProductDetails({ params }) {
   const [error, setError] = useState(null);
   console.log(productId);
   useEffect(() => {
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
 
     fetch(`https://dummyjson.com/products/${productId}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Something went wrong with fetching Products");
         }
-        return res.json(); // Parse JSON if response is okay
+        return res.json();
       })
       .then((data) => {
-        // Assuming the API returns a boolean response
         if (data.Response === "False") {
           throw new Error("Products not found!");
         }
 
-        setProduct(data); // Set the product data
+        setProduct(data);
       })
       .catch((err) => {
-        setError(err.message); // Set the error message if an error occurs
+        setError(err.message);
       })
       .finally(() => {
-        setIsLoading(false); // End loading
+        setIsLoading(false);
       });
   }, [productId]);
 
   return (
     <>
       <div className="product__wrapper">
-        <ProductCard productsObj={product} />
+        {console.log(product.images)}
+
+        <div>
+          {product && product.images && (
+            <img
+              className="product__img--big"
+              src={product.images[0]}
+              alt={product.title}
+            />
+          )}
+        </div>
+        <div className="product__details">
+          <h3 className="heading-tertiary">{product.title}</h3>
+          <p className="product__description">{product.description}</p>
+          <span>$ {product.price}</span>
+          <a href={`/products/${product.id}`} className="btn btn-cta">
+            Add to Cart
+          </a>
+        </div>
       </div>
     </>
   );

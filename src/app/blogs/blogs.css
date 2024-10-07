@@ -1,9 +1,5 @@
 .main-blogs {
-  background: linear-gradient(
-    to top,
-    var(--color-secondary-lighter),
-    var(--color-secondary-lightest)
-  );
+  background-color: var(--color-background);
 }
 
 .blogs {
@@ -28,7 +24,6 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  cursor: pointer;
   box-shadow: (--shadow-card);
   transition: box-shadow 0.2s ease-in-out;
 }
@@ -45,7 +40,7 @@
 }
 
 .blog__title {
-  color: var(--color-secondary-dark);
+  /* color: var(--color-primary-dark); */
   font-size: 1.8rem;
   text-align: center;
 }
@@ -70,6 +65,7 @@
   gap: 2rem;
 }
 
-.blog__button a{
-  background-color: var(--color-secondary-dark);
+.blog__button a {
+  background-color: var(--color-primary-dark);
+  margin-top: auto;
 }

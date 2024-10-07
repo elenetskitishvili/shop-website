@@ -27,8 +27,9 @@ function Blogs() {
   return (
     <main className="main main-blogs">
       <section className="section-blogs">
-        <p className="section-products__intro">
-          Discover the Latest in Soap Making
+        <p className="section-intro">
+          Welcome to the OmniShop Blog! Discover tips, trends, and insights on
+          everything from food to fashion, home decor, and more.
         </p>
         <ul className="blogs">
           {blogList.map((blog) => (

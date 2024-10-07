@@ -23,10 +23,10 @@
   font-family: var(--font-family-heading);
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   transition: color 0.3s ease-in-out;
 }
 .footer__nav-link:hover,
 .footer__nav-link:active {
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
 }

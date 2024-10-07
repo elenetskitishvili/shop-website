@@ -36,9 +36,8 @@ function Products() {
         {isLoading && <p className="section-products__intro">Loading...</p>}
         {!isLoading && !error && (
           <>
-            <p className="section-products__intro">
-              Discover our collection of handmade soaps, crafted with natural
-              ingredients to nourish your skin
+            <p className="section-intro">
+              Discover a world of endless choices at OmniShop!
             </p>
 
             <ul className="products">

@@ -3,12 +3,7 @@ import "./contact.css";
 
 function Contact() {
   return (
-    <main
-      className="main main-contact"
-      style={{
-        backgroundImage: `linear-gradient(rgba(253, 253, 253, 0.9), rgba(253, 253, 253, 0.9)), url('/images/bg-img-2.jpg')`,
-      }}
-    >
+    <main>
       <section className="section-contact">
         <div className="section-contact__details">
           <h2 className="heading-secondary section-contact__title">
@@ -21,8 +16,8 @@ function Contact() {
           <ul className="contact__list">
             <li className="contact__item">
               <span className="contact__label">Email:</span>
-              <a href="mailto:info@handmadesoaps.com" className="contact__link">
-                info@handmadesoaps.com
+              <a href="mailto:contact@omnishop.com" className="contact__link">
+                contact@omnishop.com
               </a>
             </li>
             <li className="contact__item">
