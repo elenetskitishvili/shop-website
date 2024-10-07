@@ -27,8 +27,9 @@ function Blogs() {
   return (
     <main className="main main-blogs">
       <section className="section-blogs">
-        <p className="section-products__intro">
-          Discover the Latest in Soap Making
+        <p className="section-intro">
+          Welcome to the OmniShop Blog! Discover tips, trends, and insights on
+          everything from food to fashion, home decor, and more.
         </p>
         <ul className="blogs">
           {blogList.map((blog) => (
@@ -43,8 +44,8 @@ function Blogs() {
                 ))}
               </div>
               <div className="blog__reactions">
-                <p>{blog.reactions.likes} like</p>
-                <p>{blog.reactions.dislikes} dislikes</p>
+                <p>{blog.reactions.likes} 👍</p>
+                <p>{blog.reactions.dislikes} 👎</p>
               </div>
               <div className="blog__button btn">
                 <a href={`/blogs/${blog.id}`} className="btn">

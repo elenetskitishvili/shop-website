@@ -4,7 +4,7 @@ import "./Header.css";
 function Header() {
   return (
     <header className="header">
-      <h1 className="heading-primary">Handmade Soaps</h1>
+      <h1 className="heading-primary">OmniShop</h1>
       <nav className="nav">
         <ul className="nav__list">
           <li className="nav__item">
@@ -14,7 +14,7 @@ function Header() {
           </li>
           <li className="nav__item">
             <Link className="nav__link" href="/">
-              Our soaps
+              Products
             </Link>
           </li>
           <li className="nav__item">

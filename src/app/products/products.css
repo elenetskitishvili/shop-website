@@ -1,19 +1,5 @@
 .main-products {
-  background: linear-gradient(to right, #d3cce3, #e9e4f0);
-}
-
-.section-products__intro {
-  max-width: 100rem;
-  margin: 0 auto;
-  text-align: center;
-
-  color: var(--color-text);
-  font-family: var(--font-family-heading);
-  font-size: 4.2rem;
-  font-weight: 400;
-  letter-spacing: -1px;
-  line-height: 1.2;
-  margin-top: 3.2rem;
+  background-color: var(--color-background);
 }
 
 .products {

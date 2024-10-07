@@ -3,54 +3,52 @@ import "./about.css";
 
 function About() {
   return (
-    <main
-      className="main main-about"
-      style={{
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('/images/bg-img-1.jpg')`,
-      }}
-    >
+    <main className="main main-about">
       <section className="section-about">
         <div className="section-about__content">
           <h3 className="heading-tertiary">About Us</h3>
           <p className="section-about__paragraph">
-            Welcome to our Handmade Soaps! We are passionate about crafting
-            natural, high-quality soaps that are gentle on your skin and kind to
-            the environment.
+            Welcome to OmniShop, your ultimate destination for all things
+            lifestyle. From gourmet foods to beauty products, stylish furniture,
+            and more, we bring you everything you need under one roof.
           </p>
 
           <h3 className="heading-tertiary">Our Mission</h3>
           <p className="section-about__paragraph">
-            We believe in the power of nature to nourish and heal. That's why we
-            use only the finest, organic ingredients to create soaps that are
-            free from harmful chemicals.
+            At OmniShop, our mission is to make shopping simple and enjoyable.
+            We aim to offer the highest quality products across various
+            categories, making it easy for you to find what you love.
           </p>
 
           <h3 className="heading-tertiary">What Makes Us Unique</h3>
           <ul className="features">
             <li className="features__item">
-              <i className=" features__icon features__icon--leaf fas fa-leaf"></i>
-              <span>100% natural and organic ingredients</span>
+              <i className=" features__icon  fas fa-box-open"></i>
+              <span>Wide variety of products for every need</span>
             </li>
             <li className="features__item">
-              <i className="features__icon features__icon--recycle fas fa-recycle"></i>
-              <span>Cruelty-free and eco-friendly packaging</span>
+              <i className="features__icon fas fa-star"></i>
+              <span>Commitment to quality and customer satisfaction</span>
             </li>
             <li className="features__item">
-              <i className="features__icon features__icon--heart  fas fa-hand-holding-heart"></i>
-              <span>Handcrafted with care</span>
+              <i className="features__icon  fas fas fa-headset"></i>
+              <span>Exceptional customer support</span>
             </li>
           </ul>
 
           <h3 className="heading-tertiary">Our Story</h3>
           <p className="section-about__paragraph">
-            Our journey started with a desire to create skincare products that
-            are not only effective but also safe for our planet. We began making
-            soaps in our small kitchen, and today, our passion has grown into a
-            brand that brings you the best of nature.
+            OmniShop started with a simple idea: to create a marketplace where
+            everyone can find what they need easily and conveniently. Today,
+            we’re proud to offer a diverse range of products that cater to all
+            your lifestyle needs.
           </p>
         </div>
         <div className="section-about__image-container">
-          <img src="/images/product-4.jpg" alt="Handmade Soaps" />
+          <img
+            src="/images/about-image.jpg"
+            alt="shopping bags, cart and gift card"
+          />
         </div>
       </section>
     </main>

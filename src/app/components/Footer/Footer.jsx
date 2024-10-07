@@ -31,7 +31,7 @@ function Footer() {
         </ul>
       </nav>
 
-      <p>&copy; {currentYear} Handmade Soaps. All rights reserved.</p>
+      <p>&copy; {currentYear} OmniShop. All rights reserved.</p>
     </footer>
   );
 }

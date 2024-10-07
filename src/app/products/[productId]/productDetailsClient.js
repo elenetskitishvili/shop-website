@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import ProductCard from "../../components/ProductCard/ProductCard";
 import "./product.css";
 
 function ProductDetails({ params }) {
@@ -8,39 +7,55 @@ function ProductDetails({ params }) {
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(productId);
-  useEffect(() => {
-    setIsLoading(true); // Start loading
 
-    fetch(`https://dummyjson.com/products/${productId}`)
-      .then((res) => {
-        if (!res.ok) {
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/${productId}`
+        );
+        if (!response.ok) {
           throw new Error("Something went wrong with fetching Products");
         }
-        return res.json(); // Parse JSON if response is okay
-      })
-      .then((data) => {
-        // Assuming the API returns a boolean response
+        const data = await response.json();
         if (data.Response === "False") {
           throw new Error("Products not found!");
         }
+        setProduct(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-        setProduct(data); // Set the product data
-      })
-      .catch((err) => {
-        setError(err.message); // Set the error message if an error occurs
-      })
-      .finally(() => {
-        setIsLoading(false); // End loading
-      });
+    fetchProduct();
   }, [productId]);
 
   return (
     <>
       <div className="product__wrapper">
-        <ProductCard productsObj={product} />
+        <div>
+          {product && product.images && (
+            <img
+              className="product__img--big"
+              src={product.images[0]}
+              alt={product.title}
+            />
+          )}
+        </div>
+        <div className="product-details">
+          <h3 className="heading-tertiary">{product.title}</h3>
+          <p className="product__description">{product.description}</p>
+          <span className="product__price">$ {product.price}</span>
+          <a href={`/products/${product.id}`} className="btn btn-cta">
+            Add to Cart
+          </a>
+        </div>
       </div>
     </>
   );
 }
+
 export default ProductDetails;

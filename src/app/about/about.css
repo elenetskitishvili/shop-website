@@ -1,15 +1,15 @@
+.main-about {
+  background-color: var(--color-background);
+}
 .section-about {
   max-width: 140rem;
   margin: 0 auto;
   padding-top: 3.2rem;
   padding-bottom: 2.4rem;
   display: grid;
-  grid-template-columns: 60fr 40fr;
+  grid-template-columns: 65fr 35fr;
   grid-gap: 6.2rem;
   align-items: center;
-}
-.section-about__content {
-  padding-left: 9.2rem;
 }
 
 .section-about__paragraph,
