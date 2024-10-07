@@ -6,7 +6,6 @@
   background-color: #fff;
   border-radius: var(--radius-md);
   overflow: hidden;
-  cursor: pointer;
   box-shadow: var(--shadow-card);
   transition: box-shadow 0.3s ease-in-out;
 }

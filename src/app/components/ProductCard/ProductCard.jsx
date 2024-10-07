@@ -14,7 +14,7 @@ function ProductCard({ productsObj }) {
         <p className="product__description">{productsObj.description}</p>
         <span>$ {productsObj.price}</span>
         <a href={`/products/${productsObj.id}`} className="btn btn-cta">
-          Add to Cart
+          Product Details
         </a>
       </div>
     </li>

@@ -45,12 +45,12 @@ function ProductDetails({ params }) {
             />
           )}
         </div>
-        <div className="product__details">
+        <div className="product-details">
           <h3 className="heading-tertiary">{product.title}</h3>
           <p className="product__description">{product.description}</p>
-          <span>$ {product.price}</span>
+          <span className="product__price">$ {product.price}</span>
           <a href={`/products/${product.id}`} className="btn btn-cta">
-            Product Details
+            Add to Cart
           </a>
         </div>
       </div>

@@ -33,7 +33,7 @@ function Products() {
   return (
     <main className="main main-products">
       <section className="section-products">
-        {isLoading && <p className="section-products__intro">Loading...</p>}
+        {isLoading && <p className="loading">Loading...</p>}
         {!isLoading && !error && (
           <>
             <p className="section-intro">

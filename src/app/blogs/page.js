@@ -44,8 +44,8 @@ function Blogs() {
                 ))}
               </div>
               <div className="blog__reactions">
-                <p>{blog.reactions.likes} like</p>
-                <p>{blog.reactions.dislikes} dislikes</p>
+                <p>{blog.reactions.likes} 👍</p>
+                <p>{blog.reactions.dislikes} 👎</p>
               </div>
               <div className="blog__button btn">
                 <a href={`/blogs/${blog.id}`} className="btn">
