@@ -1,34 +1,20 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-function ProductDetails({ params }) {
+export async function generateStaticParams() {
+  const res = await fetch("https://dummyjson.com/products");
+  const data = await res.json();
+  console.log(data);
+  const products = data.products;
+  return products.map((product) => ({
+    productId: product.id.toString(),
+  }));
+}
+
+async function ProductDetails({ params }) {
   const { productId } = params;
-  const [product, setProduct] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`https://dummyjson.com/products/${productId}`);
-
-        if (!res.ok)
-          throw new Error("Somthing went wrong with fetching Products");
-
-        const data = await res.json();
-
-        if (data.Response === "False") throw new Error("Products not found!");
-        setProducts(data.products);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
-
+  const res = await fetch(`https://dummyjson.com/products`);
+  const product = await res.json();
+  return <div>PAAGE</div>;
   //   return (
   //     <article className="productPost">
   //       <header className="header">
@@ -59,5 +45,4 @@ function ProductDetails({ params }) {
   //     </article>
   //   );
 }
-
 export default ProductDetails;
