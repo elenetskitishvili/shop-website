@@ -2,7 +2,6 @@ import React from "react";
 import "./ProductCard.css";
 
 function ProductCard({ productsObj }) {
-  console.log(productsObj.id);
   return (
     <li className="product">
       <img

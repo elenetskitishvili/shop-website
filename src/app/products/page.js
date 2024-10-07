@@ -19,7 +19,6 @@ function Products() {
           throw new Error("Somthing went wrong with fetching Products");
 
         const data = await res.json();
-        console.log(data);
         if (data.Response === "False") throw new Error("Products not found!");
         setProducts(data.products);
       } catch (error) {
