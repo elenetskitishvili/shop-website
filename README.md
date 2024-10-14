@@ -1,22 +1,12 @@
-# Handmade Soaps Page
+## OmniShop Webpage
 
-This React project serves as a learning exercise, showcasing handmade soaps. The project was created using create-react-app.
+OmniShop is an online shop where users can browse products, search for specific items, and sort them by name. This project also includes an about page, a blogs page, a contact page, and a user profile section. The project is built with Next.js and serves as a learning exercise.
 
-## Technologies Used
+### Features
 
-- React (Create React App)
-- CSS
-
-## Project Structure
-
-The main components of this project are:
-
-- **`App.js`**: The main container for the application.
-- **`Header.jsx`**: Contains the navigation links.
-- **`pages`**: Contains different page components.
-  - **`About`**: Displays information about the company.
-  - **`Blogs`**: Displays a list of blog posts.
-  - **`Contact`**: Provides a form to contact the company.
-  - **`Products`**: Displays a list of soaps with individual product details.
-  - **`Profile`**: Displays user information in a read-only format.
-- **`Footer.jsx`**: Displays the footer information.
+- **Product Sorting:** Users can now sort products by product name.
+- **Product Search:** A search input allows users to find specific products.
+- **About Page:** Learn more about the purpose and mission of OmniShop.
+- **Blogs Page:** Discover various articles, tips, and trends.
+- **Contact Page:** Reach out through the contact form.
+- **User Profile:** View user details.
