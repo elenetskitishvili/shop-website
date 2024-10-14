@@ -1,22 +1,45 @@
-import "./product.css";
+"use client";
+import { useEffect, useState } from "react";
+import "./product-details.css";
 
-export async function generateStaticParams() {
-  const res = await fetch("https://dummyjson.com/products");
-  const data = await res.json();
-  const products = data.products;
-  return products.map((product) => ({
-    productId: product.id.toString(),
-  }));
-}
+export default function ProductPage({ params }) {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-export default async function Page({ params }) {
-  const res = await fetch(`https://dummyjson.com/products/${params.productId}`);
-  const product = await res.json();
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const res = await fetch(
+          `https://dummyjson.com/products/${params.productId}`
+        );
+        const data = await res.json();
+        setProduct(data);
+      } catch (err) {
+        setError("Failed to fetch product.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProduct();
+  }, [params.productId]);
+
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
+
+  if (!product) {
+    return <div className="error">Product not found</div>;
+  }
 
   return (
     <div className="product__wrapper">
       <div>
-        {product && product.images && (
+        {product.images && (
           <img
             className="product__img--big"
             src={product.images[0]}

@@ -136,10 +136,6 @@ body {
   font-size: 2.4rem;
 }
 
-.error {
-  color: #d32f2f;
-}
-
 /* custom scrollbar */
 
 ::-webkit-scrollbar {
