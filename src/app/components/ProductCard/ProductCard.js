@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 import "./ProductCard.css";
 
 function ProductCard({ productsObj }) {
@@ -13,9 +13,9 @@ function ProductCard({ productsObj }) {
         <h3 className="heading-tertiary">{productsObj.title}</h3>
         <p className="product__description">{productsObj.description}</p>
         <span>$ {productsObj.price}</span>
-        <a href={`/products/${productsObj.id}`} className="btn btn-cta">
+        <Link href={`/products/${productsObj.id}`} className="btn btn-cta">
           Product Details
-        </a>
+        </Link>
       </div>
     </li>
   );

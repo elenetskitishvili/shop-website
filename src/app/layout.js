@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 export const metadata = {
-  title: "React App",
+  title: "OmniShop",
   description: "Web site created with Next.js.",
 };
 

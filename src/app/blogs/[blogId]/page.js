@@ -1,4 +1,4 @@
-import BlogDetailsClient from "./BlogDetailsClient.js";
+import "./blog-details.css";
 
 export async function generateStaticParams() {
   const res = await fetch("https://dummyjson.com/posts");
@@ -9,6 +9,35 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function BlogDetails({ params }) {
-  return <BlogDetailsClient params={params} />;
+export default async function Page({ params }) {
+  const res = await fetch(`https://dummyjson.com/posts/${params.blogId}`);
+  const blog = await res.json();
+  console.log(blog);
+  return (
+    <article className="blog-details">
+      <header className="blog-details__header">
+        <h1 className="blog-details__title">{blog.title}</h1>
+        <div className="blog-details__meta">
+          <span className="views">{blog.views} views</span>
+          <span className="userId">Author ID: {blog.userId}</span>
+        </div>
+      </header>
+      <div className="blog-details__content">
+        <p>{blog.body}</p>
+      </div>
+      <footer className="blog-details__footer">
+        <div className="tags">
+          {blog.tags.map((tag, index) => (
+            <span key={index} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="reactions">
+          <span className="likes">👍 {blog.reactions.likes}</span>
+          <span className="dislikes">👎 {blog.reactions.dislikes}</span>
+        </div>
+      </footer>
+    </article>
+  );
 }
