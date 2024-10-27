@@ -1,6 +1,6 @@
 import "./products.css";
-import ProductCard from "../components/ProductCard/ProductCard";
-import ProductsControls from "../components/ProductsControls/ProductsControls";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import ProductsControls from "../../components/ProductsControls/ProductsControls";
 
 async function fetchProducts(search, sort) {
   const url = `https://dummyjson.com/products/search?q=${search || ""}${

@@ -80,6 +80,12 @@
   font-size: 1.8rem;
 }
 
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
 @media only screen and (max-width: 28em) {
   .nav {
     font-size: 1.4rem;

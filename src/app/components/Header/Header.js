@@ -1,7 +1,11 @@
 import Link from "next/link";
 import "./Header.css";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
+import { fetchUserDetails } from "../../../utils/fetchUserDetails";
 
-function Header() {
+export default async function Header() {
+  const user = await fetchUserDetails();
+
   return (
     <header className="header">
       <h1 className="heading-primary">OmniShop</h1>
@@ -30,12 +34,14 @@ function Header() {
         </ul>
       </nav>
 
-      <Link className="user" href="/profile">
-        <img className="user__img" src="/images/user.jpg" alt="user" />
-        <span className="user__name">Elene</span>
-      </Link>
+      <div className="header__user">
+        <Link className="user" href="/profile">
+          <img className="user__img" src={user.image} alt={user.firstName} />
+          <span className="user__name">{user.firstName}</span>
+        </Link>
+
+        <LogOutBtn />
+      </div>
     </header>
   );
 }
-
-export default Header;

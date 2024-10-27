@@ -1,4 +1,4 @@
-import BlogCard from "../components/BlogCard/BlogCard";
+import BlogCard from "../../components/BlogCard/BlogCard";
 import "./blogs.css";
 
 export default async function Blogs() {
