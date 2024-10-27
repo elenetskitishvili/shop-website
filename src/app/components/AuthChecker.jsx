@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
+import Spinner from "../components/Spinner/Spinner";
+
 export default function AuthChecker({ children }) {
   const router = useRouter();
 
@@ -20,12 +22,7 @@ export default function AuthChecker({ children }) {
   }, [router]);
 
   if (loading) {
-    return (
-      <div className="loading-screen">
-        <div className="spinner">spinner</div>
-        <p>Loading...</p>
-      </div>
-    );
+    return <Spinner message="Loading..." />;
   }
 
   return <>{children}</>;
