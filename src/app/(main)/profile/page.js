@@ -1,27 +1,25 @@
-import React from "react";
 import "./Profile.css";
+import { fetchUserDetails } from "../../../utils/fetchUserDetails";
 
-function Profile() {
-  const user = {
-    image: "/images/user.jpg",
-    name: "Elene",
-    surname: "Tskitishvili",
-    email: "elene.tskitishvili504@gmail.com",
-  };
-
+export default async function Profile() {
+  const user = await fetchUserDetails();
   return (
     <main className="main main-profile">
       <section className="section-profile">
         <form className="profile__form">
           <div className="profile__image-container">
-            <img className="profile__image" src={user.image} alt="User" />
+            <img
+              className="profile__image"
+              src={user.image}
+              alt={user.firstName}
+            />
           </div>
           <div className="profile__form-group">
             <label className="profile__label">Name</label>
             <input
               className="profile__input profile__input--name"
               type="text"
-              value={user.name}
+              value={user.firstName}
               readOnly
             />
           </div>
@@ -30,7 +28,7 @@ function Profile() {
             <input
               className="profile__input profile__input--surname"
               type="text"
-              value={user.surname}
+              value={user.lastName}
               readOnly
             />
           </div>
@@ -48,5 +46,3 @@ function Profile() {
     </main>
   );
 }
-
-export default Profile;
