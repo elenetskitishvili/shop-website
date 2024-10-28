@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
+import { fetchTokens } from "../../../utils/fetchTokens";
+
 import "./login.css";
 import Image from "next/image";
 import bg from "../../../../public/images/bg.png";
@@ -16,17 +18,16 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleLogin = async () => {
-    const res = await fetch("https://dummyjson.com/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
-    const data = await res.json();
-    if (data.accessToken) {
-      Cookies.set("accessToken", data.accessToken, { expires: 1 });
-      router.push("/products");
-    } else {
+    try {
+      const token = await fetchTokens(username, password);
+
+      if (token) {
+        Cookies.set("accessToken", token, { expires: 1 });
+        router.push("/products");
+      }
+    } catch (err) {
       setError("Please enter valid username and password");
+      console.error(err);
     }
   };
 

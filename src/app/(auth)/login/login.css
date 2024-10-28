@@ -8,11 +8,13 @@
 }
 
 .login__content {
+  max-width: 144rem;
+  margin: 0 auto;
   position: relative;
   color: #fff;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-top: 4.2rem;
   padding: 0 3.2rem;
 }
@@ -20,7 +22,7 @@
 .login__fields {
   display: flex;
   align-items: center;
-  gap: 3.2rem;
+  gap: 1.4rem;
 }
 
 .login__input {
@@ -64,13 +66,26 @@
 
 .login__error {
   margin-top: 1.4rem;
+  margin-left: 1.8rem;
   color: var(--color-accent);
+  animation: fadeInSlideDown 0.5s ease-in-out;
+}
+
+@keyframes fadeInSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media only screen and (max-width: 56.25em) {
   .login__content {
     flex-direction: column;
-
+    align-items: center;
     justify-content: baseline;
     margin-top: 6.2rem;
     gap: 3.2rem;
@@ -87,6 +102,10 @@
 }
 
 @media only screen and (max-width: 31.25em) {
+  .login__content {
+    margin-top: 15rem;
+  }
+
   .login__fields {
     flex-direction: column;
     gap: 1.2rem;
