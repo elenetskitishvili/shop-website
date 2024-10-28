@@ -8,23 +8,25 @@ import "./login.css";
 import Image from "next/image";
 import bg from "../../../../public/images/bg.png";
 
-const LoginPage = () => {
+export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const router = useRouter();
 
   const handleLogin = async () => {
-    const response = await fetch("https://dummyjson.com/auth/login", {
+    const res = await fetch("https://dummyjson.com/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
-    const data = await response.json();
+    const data = await res.json();
     if (data.accessToken) {
       Cookies.set("accessToken", data.accessToken, { expires: 1 });
       router.push("/products");
     } else {
-      alert("Login failed!");
+      setError("Please enter valid username and password");
     }
   };
 
@@ -41,28 +43,29 @@ const LoginPage = () => {
 
       <div className="login__content">
         <h1 className="login__heading">Welcome to OmniShop!</h1>
-        <div className="login__fields">
-          <input
-            className="login__input"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-          />
-          <input
-            className="login__input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <button className="login__btn" onClick={handleLogin}>
-            Login
-          </button>
+        <div className="login__wrapper">
+          <div className="login__fields">
+            <input
+              className="login__input"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+            />
+            <input
+              className="login__input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <button className="login__btn" onClick={handleLogin}>
+              Login
+            </button>
+          </div>
+          {error && <p className="login__error">{error}</p>}
         </div>
       </div>
     </section>
   );
-};
-
-export default LoginPage;
+}
