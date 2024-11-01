@@ -1,11 +1,10 @@
 import Link from "next/link";
 import "./Header.css";
-import LogOutBtn from "../LogOutBtn/LogOutBtn";
-import { fetchUserDetails } from "../../../utils/fetchUserDetails";
+
+import { getSession } from "@auth0/nextjs-auth0";
 
 export default async function Header() {
-  const user = await fetchUserDetails();
-
+  const { user } = await getSession();
   return (
     <header className="header">
       <h1 className="heading-primary">OmniShop</h1>
@@ -17,7 +16,7 @@ export default async function Header() {
             </Link>
           </li>
           <li className="nav__item">
-            <Link className="nav__link" href="/">
+            <Link className="nav__link" href="/products">
               Products
             </Link>
           </li>
@@ -36,11 +35,10 @@ export default async function Header() {
 
       <div className="header__user">
         <Link className="user" href="/profile">
-          <img className="user__img" src={user.image} alt={user.firstName} />
-          <span className="user__name">{user.firstName}</span>
+          <img className="user__img" src={user.picture} alt={user.name} />
         </Link>
 
-        <LogOutBtn />
+        <a href="/api/auth/logout">Logout</a>
       </div>
     </header>
   );
