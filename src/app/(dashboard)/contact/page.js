@@ -4,35 +4,35 @@ import "./contact.css";
 function Contact() {
   return (
     <main>
-      <section className="section-contact">
-        <div className="section-contact__details">
-          <h2 className="heading-secondary section-contact__title">
+      <section className="max-w-screen-xl mx-auto py-12 grid grid-cols-2 gap-20">
+        <div>
+          <h2 className="font-heading text-5xl -tracking-tight font-medium text-emerald-500 mb-10 ">
             Contact Us
           </h2>
-          <p className="section-contact__text">
+          <p className="mb-10 text-3xl text-emerald-600">
             If you have any questions or inquiries, feel free to reach out to
             us!
           </p>
-          <ul className="contact__list">
-            <li className="contact__item">
-              <span className="contact__label">Email:</span>
-              <a href="mailto:contact@omnishop.com" className="contact__link">
+          <ul className="flex flex-col gap-8 items-start">
+            <li className="flex items-center">
+              <span className="text-3xl text-emerald-600 mr-4">Email:</span>
+              <a href="mailto:contact@omnishop.com" className="text-inherit">
                 contact@omnishop.com
               </a>
             </li>
-            <li className="contact__item">
-              <span className="contact__label">Phone:</span>
-              <a href="tel:+995555123456" className="contact__link">
+            <li className="flex items-center">
+              <span className="text-3xl text-emerald-600 mr-4">Phone:</span>
+              <a href="tel:+995555123456" className="text-inherit">
                 +995 555 123 456
               </a>
             </li>
-            <li className="contact__item">
-              <span className="contact__label">Address:</span> 12 Sandalwood
-              Street, Tbilisi, Georgia
+            <li className="flex items-center">
+              <span className="text-3xl text-emerald-600 mr-4">Address:</span>{" "}
+              12 Sandalwood Street, Tbilisi, Georgia
             </li>
-            <li className="contact__item">
-              <span className="contact__label">Follow us:</span>
-              <span className="contact__media-links">
+            <li className="flex items-center">
+              <span className="text-3xl text-emerald-600 mr-4">Follow us:</span>
+              <span className="flex items-center gap-6 pl-3">
                 <a
                   href="https://facebook.com"
                   target="_blank"
@@ -74,12 +74,12 @@ function Contact() {
           </ul>
         </div>
 
-        <div className="contact__form-wrapper">
-          <h2 className="heading-secondary section-contact__title">
+        <div className="w-full">
+          <h2 className="font-heading text-5xl -tracking-tight font-medium text-emerald-500 mb-10">
             Reach Out to Us
           </h2>
-          <form className="contact__form">
-            <div className="contact__form-group">
+          <form className="flex flex-col gap-8 items-start">
+            <div className="w-full">
               <input
                 type="text"
                 id="fullName"
@@ -92,7 +92,7 @@ function Contact() {
                 Full name
               </label>
             </div>
-            <div className="contact__form-group">
+            <div className="w-full">
               <input
                 type="email"
                 id="email"
@@ -105,7 +105,7 @@ function Contact() {
                 Email address
               </label>
             </div>
-            <div className="contact__form-group">
+            <div className="w-full">
               <input
                 type="tel"
                 id="phone"
@@ -118,7 +118,7 @@ function Contact() {
                 Phone number
               </label>
             </div>
-            <div className="contact__form-group">
+            <div className="w-full">
               <input
                 type="text"
                 id="subject"
@@ -131,7 +131,11 @@ function Contact() {
                 Subject
               </label>
             </div>
-            <input type="submit" className="contact__submit" value="Submit" />
+            <input
+              type="submit"
+              className="text-2xl py-5 px-10 rounded-xl cursor-pointer text-white bg-emerald-500 transition-all duration-300 ease-in-out hover:bg-emerald-600"
+              value="Submit"
+            />
           </form>
         </div>
       </section>

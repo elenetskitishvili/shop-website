@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         base: ['"Open Sans"', "sans-serif"],
         heading: ['"Playfair Display"', "serif"],
+        inherit: "inherit",
       },
     },
   },
