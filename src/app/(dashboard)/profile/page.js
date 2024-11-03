@@ -1,42 +1,41 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import "./Profile.css";
 
 export default async function Profile() {
   const { user } = await getSession();
   return (
     user && (
-      <main className="main main-profile">
-        <section className="section-profile">
-          <form className="profile__form">
-            <div className="profile__image-container">
+      <main>
+        <section className="bg-gradient-to-t from-emerald-500 to-emerald-200 py-12">
+          <form className="max-w-xl mx-auto  bg-white rounded-xl flex flex-col gap-10 py-12 px-10 items-center">
+            <div className="w-52 h-52 rounded-full overflow-hidden shadow-sm border-4 border-emerald-500">
               <img
-                className="profile__image"
+                className="h-full w-auto object-cover"
                 src={user.picture}
                 alt={user.name}
               />
             </div>
-            <div className="profile__form-group">
-              <label className="profile__label">Name</label>
+            <div className="w-full flex flex-col gap-3">
+              <label className="ml-6 text-2xl text-zinc-500">Name</label>
               <input
-                className="profile__input profile__input--name"
+                className="w-full py-3 px-8 text-2xl rounded-xl text-inherit font-inherit bg-zinc-100 border-b-4 border-b-transparent focus:outline-none focus:shadow-md focus:border-b-emerald-500"
                 type="text"
                 value={user.given_name}
                 readOnly
               />
             </div>
-            <div className="profile__form-group">
-              <label className="profile__label">Surname</label>
+            <div className="w-full flex flex-col gap-3">
+              <label className="ml-6 text-2xl text-zinc-500">Surname</label>
               <input
-                className="profile__input profile__input--surname"
+                className="w-full py-3 px-8 text-2xl rounded-xl text-inherit font-inherit bg-zinc-100 border-b-4 border-b-transparent focus:outline-none focus:shadow-md focus:border-b-emerald-500"
                 type="text"
                 value={user.family_name}
                 readOnly
               />
             </div>
-            <div className="profile__form-group">
-              <label className="profile__label">Email</label>
+            <div className="w-full flex flex-col gap-3">
+              <label className="ml-6 text-2xl text-zinc-500">Email</label>
               <input
-                className="profile__input profile__input--email"
+                className="w-full py-3 px-8 text-2xl rounded-xl text-inherit font-inherit bg-zinc-100 border-b-4 border-b-transparent focus:outline-none focus:shadow-md focus:border-b-emerald-500"
                 type="email"
                 value={user.email}
                 readOnly
