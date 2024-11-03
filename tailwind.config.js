@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        base: ['"Open Sans"', "sans-serif"],
+        heading: ['"Playfair Display"', "serif"],
+      },
+    },
   },
   plugins: [],
   darkMode: "class",
