@@ -124,20 +124,6 @@ body {
   background-repeat: no-repeat;
 }
 
-.section-intro {
-  max-width: 100rem;
-  margin: 0 auto;
-  text-align: center;
-
-  color: var(--color-text);
-  font-family: var(--font-family-heading);
-  font-size: 3.2rem;
-  font-weight: 400;
-  letter-spacing: -1px;
-  line-height: 1.4;
-  margin-top: 3.2rem;
-}
-
 .loading,
 .error {
   flex: 1;
