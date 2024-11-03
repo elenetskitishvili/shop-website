@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function ProductCard({ productsObj }) {
   return (
-    <li className="flex flex-col justify-between h-full bg-white rounded-xl overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:shadow-md">
+    <li className="flex flex-col justify-between h-full bg-white rounded-xl overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:shadow-md dark:bg-zinc-900">
       <img
         className="w-full h-96 object-contain"
         src={productsObj.images[0]}
@@ -14,7 +14,7 @@ function ProductCard({ productsObj }) {
         <span>$ {productsObj.price}</span>
         <Link
           href={`/products/${productsObj.id}`}
-          className="inline-block text-2xl py-5 px-10 self-start  bg-emerald-500 visited:bg-emerald-500 transition-all duration-300 ease-in-out mt-auto rounded-xl text-white hover:bg-emerald-600 active:bg-emerald-600"
+          className="inline-block text-2xl py-5 px-10 self-start  bg-emerald-500 visited:bg-emerald-500 transition-all duration-300 ease-in-out mt-auto rounded-xl text-white hover:bg-emerald-600 active:bg-emerald-600 dark:bg-emerald-800  dark:hover:bg-emerald-700"
         >
           Product Details
         </Link>

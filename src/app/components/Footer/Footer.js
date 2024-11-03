@@ -2,7 +2,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="text-zinc-400 p-5 text-center text-xl flex flex-col gap-6 shadow-md">
+    <footer className=" p-5 text-center text-xl flex flex-col gap-6 shadow-md bg-white border-t-2 border-t-zinc-100 dark:bg-zinc-900 dark:border-t-zinc-800">
       <nav>
         <ul className="flex gap-10 items-center justify-center">
           <li>
@@ -40,7 +40,9 @@ export default function Footer() {
         </ul>
       </nav>
 
-      <p>&copy; {currentYear} OmniShop. All rights reserved.</p>
+      <p className="text-zinc-500 dark:text-zinc-200">
+        &copy; {currentYear} OmniShop. All rights reserved.
+      </p>
     </footer>
   );
 }

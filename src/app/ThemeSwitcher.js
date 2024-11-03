@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -15,10 +17,16 @@ export default function ThemeSwitcher() {
   }
 
   return (
-    <div>
-      The current theme is:
-      <button onClick={() => setTheme("light")}>Light Mode</button>
-      <button onClick={() => setTheme("dark")}>Dark Mode</button>
+    <div className="flex gap-9">
+      {theme === "dark" ? (
+        <button onClick={() => setTheme("light")}>
+          <SunIcon className="h-10 w-10 text-yellow-500" />
+        </button>
+      ) : (
+        <button onClick={() => setTheme("dark")}>
+          <MoonIcon className="h-9 w-9 text-yellow-500" />
+        </button>
+      )}
     </div>
   );
 }
