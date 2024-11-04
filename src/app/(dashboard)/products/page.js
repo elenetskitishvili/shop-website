@@ -1,4 +1,3 @@
-import "./products.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductsControls from "../../components/ProductsControls/ProductsControls";
 
@@ -18,15 +17,13 @@ export default async function Products({ searchParams = {} }) {
   const products = await fetchProducts(search, sort);
 
   return (
-    <main className="main main-products">
-      <section className="section-products">
-        <ProductsControls searchParams={searchParams} />
-        <ul className="products">
-          {products.map((product) => (
-            <ProductCard productsObj={product} key={product.id} />
-          ))}
-        </ul>
-      </section>
-    </main>
+    <section>
+      <ProductsControls searchParams={searchParams} />
+      <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(30rem,1fr))] gap-16 mt-16 mb-24">
+        {products.map((product) => (
+          <ProductCard productsObj={product} key={product.id} />
+        ))}
+      </ul>
+    </section>
   );
 }

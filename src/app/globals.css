@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 @import "~@fortawesome/fontawesome-free/css/all.css";
@@ -33,29 +37,17 @@
   --shadow-input: 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
 html {
   font-size: 62.5%;
   height: 100%;
 }
 
-body {
-  box-sizing: border-box;
-  font-family: var(--font-family-base);
-  color: var(--color-text);
-  font-size: 1.6rem;
-  font-weight: 400;
-  height: 100%;
-}
+/* [data-theme="dark"] body {
+  background-color: var(--color-text);
+  color: var(--color-background);
+} */
 
-#root {
+/* #root {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -66,8 +58,9 @@ body {
     font-size: 50%;
   }
 }
-
+*/
 /* Typography */
+/*
 .heading-primary {
   font-family: var(--font-family-heading);
   font-size: 3.2rem;
@@ -86,8 +79,10 @@ body {
   font-family: var(--font-family-heading);
   font-size: 2.4rem;
 }
+*/
 
 /* Reusable Styles */
+/*
 .btn:link,
 .btn:visited {
   display: inline-block;
@@ -112,21 +107,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.section-intro {
-  max-width: 100rem;
-  margin: 0 auto;
-  text-align: center;
-
-  color: var(--color-text);
-  font-family: var(--font-family-heading);
-  font-size: 3.2rem;
-  font-weight: 400;
-  letter-spacing: -1px;
-  line-height: 1.4;
-  margin-top: 3.2rem;
-}
+} */
 
 .loading,
 .error {

@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import useDebounce from "../../hooks/useDebounce";
-import "./ProductsControls.css";
 
 export default function ProductsControls({ searchParams }) {
   const router = useRouter();
@@ -32,26 +31,26 @@ export default function ProductsControls({ searchParams }) {
   };
 
   return (
-    <div className="products-controls">
+    <div className="flex items-center justify-center gap-12 mt-10">
       <input
         type="text"
-        className="products-controls__search"
+        className="w-96 py-4 px-10 text-2xl rounded-xl font-inherit text-inherit bg-white border-b-4 border-b-transparent shadow-sm focus:outline-none focus:shadow-md focus:border-b-emerald-500 dark:bg-zinc-900"
         placeholder="Search products"
         value={searchValue}
         onChange={handleSearch}
       />
-      <div className="products-controls__sort">
+      <div className="flex items-center gap-10">
         <button
-          className="products-controls__sort-btn"
+          className="cursor-pointer rounded-xl"
           onClick={() => handleSort("asc")}
         >
-          <i className="icon-sort fa-solid fa-arrow-up-z-a"></i>
+          <i className="text-4xl text-emerald-500 fa-solid fa-arrow-up-z-a"></i>
         </button>
         <button
-          className="products-controls__sort-btn"
+          className="cursor-pointer rounded-xl"
           onClick={() => handleSort("desc")}
         >
-          <i className="icon-sort fa-solid fa-arrow-down-z-a"></i>
+          <i className="text-4xl text-emerald-500 fa-solid fa-arrow-down-z-a"></i>
         </button>
       </div>
     </div>
