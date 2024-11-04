@@ -1,6 +1,6 @@
 import Link from "next/link";
 import "./Header.css";
-import ThemeSwitcher from "../../ThemeSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 import { getSession } from "@auth0/nextjs-auth0";
 
