@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import Image from "next/image";
 import "./login.css";
-import bg from "../../../../public/images/bg.png";
+import bg from "../../../../../public/images/bg.png";
 
 export default async function LoginPage() {
   const session = await getSession();

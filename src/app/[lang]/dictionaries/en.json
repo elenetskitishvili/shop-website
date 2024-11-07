@@ -1,0 +1,16 @@
+{
+  "header": {
+    "about": "About Us",
+    "products": "Products",
+    "blogs": "Blogs",
+    "contact": "Contact"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "logout": "Logout",
+    "welcome": "Welcome"
+  }
+}

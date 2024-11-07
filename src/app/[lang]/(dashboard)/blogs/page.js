@@ -1,4 +1,4 @@
-import BlogCard from "../../components/BlogCard/BlogCard";
+import BlogCard from "../../../components/BlogCard/BlogCard";
 
 export default async function Blogs() {
   const res = await fetch("https://dummyjson.com/posts");

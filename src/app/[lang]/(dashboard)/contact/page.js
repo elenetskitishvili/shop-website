@@ -1,7 +1,6 @@
-import React from "react";
 import "./contact.css";
 
-function Contact() {
+export default function Contact() {
   return (
     <section className="max-w-screen-xl mx-auto py-12 grid grid-cols-2 gap-20">
       <div className="w-full">
@@ -138,5 +137,3 @@ function Contact() {
     </section>
   );
 }
-
-export default Contact;

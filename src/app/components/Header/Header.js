@@ -1,10 +1,11 @@
 import Link from "next/link";
 import "./Header.css";
 import ThemeSwitcher from "../ThemeSwitcher";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 import { getSession } from "@auth0/nextjs-auth0";
 
-export default async function Header() {
+export default async function Header({ labels }) {
   const { user } = await getSession();
   return (
     <header className="w-full px-12 bg-white shadow-sm text-3xl dark:bg-zinc-900">
@@ -16,22 +17,22 @@ export default async function Header() {
           <ul className="flex gap-5">
             <li className=" nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/about">
-                About us
+                {labels.about}
               </Link>
             </li>
             <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/products">
-                Products
+                {labels.products}
               </Link>
             </li>
             <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/blogs">
-                Blogs
+                {labels.blogs}
               </Link>
             </li>
             <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/contact">
-                Contact
+                {labels.contact}
               </Link>
             </li>
           </ul>
@@ -48,6 +49,7 @@ export default async function Header() {
 
           <a href="/api/auth/logout">Logout</a>
           <ThemeSwitcher />
+          <LanguageSwitcher currentLang={currentLang} />
         </div>
       </div>
     </header>

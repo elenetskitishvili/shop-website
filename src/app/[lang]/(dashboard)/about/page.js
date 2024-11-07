@@ -1,6 +1,4 @@
-import React from "react";
-
-function About() {
+export default function About() {
   return (
     <section className="max-w-screen-xl mx-auto pt-8 pb-6 grid grid-cols-[60fr_40fr] gap-36 items-center">
       <div>
@@ -54,5 +52,3 @@ function About() {
     </section>
   );
 }
-
-export default About;
