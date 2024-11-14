@@ -1,12 +1,12 @@
-import { getSession } from "@auth0/nextjs-auth0";
+import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 
 // import { getDictionary } from "../dictionaries";
 
-import ThemeProvider from "../providers/ThemeProvider";
+import ThemeProvider from "../../providers/ThemeProvider";
 
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 export const metadata = {
   title: "OmniShop",
@@ -17,8 +17,8 @@ export default async function DashboardLayout({ children }) {
 
   const session = await getSession();
 
-  if (!session?.user) {
-    redirect("/login");
+  if (!session || !session?.user) {
+    redirect("/en/login");
   }
 
   return (

@@ -1,11 +1,15 @@
+"use client";
+import { useTranslations } from "next-intl";
 import "./contact.css";
 
 export default function Contact() {
+  const t = useTranslations("Contact");
+
   return (
     <section className="max-w-screen-xl mx-auto py-12 grid grid-cols-2 gap-20">
       <div className="w-full">
         <h2 className="font-heading text-5xl -tracking-tight font-medium text-emerald-500 mb-10">
-          Reach Out to Us
+          {t("reachOut")}
         </h2>
         <form className="flex flex-col gap-8 items-start">
           <div className="w-full">
@@ -14,11 +18,11 @@ export default function Contact() {
               id="fullName"
               name="fullName"
               className="contact__input dark:bg-zinc-900 "
-              placeholder="Full name"
+              placeholder={t("fullName")}
               required
             />
             <label htmlFor="fullName" className="contact__form-label">
-              Full name
+              {t("fullName")}
             </label>
           </div>
           <div className="w-full">
@@ -27,11 +31,11 @@ export default function Contact() {
               id="email"
               name="email"
               className="contact__input dark:bg-zinc-900 "
-              placeholder="Email address"
+              placeholder={t("email")}
               required
             />
             <label htmlFor="email" className="contact__form-label">
-              Email address
+              {t("email")}
             </label>
           </div>
           <div className="w-full">
@@ -40,11 +44,11 @@ export default function Contact() {
               id="phone"
               name="phone"
               className="contact__input dark:bg-zinc-900 "
-              placeholder="Phone number"
+              placeholder={t("phone")}
               required
             />
             <label htmlFor="phone" className="contact__form-label">
-              Phone number
+              {t("phone")}
             </label>
           </div>
           <div className="w-full">
@@ -53,46 +57,52 @@ export default function Contact() {
               id="subject"
               name="subject"
               className="contact__input dark:bg-zinc-900 "
-              placeholder="Subject"
+              placeholder={t("subject")}
               required
             />
             <label htmlFor="subject" className="contact__form-label">
-              Subject
+              {t("subject")}
             </label>
           </div>
           <input
             type="submit"
             className="text-2xl py-5 px-10 rounded-xl cursor-pointer text-white bg-emerald-500 transition-all duration-300 ease-in-out hover:bg-emerald-600 dark:bg-emerald-800 dark:hover:bg-emerald-700"
-            value="Submit"
+            value={t("submit")}
           />
         </form>
       </div>
       <div className="mt-20">
         <h2 className="font-heading text-5xl -tracking-tight font-medium text-emerald-500 mb-10 ">
-          Contact Us
+          {t("contactUs")}
         </h2>
-        <p className="mb-10 text-3xl text-emerald-500">
-          If you have any questions or inquiries, feel free to reach out to us!
-        </p>
+        <p className="mb-10 text-3xl text-emerald-500">{t("inquiries")}</p>
         <ul className="flex flex-col gap-8 items-start">
           <li className="flex items-center">
-            <span className="text-3xl text-emerald-500 mr-4">Email:</span>
+            <span className="text-3xl text-emerald-500 mr-4">
+              {t("emailLabel")}:
+            </span>
             <a href="mailto:contact@omnishop.com" className="text-inherit">
               contact@omnishop.com
             </a>
           </li>
           <li className="flex items-center">
-            <span className="text-3xl text-emerald-500 mr-4">Phone:</span>
+            <span className="text-3xl text-emerald-500 mr-4">
+              {t("phoneLabel")}:
+            </span>
             <a href="tel:+995555123456" className="text-inherit">
               +995 555 123 456
             </a>
           </li>
           <li className="flex items-center">
-            <span className="text-3xl text-emerald-500 mr-4">Address:</span> 12
-            Sandalwood Street, Tbilisi, Georgia
+            <span className="text-3xl text-emerald-500 mr-4">
+              {t("addressLabel")}:
+            </span>{" "}
+            {t("address")}
           </li>
           <li className="flex items-center">
-            <span className="text-3xl text-emerald-500 mr-4">Follow us:</span>
+            <span className="text-3xl text-emerald-500 mr-4">
+              {t("followUs")}:
+            </span>
             <span className="flex items-center gap-6 pl-3">
               <a
                 href="https://facebook.com"

@@ -1,24 +1,31 @@
 "use client";
-// import { useRouter } from "next/router";
 
-export default function LanguageSwitcher({ currentLang }) {
-  // const router = useRouter();
+import { useRouter, usePathname } from "next/navigation";
 
-  // // Toggle language between English and Georgian
-  // const switchLanguage = () => {
-  //   const newLang = currentLang === "en" ? "ge" : "en";
-  //   const newPath = router.asPath.replace(`/${currentLang}`, `/${newLang}`);
-  //   router.push(newPath);
-  // };
+export default function LanguageSwitcher() {
+  const router = useRouter();
+  const pathname = usePathname();
 
-  // return (
-  //   <button
-  //     onClick={switchLanguage}
-  //     className="p-2 rounded bg-gray-200 dark:bg-gray-600"
-  //   >
-  //     {currentLang === "en" ? "Georgian" : "English"}
-  //   </button>
-  // );
+  // Detect the current locale from the pathname (e.g., '/en' or '/ka')
+  const currentLocale = pathname.split("/")[1] || "en";
 
-  return <button className="py-3 px-10 bg-emerald-100 rounded-xl">Geo</button>;
+  // Toggle language and update the URL
+  const toggleLanguage = () => {
+    const newLocale = currentLocale === "en" ? "ka" : "en";
+
+    // Build the new path with the new locale
+    const newPathname = `/${newLocale}${pathname.substring(3)}`;
+
+    // Navigate to the new path with the updated locale
+    router.push(newPathname);
+  };
+
+  return (
+    <button
+      className="py-3 px-10 bg-emerald-100 rounded-xl transition-all duration-300 hover:bg-emerald-200"
+      onClick={toggleLanguage}
+    >
+      {currentLocale === "en" ? "ქარ" : "Eng"}
+    </button>
+  );
 }

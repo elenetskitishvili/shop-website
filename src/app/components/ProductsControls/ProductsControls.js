@@ -1,23 +1,29 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import useDebounce from "../../hooks/useDebounce";
 
 export default function ProductsControls({ searchParams }) {
   const router = useRouter();
-  const [searchValue, setSearchValue] = useState(searchParams.search || "");
-  const [sortOrder, setSortOrder] = useState(searchParams.sort || "");
+  const pathname = usePathname();
+  const [searchValue, setSearchValue] = useState(searchParams?.search || "");
+  const [sortOrder, setSortOrder] = useState(searchParams?.sort || "");
 
   const debouncedSearchValue = useDebounce(searchValue, 500);
 
+  const updateUrl = (search, sort) => {
+    const queryParams = new URLSearchParams();
+
+    if (search) queryParams.set("search", search);
+    if (sort) queryParams.set("sort", sort);
+
+    const newUrl = `${pathname}?${queryParams.toString()}`;
+
+    router.push(newUrl);
+  };
+
   useEffect(() => {
-    if (debouncedSearchValue === "") {
-      const updatedUrl = `/products?sort=${sortOrder}`;
-      router.push(updatedUrl);
-    } else {
-      const updatedUrl = `/products?search=${debouncedSearchValue}&sort=${sortOrder}`;
-      router.push(updatedUrl);
-    }
+    updateUrl(debouncedSearchValue, sortOrder);
   }, [debouncedSearchValue, sortOrder]);
 
   const handleSearch = (e) => {
@@ -26,8 +32,6 @@ export default function ProductsControls({ searchParams }) {
 
   const handleSort = (order) => {
     setSortOrder(order);
-    const updatedUrl = `/products?search=${debouncedSearchValue}&sort=${order}`;
-    router.push(updatedUrl);
   };
 
   return (
@@ -39,6 +43,7 @@ export default function ProductsControls({ searchParams }) {
         value={searchValue}
         onChange={handleSearch}
       />
+
       <div className="flex items-center gap-10">
         <button
           className="cursor-pointer rounded-xl"
