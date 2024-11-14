@@ -5,7 +5,7 @@ import LanguageSwitcher from "../LanguageSwitcher";
 
 import { getSession } from "@auth0/nextjs-auth0";
 
-export default async function Header({ labels }) {
+export default async function Header() {
   const { user } = await getSession();
   return (
     <header className="w-full px-12 bg-white shadow-sm text-3xl dark:bg-zinc-900">
@@ -17,22 +17,22 @@ export default async function Header({ labels }) {
           <ul className="flex gap-5">
             <li className=" nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/about">
-                {labels.about}
+                About
               </Link>
             </li>
             <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/products">
-                {labels.products}
+                Products
               </Link>
             </li>
             <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/blogs">
-                {labels.blogs}
+                Blogs
               </Link>
             </li>
             <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
               <Link className="nav__link text-inherit" href="/contact">
-                {labels.contact}
+                Contact
               </Link>
             </li>
           </ul>
@@ -49,7 +49,7 @@ export default async function Header({ labels }) {
 
           <a href="/api/auth/logout">Logout</a>
           <ThemeSwitcher />
-          <LanguageSwitcher currentLang={currentLang} />
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

@@ -1,18 +1,18 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 
-import { getDictionary } from "../dictionaries";
+// import { getDictionary } from "../dictionaries";
 
-import ThemeProvider from "../../providers/ThemeProvider";
+import ThemeProvider from "../providers/ThemeProvider";
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 export const metadata = {
   title: "OmniShop",
 };
 
-export default async function DashboardLayout({ children, params: { lang } }) {
+export default async function DashboardLayout({ children }) {
   // const dict = await getDictionary(lang);
 
   const session = await getSession();
@@ -24,7 +24,7 @@ export default async function DashboardLayout({ children, params: { lang } }) {
   return (
     <>
       <ThemeProvider>
-        <Header labels={dict.header} currentLang={lang} />
+        <Header />
         <main className="flex-1">{children}</main>
         <Footer />
       </ThemeProvider>

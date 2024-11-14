@@ -1,4 +1,4 @@
-import About from "../(dashboard)/about/page";
+import About from "./about/page";
 
 export default function Home() {
   return <About />;
