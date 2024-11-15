@@ -6,7 +6,7 @@ async function fetchProduct(productId) {
 }
 
 export default async function ProductPage({ params }) {
-  const { productId } = params;
+  const { locale, productId } = params;
   const product = await fetchProduct(productId);
 
   return (
@@ -24,7 +24,7 @@ export default async function ProductPage({ params }) {
         <h3 className="heading-tertiary">{product.title}</h3>
         <p className="product__description">{product.description}</p>
         <span className="product__price">$ {product.price}</span>
-        <a href={`/products/${product.id}`} className="btn btn-cta">
+        <a href={`/${locale}/products/${product.id}`} className="btn btn-cta">
           Add to Cart
         </a>
       </div>

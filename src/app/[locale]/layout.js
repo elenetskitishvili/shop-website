@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { routing } from "@/src/i18n/routing";
 
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import "../globals.css";
 
 export const metadata = {
   title: "OmniShop",
@@ -20,12 +19,8 @@ export default async function LocaleLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className="flex flex-col h-full font-normal text-2xl font-base text-zinc-700 bg-zinc-50 dark:text-zinc-100 dark:bg-zinc-800">
-        <NextIntlClientProvider messages={messages}>
-          <UserProvider>{children}</UserProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <UserProvider>{children}</UserProvider>
+    </NextIntlClientProvider>
   );
 }
