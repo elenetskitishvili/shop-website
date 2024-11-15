@@ -1,11 +1,12 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import LoginButton from "../../../components/LoginBtn";
+
 import "./login.css";
 import bg from "../../../../../public/images/bg.png";
 
-export default async function LoginPage({ params: { locale } }) {
+export default async function LoginPage({ params }) {
+  const locale = (await params)?.locale;
   const session = await getSession();
 
   if (session?.user) {
@@ -24,7 +25,12 @@ export default async function LoginPage({ params: { locale } }) {
       />
       <div className="login__content">
         <h1 className="login__heading">Welcome to OmniShop!</h1>
-        <LoginButton />
+        <a
+          href="/api/auth/login"
+          className="py-3 px-8 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition duration-300"
+        >
+          Login
+        </a>
       </div>
     </section>
   );
