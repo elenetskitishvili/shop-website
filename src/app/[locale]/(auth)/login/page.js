@@ -14,17 +14,17 @@ export default async function LoginPage({ params }) {
   }
 
   return (
-    <section className="login">
+    <section>
       <Image
         src={bg}
         fill
         placeholder="blur"
         quality={80}
-        className="login__bg"
+        className="object-cover object-bottom"
         alt="Mountains and forests with two cabins"
       />
-      <div className="login__content">
-        <h1 className="login__heading">Welcome to OmniShop!</h1>
+      <div className="max-w-screen-xl mx-auto relative flex items-start justify-between mt-16 px-14 text-white ">
+        <h1 className="font-heading text-5xl">Welcome to OmniShop!</h1>
         <a
           href="/api/auth/login"
           className="py-3 px-8 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition duration-300"
