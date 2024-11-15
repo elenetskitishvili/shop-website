@@ -4,15 +4,19 @@ export async function generateStaticParams() {
   const res = await fetch("https://dummyjson.com/posts");
   const data = await res.json();
   const blogs = data.posts;
-  return blogs.map((blog) => ({
-    blogId: blog.id.toString(),
-  }));
+
+  return blogs.flatMap((blog) => [
+    { locale: "en", blogId: blog.id.toString() },
+    { locale: "ka", blogId: blog.id.toString() },
+  ]);
 }
 
 export default async function Page({ params }) {
-  const res = await fetch(`https://dummyjson.com/posts/${params.blogId}`);
+  const { locale, blogId } = params;
+
+  const res = await fetch(`https://dummyjson.com/posts/${blogId}`);
   const blog = await res.json();
-  console.log(blog);
+
   return (
     <article className="blog-details">
       <header className="blog-details__header">
