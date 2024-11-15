@@ -1,5 +1,5 @@
 .login {
-  position: static;
+  position: relative;
 }
 
 .login__bg {
