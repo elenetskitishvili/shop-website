@@ -23,7 +23,7 @@ export default async function Products({ params, searchParams = {} }) {
       <ProductsControls searchParams={searchParams} locale={locale} />
       <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(30rem,1fr))] gap-16 mt-16 mb-24">
         {products.map((product) => (
-          <ProductCard productsObj={product} key={product.id} />
+          <ProductCard productsObj={product} key={product.id} locale={locale} />
         ))}
       </ul>
     </section>
