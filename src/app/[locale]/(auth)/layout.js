@@ -16,13 +16,12 @@ export default async function AuthLayout({ children, params }) {
   }
 
   const messages = await getMessages();
+
   return (
-    <html lang={locale}>
-      <body className="flex flex-col h-full font-normal text-2xl font-base text-zinc-700 bg-zinc-50 dark:text-zinc-100 dark:bg-zinc-800">
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <div className="flex flex-col h-full font-normal text-2xl font-base text-zinc-700 bg-zinc-50 dark:text-zinc-100 dark:bg-zinc-800">
+        {children}
+      </div>
+    </NextIntlClientProvider>
   );
 }
