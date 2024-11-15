@@ -2,7 +2,6 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 
-import "./login.css";
 import bg from "../../../../../public/images/bg.png";
 
 export default async function LoginPage({ params }) {
