@@ -1,33 +1,53 @@
+// import Link from "next/link";
+// import "./BlogCard.css";
+
+// export default function BlogCard({ blog, locale }) {
+//   return (
+//     <li className="flex flex-col items-left justify-between gap-6  bg-white border-zinc-500 rounded-xl overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:shadow-md dark:bg-zinc-900">
+//       <img
+//         className="w-full h-96 object-cover object-right block"
+//         src={blog.img}
+//         alt={blog.title_en}
+//       />
+
+//       <div className="px-8 pb-10">
+//         <h4 className="text-left text-3xl font-normal">
+//           {locale === "ka" ? blog.title_ka : blog.title_en}
+//         </h4>
+//         <div>
+//           <Link
+//             href={`/${locale}/blogs/${blog.id}`}
+//             className="inline-block text-2xl py-4 px-8 mt-6 bg-transparent text-zinc-800 rounded-lg transition-all duration-300 ease-in-out border border-solid border-zinc-500  hover:border-purple-950 hover:text-purple-950 dark:border-purple-800  dark:hover:border-purple-800"
+//           >
+//             {locale === "ka" ? "გაიგეთ მეტი" : "Read More"}
+//           </Link>
+//         </div>
+//       </div>
+//     </li>
+//   );
+// }
+
 import Link from "next/link";
 import "./BlogCard.css";
 
 export default function BlogCard({ blog, locale }) {
   return (
-    <li className="flex flex-col items-center justify-between gap-10 px-8 py-10 bg-white border-zinc-500 rounded-xl overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:shadow-md dark:bg-zinc-900">
-      <h4 className="text-center text-4xl font-bold">{blog.title}</h4>
-      <p className="blog__desc">{blog.body}</p>
-      <div className="flex gap-9">
-        {blog.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="bg-zinc-300 py-2 px-4 rounded-md text-xl uppercase dark:bg-zinc-700"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="flex items-center gap-12">
-        <p>{blog.reactions.likes} 👍</p>
-        <p>{blog.reactions.dislikes} 👎</p>
-      </div>
-      <div>
-        <Link
-          href={`/${locale}/blogs/${blog.id}`}
-          className="inline-block text-2xl py-5 px-10 bg-emerald-500 text-white rounded-xl transition-all duration-300 ease-in-out hover:bg-emerald-600 dark:bg-emerald-800  dark:hover:bg-emerald-700"
-        >
-          Read More
-        </Link>
-      </div>
+    <li className="">
+      <Link
+        href={`/${locale}/blogs/${blog.id}`}
+        className="flex flex-col items-left justify-between gap-6  bg-white border-zinc-500 rounded-xl overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:shadow-md dark:bg-zinc-900"
+      >
+        <img
+          className="w-full h-96 object-cover object-right block"
+          src={blog.img}
+          alt={blog.title_en}
+        />
+        <div className="h-28">
+          <h4 className="text-left text-[1.6rem] font-normal px-8">
+            {locale === "ka" ? blog.title_ka : blog.title_en}
+          </h4>
+        </div>
+      </Link>
     </li>
   );
 }

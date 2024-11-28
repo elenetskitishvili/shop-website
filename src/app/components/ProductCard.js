@@ -6,7 +6,7 @@ function ProductCard({ product, locale }) {
       <img
         className="w-full h-96 object-contain"
         src={product.img}
-        alt={product.title}
+        alt={product.title_en}
       />
       <div className="flex flex-col grow gap-7 py-10 px-14">
         <h3 className="heading-tertiary">{product.title_en}</h3>
