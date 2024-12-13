@@ -1,21 +1,9 @@
 import BlogCard from "../../../components/BlogCard/BlogCard";
 import { supabase } from "../../../lib/supabase";
+import { fetchBlogs } from "@/src/app/lib/data-service";
 
 export const metadata = {
   title: "Blogs",
-};
-
-const fetchBlogs = async function () {
-  try {
-    const { data: blogs, error } = await supabase.from("blogs").select("*");
-    if (error) {
-      throw new Error(`Error fetching blogs: ${error.message}`);
-    }
-    return blogs;
-  } catch (err) {
-    console.error(err.message);
-    return [];
-  }
 };
 
 export default async function Blogs({ params, searchParams }) {

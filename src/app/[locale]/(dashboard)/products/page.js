@@ -1,23 +1,9 @@
 import ProductCard from "../../../components/ProductCard";
 import { supabase } from "../../../lib/supabase";
+import { fetchProducts } from "@/src/app/lib/data-service";
 
 export const metadata = {
   title: "Products",
-};
-
-const fetchProducts = async function () {
-  try {
-    const { data: caudalie, error } = await supabase
-      .from("caudalie")
-      .select("*");
-    if (error) {
-      throw new Error(`Error fetching products: ${error.message}`);
-    }
-    return caudalie;
-  } catch (err) {
-    console.error(err.message);
-    return [];
-  }
 };
 
 export default async function Products({ params, searchParams }) {

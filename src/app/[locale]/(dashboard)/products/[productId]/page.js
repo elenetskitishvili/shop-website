@@ -1,24 +1,6 @@
 import { notFound } from "next/navigation";
 import { supabase } from "../../../../lib/supabase";
-const fetchProduct = async function (id) {
-  try {
-    const { data, error } = await supabase
-      .from("caudalie")
-      .select("*")
-      .eq("id", id)
-      .single();
-
-    if (error) {
-      console.error(error);
-      notFound();
-    }
-
-    return data;
-  } catch (err) {
-    console.error(err.message);
-    return null;
-  }
-};
+import { fetchProduct } from "@/src/app/lib/data-service";
 
 export default async function ProductPage({ params }) {
   const { locale, productId } = params;

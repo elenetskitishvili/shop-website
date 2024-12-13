@@ -1,31 +1,12 @@
+import { fetchBlog } from "@/src/app/lib/data-service";
 import ReactMarkdown from "react-markdown";
 
 import { notFound } from "next/navigation";
 import { supabase } from "../../../../lib/supabase";
 
-const fetchProduct = async function (id) {
-  try {
-    const { data, error } = await supabase
-      .from("blogs")
-      .select("*")
-      .eq("id", id)
-      .single();
-
-    if (error) {
-      console.error(error);
-      notFound();
-    }
-
-    return data;
-  } catch (err) {
-    console.error(err.message);
-    return null;
-  }
-};
-
 export default async function BlogPage({ params }) {
   const { locale, blogId } = params;
-  const blog = await fetchProduct(blogId);
+  const blog = await fetchBlog(blogId);
 
   return (
     <div className="max-w-screen-md mx-auto flex flex-col gap-14 mb-20">
