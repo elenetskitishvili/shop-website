@@ -1,29 +1,19 @@
-import ProductCard from "../../../components/ProductCard/ProductCard";
-import ProductsControls from "../../../components/ProductsControls/ProductsControls";
+import ProductCard from "../../../components/ProductCard";
+import { supabase } from "../../../lib/supabase";
+import { fetchProducts } from "@/src/app/lib/data-service";
 
-async function fetchProducts(search, sort) {
-  const url = `https://dummyjson.com/products/search?q=${encodeURIComponent(
-    search || ""
-  )}${sort ? `&sortBy=title&order=${encodeURIComponent(sort)}` : ""}`;
+export const metadata = {
+  title: "Products",
+};
 
-  const res = await fetch(url);
-  const data = await res.json();
-
-  return data.products;
-}
-
-export default async function Products({ params, searchParams = {} }) {
+export default async function Products({ params, searchParams }) {
   const { locale } = params;
-  const { search = "", sort = "" } = searchParams;
-
-  const products = await fetchProducts(search, sort);
-
+  const products = await fetchProducts();
   return (
     <section>
-      <ProductsControls searchParams={searchParams} locale={locale} />
-      <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(30rem,1fr))] gap-16 mt-16 mb-24">
+      <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(22.5rem,1fr))] gap-20 mt-16 mb-24">
         {products.map((product) => (
-          <ProductCard productsObj={product} key={product.id} locale={locale} />
+          <ProductCard product={product} key={product.id} locale={locale} />
         ))}
       </ul>
     </section>

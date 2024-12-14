@@ -6,13 +6,16 @@
     "@auth0/nextjs-auth0": "^3.5.0",
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@heroicons/react": "^2.1.5",
+    "@supabase/supabase-js": "^2.46.1",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
     "next": "^15.0.3",
     "next-intl": "^3.25.1",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
   },
   "scripts": {
     "dev": "next dev",
