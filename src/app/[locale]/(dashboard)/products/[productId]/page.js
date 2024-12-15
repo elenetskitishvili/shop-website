@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { supabase } from "../../../../lib/supabase";
-import { fetchProduct } from "@/src/app/lib/data-service";
+import { supabase } from "../../../../../lib/supabase";
+import { fetchProduct } from "@/src/lib/data-service";
 
 export default async function ProductPage({ params }) {
   const { locale, productId } = params;

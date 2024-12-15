@@ -1,6 +1,6 @@
 import BlogCard from "../../../components/BlogCard/BlogCard";
-import { supabase } from "../../../lib/supabase";
-import { fetchBlogs } from "@/src/app/lib/data-service";
+import { supabase } from "../../../../lib/supabase";
+import { fetchBlogs } from "@/src/lib/data-service";
 
 export const metadata = {
   title: "Blogs",

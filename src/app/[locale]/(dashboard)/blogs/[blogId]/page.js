@@ -1,8 +1,8 @@
-import { fetchBlog } from "@/src/app/lib/data-service";
+import { fetchBlog } from "@/src/lib/data-service";
 import ReactMarkdown from "react-markdown";
 
 import { notFound } from "next/navigation";
-import { supabase } from "../../../../lib/supabase";
+import { supabase } from "../../../../../lib/supabase";
 
 export default async function BlogPage({ params }) {
   const { locale, blogId } = params;
