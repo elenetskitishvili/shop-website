@@ -1,82 +1,45 @@
 "use client";
 
-import type Stripe from "stripe";
-
 import React, { useState } from "react";
-
-// import StripeTestCards from "@/components/StripeTestCards";
-
-import { formatAmountForDisplay } from "@/src/utils/stripe-helpers";
-import * as config from "@/src/config";
 import { createCheckoutSession } from "../actions/stripe";
-import {
-  EmbeddedCheckout,
-  EmbeddedCheckoutProvider,
-} from "@stripe/react-stripe-js";
-import getStripe from "@/src/utils/get-stripejs";
-import CustomDonationInput from "./CustomDonationInput";
 
 interface CheckoutFormProps {
-  uiMode: Stripe.Checkout.SessionCreateParams.UiMode;
+  uiMode: "hosted";
+  locale: string;
 }
 
-export default function CheckoutForm(props: CheckoutFormProps): JSX.Element {
-  const [loading] = useState<boolean>(false);
-  const [input, setInput] = useState<{ customDonation: number }>({
-    customDonation: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP),
-  });
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+export default function CheckoutForm({
+  uiMode,
+  locale,
+}: CheckoutFormProps): JSX.Element {
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (
-    e
-  ): void =>
-    setInput({
-      ...input,
-      [e.currentTarget.name]: e.currentTarget.value,
-    });
+  const formAction = async (): Promise<void> => {
+    setLoading(true);
 
-  const formAction = async (data: FormData): Promise<void> => {
-    const uiMode = data.get(
-      "uiMode"
-    ) as Stripe.Checkout.SessionCreateParams.UiMode;
-    const { client_secret, url } = await createCheckoutSession(data);
+    const formData = new FormData();
+    formData.append("uiMode", uiMode);
+    formData.append("priceId", "price_1QWjnEDzVRyJ9zCn2ZqfDTWs");
+    formData.append("locale", locale);
 
-    if (uiMode === "embedded") return setClientSecret(client_secret);
+    const { url } = await createCheckoutSession(formData);
 
-    window.location.assign(url as string);
+    if (url) {
+      window.location.assign(url);
+    }
+
+    setLoading(false);
   };
 
   return (
     <>
-      <form action={formAction}>
-        <input type="hidden" name="uiMode" value={props.uiMode} />
-        <CustomDonationInput
-          className="checkout-style"
-          name="customDonation"
-          min={config.MIN_AMOUNT}
-          max={config.MAX_AMOUNT}
-          step={config.AMOUNT_STEP}
-          currency={config.CURRENCY}
-          onChange={handleInputChange}
-          value={input.customDonation}
-        />
-        {/* <StripeTestCards /> */}
-        <button
-          className="checkout-style-background"
-          type="submit"
-          disabled={loading}
-        >
-          Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
-        </button>
-      </form>
-      {clientSecret ? (
-        <EmbeddedCheckoutProvider
-          stripe={getStripe()}
-          options={{ clientSecret }}
-        >
-          <EmbeddedCheckout />
-        </EmbeddedCheckoutProvider>
-      ) : null}
+      <button
+        className="block bg-purple-800 hover:bg-purple-600 transition-all  text-white rounded-full px-10 py-5 mt-10 text-center"
+        onClick={formAction}
+        disabled={loading}
+      >
+        Subscribe for $19.99/month
+      </button>
     </>
   );
 }

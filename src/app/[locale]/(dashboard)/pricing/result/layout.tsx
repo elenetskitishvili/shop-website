@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Payment Intent Result",
+  title: "Checkout Session Result",
 };
 
 export default function ResultLayout({
@@ -9,10 +9,5 @@ export default function ResultLayout({
 }: {
   children: React.ReactNode;
 }): JSX.Element {
-  return (
-    <div className="page-container">
-      <h1>Payment Intent Result</h1>
-      {children}
-    </div>
-  );
+  return <div className="page-container">{children}</div>;
 }

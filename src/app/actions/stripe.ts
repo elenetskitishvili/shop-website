@@ -4,8 +4,6 @@ import type { Stripe } from "stripe";
 
 import { headers } from "next/headers";
 
-import { CURRENCY } from "@/src/config";
-import { formatAmountForStripe } from "@/src/utils/stripe-helpers";
 import { stripe } from "@/src/lib/stripe";
 
 export async function createCheckoutSession(
@@ -17,31 +15,30 @@ export async function createCheckoutSession(
 
   const origin: string = (await headers()).get("origin") as string;
 
+  const locale = data.get("locale") || "en";
+
+  const priceId = data.get("priceId") as string;
+
+  if (!priceId) {
+    throw new Error("Price ID is required.");
+  }
+
   const checkoutSession: Stripe.Checkout.Session =
     await stripe.checkout.sessions.create({
-      mode: "payment",
-      submit_type: "donate",
+      mode: "subscription",
+      payment_method_types: ["card"],
       line_items: [
         {
+          price: priceId,
           quantity: 1,
-          price_data: {
-            currency: CURRENCY,
-            product_data: {
-              name: "Custom amount donation",
-            },
-            unit_amount: formatAmountForStripe(
-              Number(data.get("customDonation") as string),
-              CURRENCY
-            ),
-          },
         },
       ],
       ...(ui_mode === "hosted" && {
-        success_url: `${origin}/donate-with-checkout/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${origin}/donate-with-checkout`,
+        success_url: `${origin}/${locale}/pricing/result?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${origin}/${locale}/subscribe/cancel`,
       }),
       ...(ui_mode === "embedded" && {
-        return_url: `${origin}/donate-with-embedded-checkout/result?session_id={CHECKOUT_SESSION_ID}`,
+        return_url: `${origin}/${locale}/subscribe/embedded?session_id={CHECKOUT_SESSION_ID}`,
       }),
       ui_mode,
     });
@@ -55,15 +52,5 @@ export async function createCheckoutSession(
 export async function createPaymentIntent(
   data: FormData
 ): Promise<{ client_secret: string }> {
-  const paymentIntent: Stripe.PaymentIntent =
-    await stripe.paymentIntents.create({
-      amount: formatAmountForStripe(
-        Number(data.get("customDonation") as string),
-        CURRENCY
-      ),
-      automatic_payment_methods: { enabled: true },
-      currency: CURRENCY,
-    });
-
-  return { client_secret: paymentIntent.client_secret as string };
+  throw new Error("PaymentIntent is not used for subscriptions.");
 }

@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import CheckoutForm from "@/src/app/components/CheckoutForm";
+
 export const metadata: Metadata = {
   title: "Pricing",
 };
 
-export default function IndexPage(): JSX.Element {
+export default async function IndexPage({
+  params,
+}: {
+  params: { locale?: string };
+}): Promise<JSX.Element> {
+  const locale = (await params?.locale) || "en";
   return (
     <div className="max-w-[1100px] mx-auto px-14">
       <div className="grid grid-cols-2 gap-16 my-20 ">
@@ -14,9 +21,7 @@ export default function IndexPage(): JSX.Element {
           <h2 className="font-semibold text-4xl mb-6 text-purple-700">
             Premium Membership
           </h2>
-          <p className="mb-4 text-2xl text-purple-600">
-            $19.99/month or $199/year (save 20% with annual subscription)
-          </p>
+
           <ul className="flex flex-col gap-5 list-disc">
             <li>
               <span className="font-semibold text-purple-950">
@@ -87,17 +92,11 @@ export default function IndexPage(): JSX.Element {
               </span>
             </li>
           </ul>
-          <Link
-            href="/en/donate-with-checkout"
-            className="block bg-purple-800 hover:bg-purple-600 transition-all  text-white rounded-full px-10 py-5 mt-10 text-center"
-          >
-            Become Premium Member
-          </Link>
+          <CheckoutForm uiMode="hosted" locale={locale} />
         </div>
         {/* FREE */}
         <div className="px-12 py-10 rounded-3xl bg-white">
           <h2 className="font-semibold text-4xl mb-6">Free Membership</h2>
-          <p className="mb-4 text-2xl">$0/month</p>
           <ul className="flex flex-col gap-5 list-disc">
             <li>
               <span className="font-semibold">Standard Pricing: </span>
