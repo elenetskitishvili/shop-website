@@ -46,6 +46,14 @@ export default function Navigation({ locale }) {
             {t("contact")}
           </Link>
         </li>
+        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
+          <Link
+            className="nav__link text-inherit"
+            href={`/${currentLocale}/pricing`}
+          >
+            {t("pricing")}
+          </Link>
+        </li>
       </ul>
     </nav>
   );
