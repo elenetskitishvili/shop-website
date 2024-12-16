@@ -126,13 +126,14 @@
     "target": "esnext", // Use latest JavaScript features.
     "lib": ["dom", "dom.iterable", "esnext"], // Include browser and ESNext APIs.
     "allowJs": true, // Allow JavaScript files in the project.
+    "strict": true, // Enable all strict type-checking options.
+    "noImplicitAny": true,
     "checkJs": false, // Disable error checking in JavaScript files.
     "jsx": "preserve", // Use the new React JSX transform.
     "module": "esnext", // Use ES module syntax.
     "moduleResolution": "node", // Resolve modules using Node.js-style resolution.
     "esModuleInterop": true, // Support CommonJS imports.
     "forceConsistentCasingInFileNames": true, // Enforce case sensitivity in imports.
-    "strict": true, // Enable all strict type-checking options.
     "skipLibCheck": true, // Skip type checking for all declaration files (.d.ts).
     "noEmit": true, // Do not emit compiled files.
     "isolatedModules": true, // Ensure files can be transpiled in isolation.

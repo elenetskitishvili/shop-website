@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import "./Navigation.css";
 
 export default function Navigation({ locale }) {
   const router = useRouter();
@@ -14,7 +13,7 @@ export default function Navigation({ locale }) {
   return (
     <nav>
       <ul className="flex gap-5">
-        <li className=" nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
+        <li className=" nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
           <Link
             className="nav__link text-inherit"
             href={`/${currentLocale}/about`}
@@ -22,7 +21,7 @@ export default function Navigation({ locale }) {
             {t("about")}
           </Link>
         </li>
-        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
+        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
           <Link
             className="nav__link text-inherit"
             href={`/${currentLocale}/products`}
@@ -30,7 +29,7 @@ export default function Navigation({ locale }) {
             {t("products")}
           </Link>
         </li>
-        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
+        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
           <Link
             className="nav__link text-inherit"
             href={`/${currentLocale}/blogs`}
@@ -38,12 +37,20 @@ export default function Navigation({ locale }) {
             {t("blogs")}
           </Link>
         </li>
-        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-500">
+        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
           <Link
             className="nav__link text-inherit"
             href={`/${currentLocale}/contact`}
           >
             {t("contact")}
+          </Link>
+        </li>
+        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
+          <Link
+            className="nav__link text-inherit"
+            href={`/${currentLocale}/pricing`}
+          >
+            {t("pricing")}
           </Link>
         </li>
       </ul>

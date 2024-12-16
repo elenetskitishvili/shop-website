@@ -1,6 +1,6 @@
 import ProductCard from "../../../components/ProductCard";
-import { supabase } from "../../../lib/supabase";
-import { fetchProducts } from "@/src/app/lib/data-service";
+import { supabase } from "../../../../lib/supabase";
+import { fetchProducts } from "@/src/lib/data-service";
 
 export const metadata = {
   title: "Products",

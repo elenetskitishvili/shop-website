@@ -1,4 +1,4 @@
-import { supabase } from "@/src/app/lib/supabase";
+import { supabase } from "@/src/lib/supabase";
 import { notFound } from "next/navigation";
 
 export const fetchBlogs = async function () {

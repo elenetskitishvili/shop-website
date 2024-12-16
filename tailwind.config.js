@@ -8,6 +8,14 @@ module.exports = {
         heading: ['"Playfair Display"', "serif"],
         inherit: "inherit",
       },
+      // animation: { spinCustom: "spin 1s linear infinite" },
+      // keyframes: {
+      //   spin: {
+      //     to: {
+      //       transform: "rotate(360deg)",
+      //     },
+      //   },
+      // },
     },
   },
   plugins: [],
