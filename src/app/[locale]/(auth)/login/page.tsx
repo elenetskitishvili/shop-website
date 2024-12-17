@@ -4,8 +4,15 @@ import Image from "next/image";
 
 import bg from "../../../../../public/images/bg.png";
 
-export default async function LoginPage({ params }) {
+interface LoginPageProps {
+  params: {
+    locale?: "en" | "ka";
+  };
+}
+
+export default async function LoginPage({ params }: LoginPageProps) {
   const locale = (await params)?.locale;
+  // const locale = params?.locale || "en";
   const session = await getSession();
 
   if (session?.user) {

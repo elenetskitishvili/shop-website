@@ -1,6 +1,29 @@
 import Link from "next/link";
 
-function ProductCard({ product, locale }) {
+interface Product {
+  id: number;
+  created_at: string;
+  title_en: string;
+  img: string;
+  price: number;
+  rating: number;
+  collection: string;
+  description_en: string;
+  skin_type_en: string;
+  concern: string;
+  use_en: string;
+  description_ka: string;
+  title_ka: string;
+  skin_type_ka: string;
+  use_ka: string;
+}
+
+interface ProductCardProps {
+  product: Product;
+  locale: "en" | "ka";
+}
+
+function ProductCard({ product, locale }: ProductCardProps) {
   return (
     <li>
       <Link

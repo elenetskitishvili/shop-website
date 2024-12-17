@@ -3,7 +3,11 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-export default function Navigation({ locale }) {
+interface NavigationProps {
+  locale?: string;
+}
+
+export default function Navigation({ locale }: NavigationProps) {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations("Header");

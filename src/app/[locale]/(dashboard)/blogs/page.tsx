@@ -1,4 +1,4 @@
-import BlogCard from "../../../components/BlogCard/BlogCard";
+import BlogCard from "../../../components/BlogCard";
 import { supabase } from "../../../../lib/supabase";
 import { fetchBlogs } from "@/src/lib/data-service";
 
@@ -6,9 +6,26 @@ export const metadata = {
   title: "Blogs",
 };
 
-export default async function Blogs({ params, searchParams }) {
+export interface Blog {
+  id: number;
+  created_at: string;
+  img: string;
+  title_en: string;
+  title_ka: string;
+  body_en: string;
+  body_ka: string;
+}
+
+interface BlogsProps {
+  params: {
+    locale: "en" | "ka";
+  };
+  searchParams?: Record<string, string | string[] | undefined>;
+}
+
+export default async function Blogs({ params, searchParams }: BlogsProps) {
   const { locale } = params;
-  const blogs = await fetchBlogs();
+  const blogs: Blog[] = await fetchBlogs();
 
   return (
     <section>
