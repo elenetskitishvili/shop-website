@@ -6,7 +6,17 @@ export const metadata = {
   description: "Web site created with Next.js.",
 };
 
-export default async function RootLayout({ children, params }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: {
+    locale?: string;
+  };
+}
+
+export default async function RootLayout({
+  children,
+  params,
+}: RootLayoutProps) {
   const { locale } = params || { locale: "en" };
 
   return (

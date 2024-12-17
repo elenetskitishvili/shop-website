@@ -2,9 +2,43 @@ import { notFound } from "next/navigation";
 import { supabase } from "../../../../../lib/supabase";
 import { fetchProduct } from "@/src/lib/data-service";
 
-export default async function ProductPage({ params }) {
+interface Product {
+  id: number;
+  created_at: string;
+  title_en: string;
+  img: string;
+  price: number;
+  rating: number;
+  collection: string;
+  description_en: string;
+  skin_type_en: string;
+  concern: string;
+  use_en: string;
+  description_ka: string;
+  title_ka: string;
+  skin_type_ka: string;
+  use_ka: string;
+}
+
+interface ProductPageProps {
+  params: {
+    locale: "en" | "ka";
+    productId: string;
+  };
+}
+
+export default async function ProductPage({ params }: ProductPageProps) {
   const { locale, productId } = params;
   const product = await fetchProduct(productId);
+
+  // AI recommended to write this instead of this: const product = await fetchProduct(productId);
+  // Fetch the product by ID
+  // const product: Product | null = await fetchProduct(productId);
+  // Handle invalid product
+  // if (!product) {
+  //   notFound();
+  // }
+
   return (
     <div className="max-w-screen-lg mx-auto flex-1 grid grid-cols-2 gap-x-10 items-center justify-items-center mt-16">
       <div>

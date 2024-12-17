@@ -1,7 +1,15 @@
-import { getSession } from "@auth0/nextjs-auth0";
+import { getSession, Session } from "@auth0/nextjs-auth0";
 
 export default async function Profile() {
-  const { user } = await getSession();
+  // const { user } = await getSession();
+  const session: Session | null | undefined = await getSession();
+
+  if (!session?.user) {
+    return null;
+  }
+
+  const { user } = session;
+
   return (
     user && (
       <section className="bg-gradient-to-tr  py-12 from-emerald-500 to-emerald-200 dark:from-zinc-800 dark:to-zinc-800">

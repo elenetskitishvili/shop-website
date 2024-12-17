@@ -2,7 +2,7 @@
 import { useTranslations } from "next-intl";
 export default function Footer() {
   const t = useTranslations("Footer");
-  const currentYear = new Date().getFullYear();
+  const currentYear: number = new Date().getFullYear();
 
   return (
     <footer className=" p-5 text-center text-xl flex flex-col gap-6 shadow-md bg-white border-t-2 border-t-zinc-100 dark:bg-zinc-900 dark:border-t-zinc-800">

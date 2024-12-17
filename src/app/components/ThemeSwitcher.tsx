@@ -9,9 +9,9 @@ import { useDarkMode } from "../context/DarkModeContext";
 
 export default function ThemeSwitcher() {
   const { isDarkMode, themeMode, setThemeMode } = useDarkMode();
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const toggleOptions = () => setShowOptions((prev) => !prev);
+  const toggleOptions = (): void => setShowOptions((prev) => !prev);
 
   return (
     <div className="relative">

@@ -3,16 +3,25 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/src/i18n/routing";
 
-import { UserProvider } from "@auth0/nextjs-auth0/client";
-
 export const metadata = {
-  title: "OmniShop",
+  title: "Welcome | OmniShop",
   description: "Web site created with Next.js.",
 };
 
-export default async function LocaleLayout({ children, params }) {
+interface AuthLayoutProps {
+  children: React.ReactNode;
+  params: {
+    locale: string;
+  };
+}
+
+export default async function AuthLayout({
+  children,
+  params,
+}: AuthLayoutProps) {
   const { locale } = await params;
-  if (!routing.locales.includes(locale)) {
+
+  if (!routing.locales.includes(locale as "en" | "ka")) {
     notFound();
   }
 
@@ -20,7 +29,9 @@ export default async function LocaleLayout({ children, params }) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <UserProvider>{children}</UserProvider>
+      <div className="flex flex-col h-full font-normal text-2xl font-base text-zinc-700 bg-zinc-50 dark:text-zinc-100 dark:bg-zinc-800">
+        {children}
+      </div>
     </NextIntlClientProvider>
   );
 }

@@ -1,7 +1,35 @@
 import { supabase } from "@/src/lib/supabase";
 import { notFound } from "next/navigation";
 
-export const fetchBlogs = async function () {
+export interface Blog {
+  id: number;
+  created_at: string;
+  img: string;
+  title_en: string;
+  title_ka: string;
+  body_en: string;
+  body_ka: string;
+}
+
+interface Product {
+  id: number;
+  created_at: string;
+  title_en: string;
+  img: string;
+  price: number;
+  rating: number;
+  collection: string;
+  description_en: string;
+  skin_type_en: string;
+  concern: string;
+  use_en: string;
+  description_ka: string;
+  title_ka: string;
+  skin_type_ka: string;
+  use_ka: string;
+}
+
+export const fetchBlogs = async function (): Promise<Blog[]> {
   try {
     const { data: blogs, error } = await supabase.from("blogs").select("*");
     if (error) {
@@ -9,12 +37,12 @@ export const fetchBlogs = async function () {
     }
     return blogs;
   } catch (err) {
-    console.error(err.message);
+    console.error((err as Error).message);
     return [];
   }
 };
 
-export const fetchBlog = async function (id) {
+export const fetchBlog = async function (id: string): Promise<Blog | null> {
   try {
     const { data, error } = await supabase
       .from("blogs")
@@ -29,12 +57,12 @@ export const fetchBlog = async function (id) {
 
     return data;
   } catch (err) {
-    console.error(err.message);
+    console.error((err as Error).message);
     return null;
   }
 };
 
-export const fetchProducts = async function () {
+export const fetchProducts = async function (): Promise<Product[]> {
   try {
     const { data: caudalie, error } = await supabase
       .from("caudalie")
@@ -44,12 +72,14 @@ export const fetchProducts = async function () {
     }
     return caudalie;
   } catch (err) {
-    console.error(err.message);
+    console.error((err as Error).message);
     return [];
   }
 };
 
-export const fetchProduct = async function (id) {
+export const fetchProduct = async function (
+  id: string
+): Promise<Product | null> {
   try {
     const { data, error } = await supabase
       .from("caudalie")
@@ -64,7 +94,7 @@ export const fetchProduct = async function (id) {
 
     return data;
   } catch (err) {
-    console.error(err.message);
+    console.error((err as Error).message);
     return null;
   }
 };

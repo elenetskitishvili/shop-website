@@ -1,30 +1,37 @@
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 
-// import { getDictionary } from "../dictionaries";
-
 import ThemeProvider from "../../providers/ThemeProvider";
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export const metadata = {
   title: "OmniShop",
 };
+interface DashboardLayoutProps {
+  children: React.ReactNode;
+}
 
-export default async function DashboardLayout({ children }) {
-  // const dict = await getDictionary(lang);
-
+export default async function DashboardLayout({
+  children,
+}: DashboardLayoutProps) {
   const session = await getSession();
 
   if (!session || !session?.user) {
     redirect("/en/login");
   }
 
+  const locale = session?.user?.locale || "en";
+
   return (
     <>
       <ThemeProvider>
-        <Header />
+        <Header
+          params={{
+            locale,
+          }}
+        />
         <main className="flex-1">{children}</main>
         <Footer />
       </ThemeProvider>
