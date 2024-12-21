@@ -44,6 +44,7 @@ export const signInAction = async (formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const supabase = await createClient();
+  const locale = formData.get("locale")?.toString();
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
@@ -51,10 +52,10 @@ export const signInAction = async (formData: FormData) => {
   });
 
   if (error) {
-    return encodedRedirect("error", "/sign-in", error.message);
+    return encodedRedirect("error", `/${locale}/sign-in`, error.message);
   }
 
-  return redirect("/protected");
+  return redirect(`/${locale}/`);
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
@@ -128,8 +129,9 @@ export const resetPasswordAction = async (formData: FormData) => {
   encodedRedirect("success", "/protected/reset-password", "Password updated");
 };
 
-export const signOutAction = async () => {
+export const signOutAction = async (formData: FormData) => {
   const supabase = await createClient();
+  const locale = formData.get("locale")?.toString();
   await supabase.auth.signOut();
-  return redirect("/sign-in");
+  return redirect(`/${locale}/sign-in`);
 };

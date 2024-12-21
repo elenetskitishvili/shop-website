@@ -15,6 +15,7 @@ export default async function Login(props: {
     <div className="w-screen h-screen flex items-center justify-center">
       <div className="">
         <form className="flex-1 flex flex-col min-w-[300px]">
+          <input type="hidden" name="locale" value={locale} />
           <h1 className="text-4xl font-medium">Sign in</h1>
           <p className="text-xl text-foreground mt-1">
             Don't have an account?
