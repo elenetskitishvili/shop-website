@@ -5,7 +5,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import Navigation from "./Navigation";
 import LogoutBtn from "./LogoutBtn";
 
-import { getSession } from "@auth0/nextjs-auth0";
+// import { getSession } from "@auth0/nextjs-auth0";
 
 interface HeaderProps {
   params: {
@@ -14,9 +14,10 @@ interface HeaderProps {
 }
 
 export default async function Header({ params }: HeaderProps) {
-  const session = await getSession();
-  const user = session?.user;
-  const locale = params?.locale || "en";
+  // const session = await getSession();
+  // const user = session?.user;
+  // const locale = params?.locale || "en";
+  const locale = "en";
 
   return (
     <header className="w-full px-12 bg-white shadow-sm text-3xl dark:bg-zinc-900">
@@ -27,7 +28,7 @@ export default async function Header({ params }: HeaderProps) {
         <Navigation />
 
         <div className="flex items-center gap-10">
-          {user ? (
+          {/* {user ? (
             <>
               <Link href={`/${locale}/profile`}>
                 <img
@@ -39,7 +40,8 @@ export default async function Header({ params }: HeaderProps) {
             </>
           ) : (
             <div className="h-14 w-14 rounded-full">&nbsp;</div>
-          )}
+          )} */}
+          <div className="h-14 w-14 rounded-full">&nbsp;</div>
 
           <LogoutBtn />
 

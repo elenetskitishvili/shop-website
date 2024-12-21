@@ -1,4 +1,4 @@
-import { getSession } from "@auth0/nextjs-auth0";
+// import { getSession } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 
@@ -11,13 +11,13 @@ interface LoginPageProps {
 }
 
 export default async function LoginPage({ params }: LoginPageProps) {
-  const locale = (await params)?.locale;
-  // const locale = params?.locale || "en";
-  const session = await getSession();
+  // const locale = (await params)?.locale;
+  const locale = "en";
+  // const session = await getSession();
 
-  if (session?.user) {
-    redirect(`/${locale}`);
-  }
+  // if (session?.user) {
+  //   redirect(`/${locale}`);
+  // }
 
   return (
     <section>
