@@ -3,7 +3,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/src/i18n/routing";
 
-import { UserProvider } from "@auth0/nextjs-auth0/client";
+// import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export const metadata = {
   title: "OmniShop",
@@ -30,7 +30,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <UserProvider>{children}</UserProvider>
+      {/* <UserProvider> */}
+      {children}
+      {/* </UserProvider> */}
     </NextIntlClientProvider>
   );
 }

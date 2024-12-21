@@ -1,4 +1,4 @@
-import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
+// import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 
 import ThemeProvider from "../../providers/ThemeProvider";
@@ -16,13 +16,14 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
-  const session = await getSession();
+  // const session = await getSession();
 
-  if (!session || !session?.user) {
-    redirect("/en/login");
-  }
+  // if (!session || !session?.user) {
+  //   redirect("/en/login");
+  // }
 
-  const locale = session?.user?.locale || "en";
+  // const locale = session?.user?.locale || "en";
+  const locale = "en";
 
   return (
     <>
