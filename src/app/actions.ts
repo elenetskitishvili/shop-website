@@ -10,11 +10,12 @@ export const signUpAction = async (formData: FormData) => {
   const password = formData.get("password")?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
+  const locale = formData.get("locale")?.toString();
 
   if (!email || !password) {
     return encodedRedirect(
       "error",
-      "/sign-up",
+      `/${locale}/sign-up`,
       "Email and password are required"
     );
   }
@@ -29,11 +30,11 @@ export const signUpAction = async (formData: FormData) => {
 
   if (error) {
     console.error(error.code + " " + error.message);
-    return encodedRedirect("error", "/sign-up", error.message);
+    return encodedRedirect("error", `/${locale}/sign-up`, error.message);
   } else {
     return encodedRedirect(
       "success",
-      "/sign-up",
+      `/${locale}/sign-up`,
       "Thanks for signing up! Please check your email for a verification link."
     );
   }
