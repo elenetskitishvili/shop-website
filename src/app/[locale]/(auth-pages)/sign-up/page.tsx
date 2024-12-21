@@ -22,36 +22,46 @@ export default async function Signup(props: {
   }
 
   return (
-    <>
-      <form className="flex flex-col min-w-64 max-w-64 mx-auto">
-        <h1 className="text-2xl font-medium">Sign up</h1>
-        <p className="text-sm text text-foreground">
-          Already have an account?{" "}
-          <Link
-            className="text-primary font-medium underline"
-            href={`/${locale}/sign-in`}
-          >
-            Sign in
-          </Link>
-        </p>
-        <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
-          <Label htmlFor="email">Email</Label>
-          <Input name="email" placeholder="you@example.com" required />
-          <Label htmlFor="password">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            placeholder="Your password"
-            minLength={6}
-            required
-          />
-          <SubmitButton formAction={signUpAction} pendingText="Signing up...">
-            Sign up
-          </SubmitButton>
-          <FormMessage message={searchParams} />
-        </div>
-      </form>
-      <SmtpMessage />
-    </>
+    <div className="w-screen h-screen flex items-center justify-center">
+      <div className="">
+        <form className="flex flex-col min-w-[300px] max-w-[300px] mx-auto">
+          <h1 className="text-4xl font-medium">Sign up</h1>
+          <p className="text-xl text text-foreground mt-1">
+            Already have an account?{" "}
+            <Link
+              className="text-primary font-medium underline"
+              href={`/${locale}/sign-in`}
+            >
+              Sign in
+            </Link>
+          </p>
+          <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
+            <Label htmlFor="email" className="text-xl">
+              Email
+            </Label>
+            <Input name="email" placeholder="you@example.com" required />
+            <Label htmlFor="password" className="text-xl">
+              Password
+            </Label>
+            <Input
+              type="password"
+              name="password"
+              placeholder="Your password"
+              minLength={6}
+              required
+            />
+            <SubmitButton
+              formAction={signUpAction}
+              pendingText="Signing up..."
+              className="text-2xl"
+            >
+              Sign up
+            </SubmitButton>
+            <FormMessage message={searchParams} />
+          </div>
+        </form>
+        <SmtpMessage />
+      </div>
+    </div>
   );
 }
