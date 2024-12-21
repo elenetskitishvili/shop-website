@@ -5,6 +5,7 @@ import { createClient } from "../utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+// Sign Up
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
@@ -40,6 +41,7 @@ export const signUpAction = async (formData: FormData) => {
   }
 };
 
+// Sign In
 export const signInAction = async (formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
@@ -58,25 +60,31 @@ export const signInAction = async (formData: FormData) => {
   return redirect(`/${locale}/`);
 };
 
+// Forgot Password
 export const forgotPasswordAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
   const callbackUrl = formData.get("callbackUrl")?.toString();
+  const locale = formData.get("locale")?.toString();
 
   if (!email) {
-    return encodedRedirect("error", "/forgot-password", "Email is required");
+    return encodedRedirect(
+      "error",
+      `/${locale}/forgot-password`,
+      "Email is required"
+    );
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/callback?redirect_to=/protected/reset-password`,
+    redirectTo: `${origin}/${locale}/reset-password`,
   });
 
   if (error) {
     console.error(error.message);
     return encodedRedirect(
       "error",
-      "/forgot-password",
+      `/${locale}/forgot-password`,
       "Could not reset password"
     );
   }
@@ -87,21 +95,23 @@ export const forgotPasswordAction = async (formData: FormData) => {
 
   return encodedRedirect(
     "success",
-    "/forgot-password",
+    `/${locale}/forgot-password`,
     "Check your email for a link to reset your password."
   );
 };
 
+// Reset Password
 export const resetPasswordAction = async (formData: FormData) => {
   const supabase = await createClient();
 
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
+  const locale = formData.get("locale")?.toString();
 
   if (!password || !confirmPassword) {
     encodedRedirect(
       "error",
-      "/protected/reset-password",
+      `/${locale}/reset-password`,
       "Password and confirm password are required"
     );
   }
@@ -109,7 +119,7 @@ export const resetPasswordAction = async (formData: FormData) => {
   if (password !== confirmPassword) {
     encodedRedirect(
       "error",
-      "/protected/reset-password",
+      `/${locale}/reset-password`,
       "Passwords do not match"
     );
   }
@@ -121,14 +131,15 @@ export const resetPasswordAction = async (formData: FormData) => {
   if (error) {
     encodedRedirect(
       "error",
-      "/protected/reset-password",
+      `/${locale}/reset-password`,
       "Password update failed"
     );
   }
 
-  encodedRedirect("success", "/protected/reset-password", "Password updated");
+  encodedRedirect("success", `/${locale}/reset-password`, "Password updated");
 };
 
+// Sign Out
 export const signOutAction = async (formData: FormData) => {
   const supabase = await createClient();
   const locale = formData.get("locale")?.toString();

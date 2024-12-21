@@ -16,6 +16,7 @@ export default async function ForgotPassword(props: {
     <div className="w-screen h-screen flex items-center justify-center">
       <div className="">
         <form className="flex-1 flex flex-col w-full gap-2 text-foreground [&>input]:mb-6 min-w-[300px] max-w-[300px] mx-auto">
+          <input type="hidden" name="locale" value={locale} />
           <div>
             <h1 className="text-4xl font-medium">Reset Password</h1>
             <p className="text-xl text-secondary-foreground">
