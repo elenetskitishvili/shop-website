@@ -8,8 +8,11 @@ import { SmtpMessage } from "../smtp-message";
 
 export default async function Signup(props: {
   searchParams: Promise<Message>;
+  params: { locale: string };
 }) {
   const searchParams = await props.searchParams;
+  const { locale } = props.params;
+
   if ("message" in searchParams) {
     return (
       <div className="w-full flex-1 flex items-center h-screen sm:max-w-md justify-center gap-2 p-4">
@@ -24,7 +27,10 @@ export default async function Signup(props: {
         <h1 className="text-2xl font-medium">Sign up</h1>
         <p className="text-sm text text-foreground">
           Already have an account?{" "}
-          <Link className="text-primary font-medium underline" href="/sign-in">
+          <Link
+            className="text-primary font-medium underline"
+            href={`/${locale}/sign-in`}
+          >
             Sign in
           </Link>
         </p>
