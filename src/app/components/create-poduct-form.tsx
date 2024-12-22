@@ -6,7 +6,7 @@ export function CreateProductForm() {
     "use server";
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-    const supabase = await createClient;
+    const supabase = await createClient();
 
     // უნდა დავრწმუნდეთ რომ ნამდვილად ჩაწერა მომხმარებელმა პროდუქტის სახელი
     const name = formData.get("name") as string;
