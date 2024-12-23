@@ -10,6 +10,7 @@ export async function createProduct(formData: FormData) {
   const name = formData.get("name") as string;
   const price = Number(formData.get("price"));
   const description = formData.get("description") as string;
+  const image = formData.get("image") as File | null;
 
   if (!name) {
     throw new Error("Product name is required.");
@@ -20,9 +21,34 @@ export async function createProduct(formData: FormData) {
   if (!description) {
     throw new Error("Product description is required.");
   }
+  if (!image) {
+    throw new Error("Product image is required.");
+  }
 
   try {
-    const stripeProduct = await stripe.products.create({ name, description });
+    let imageUrl = null;
+
+    if (image) {
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from("product-image")
+        .upload(`products/${Date.now()}_${image.name}`, image);
+
+      if (uploadError) {
+        throw new Error("Failed to upload image to Supabase.");
+      }
+
+      const { data: publicUrlData } = supabase.storage
+        .from("product-images")
+        .getPublicUrl(uploadData.path);
+
+      imageUrl = publicUrlData.publicUrl;
+    }
+
+    const stripeProduct = await stripe.products.create({
+      name,
+      description,
+      images: imageUrl ? [imageUrl] : [],
+    });
     const stripePrice = await stripe.prices.create({
       product: stripeProduct.id,
       unit_amount: price,
@@ -45,6 +71,7 @@ export async function createProduct(formData: FormData) {
         user_id: userId,
         stripe_product_id: stripeProduct.id,
         stripe_price_id: stripePrice.id,
+        image: imageUrl || null,
       })
       .single();
 

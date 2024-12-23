@@ -59,6 +59,9 @@ export function CreateProductForm() {
         className="py-2 px-3"
       />
 
+      <label htmlFor="image">Image</label>
+      <input type="file" id="image" name="image" accept="image/*" required />
+
       {loading && (
         <div className="flex items-center justify-center gap-5">
           <SpinnerMini />
