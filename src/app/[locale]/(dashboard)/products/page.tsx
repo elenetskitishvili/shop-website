@@ -9,8 +9,8 @@ export const metadata = {
 interface Product {
   id: number;
   created_at: string;
-  title_en: string;
-  img: string;
+  name: string;
+  image: string;
   price: number;
   rating: number;
   collection: string;
@@ -18,7 +18,7 @@ interface Product {
   skin_type_en: string;
   concern: string;
   use_en: string;
-  description_ka: string;
+  description: string;
   title_ka: string;
   skin_type_ka: string;
   use_ka: string;
@@ -35,8 +35,9 @@ export default async function Products({
   params,
   searchParams,
 }: ProductsProps) {
-  const { locale } = params;
+  const { locale } = await params;
   const products: Product[] = await fetchProducts();
+
   return (
     <section>
       <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(22.5rem,1fr))] gap-20 mt-16 mb-24">

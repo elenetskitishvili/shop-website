@@ -14,8 +14,8 @@ export interface Blog {
 interface Product {
   id: number;
   created_at: string;
-  title_en: string;
-  img: string;
+  name: string;
+  image: string;
   price: number;
   rating: number;
   collection: string;
@@ -23,7 +23,7 @@ interface Product {
   skin_type_en: string;
   concern: string;
   use_en: string;
-  description_ka: string;
+  description: string;
   title_ka: string;
   skin_type_ka: string;
   use_ka: string;
@@ -65,7 +65,7 @@ export const fetchBlog = async function (id: string): Promise<Blog | null> {
 export const fetchProducts = async function (): Promise<Product[]> {
   try {
     const { data: caudalie, error } = await supabase
-      .from("caudalie")
+      .from("products")
       .select("*");
     if (error) {
       throw new Error(`Error fetching products: ${error.message}`);
@@ -82,7 +82,7 @@ export const fetchProduct = async function (
 ): Promise<Product | null> {
   try {
     const { data, error } = await supabase
-      .from("caudalie")
+      .from("products")
       .select("*")
       .eq("id", id)
       .single();
