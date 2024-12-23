@@ -12,6 +12,9 @@ export async function POST(
 ) {
   const { productId } = params;
 
+  // Extract the locale from the request headers or the URL
+  const locale = request.nextUrl.locale || "en"; // Default to 'en' if locale is not provided
+
   if (!productId) {
     return NextResponse.json(
       { message: "Product ID is required" },
@@ -44,14 +47,13 @@ export async function POST(
         },
       ],
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/products/result?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/products/result/canceled`,
     });
 
-    // Return the session URL to redirect to Stripe checkout
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: session.url }, { status: 200 });
   } catch (error) {
-    console.error("Error creating checkout session:", error);
+    console.error("Error during checkout session creation:", error);
     return NextResponse.json(
       { message: "Failed to create checkout session" },
       { status: 500 }
