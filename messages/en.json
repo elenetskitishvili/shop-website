@@ -49,5 +49,20 @@
     "addressLabel": "Address",
     "address": "12 Sandalwood Street, Tbilisi, Georgia",
     "followUs": "Follow us"
+  },
+  "CreateProduct": {
+    "name": "Product Name",
+    "price": "Price",
+    "description": "Description",
+    "image": "Product Image",
+    "creatingProduct": "Creating Product...",
+    "failMessage": "Failed to create a new product.",
+    "creating": "Creating...",
+    "createAnother": "Create Another",
+    "retry": "Retry",
+    "create": "Create",
+    "successMessage": "Product created successfully!",
+    "descriptionPlaceholder": "Enter description of the product...",
+    "createProduct": "Create Product"
   }
 }
