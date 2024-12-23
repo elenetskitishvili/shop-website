@@ -1,6 +1,7 @@
 import ProductCard from "../../../components/ProductCard";
 import { supabase } from "../../../../lib/supabase";
 import { fetchProducts } from "@/src/lib/data-service";
+import Link from "next/link";
 
 export const metadata = {
   title: "Products",
@@ -39,8 +40,13 @@ export default async function Products({
   const products: Product[] = await fetchProducts();
 
   return (
-    <section>
-      <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(22.5rem,1fr))] gap-20 mt-16 mb-24">
+    <section className="relative max-w-screen-xl flex flex-col justify-center">
+      <button className="absolute right-0 top-0 w-[200px] shadow-lg flex p-2 my-6 text-3xl text-emerald-500 hover:text-emerald-700">
+        <Link href={`/${locale}/create-product`} className="w-full">
+          Create A Product
+        </Link>
+      </button>{" "}
+      <ul className="mx-auto grid grid-cols-[repeat(auto-fit,minmax(22.5rem,1fr))] gap-20 mt-28 mb-24">
         {products.map((product) => (
           <ProductCard product={product} key={product.id} locale={locale} />
         ))}
