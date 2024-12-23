@@ -49,6 +49,16 @@ export function CreateProductForm() {
         required
       />
 
+      <label htmlFor="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        rows={4}
+        required
+        placeholder="Enter description of the product..."
+        className="py-2 px-3"
+      />
+
       {loading && (
         <div className="flex items-center justify-center gap-5">
           <SpinnerMini />
