@@ -38,7 +38,7 @@ export async function createProduct(formData: FormData) {
       }
 
       const { data: publicUrlData } = supabase.storage
-        .from("product-images")
+        .from("product-image")
         .getPublicUrl(uploadData.path);
 
       imageUrl = publicUrlData.publicUrl;
