@@ -1,44 +1,28 @@
-// src/app/[locale]/(dashboard)/products/[productId]/buy/page.tsx
+// BuyNowPage.tsx
 import { fetchProduct } from "@/src/lib/data-service";
-import BuyNowButton from "@/src/app/components/BuyNowButton";
+import { ProductClient } from "@/src/app/components/ProductClient";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { productId: string };
-}) {
-  const product = await fetchProduct(params.productId);
+type Params = {
+  productId: string;
+};
 
-  if (!product) {
-    return {
-      title: "Product not found",
-    };
-  }
+export default async function BuyNowPage({ params }: { params: Params }) {
+  const productId = params.productId;
 
-  return {
-    title: `Buy ${product.name}`,
-  };
-}
-
-export default async function BuyPage({
-  params,
-}: {
-  params: { productId: string };
-}) {
-  const product = await fetchProduct(params.productId);
+  const product = await fetchProduct(productId);
 
   if (!product) {
-    return <div>Product not found</div>; // Or another fallback UI
+    return <div>Product not found</div>;
   }
 
   return (
-    <section className="product-buy-page">
-      <h1>Buy {product.name}</h1>
-      <p>{product.description}</p>
-      <p>Price: ${product.price / 100}</p>
+    <div className="buy-now-container">
+      <h1>{product.name}</h1>
+      <img src={product.image} alt={product.name} className="product-image" />
+      <p>${(product.price / 100).toFixed(2)}</p>
 
-      {/* Using the client-side button component */}
-      <BuyNowButton productId={product.id.toString()} />
-    </section>
+      {/* Pass the productId to ProductClient */}
+      <ProductClient productId={productId} />
+    </div>
   );
 }
