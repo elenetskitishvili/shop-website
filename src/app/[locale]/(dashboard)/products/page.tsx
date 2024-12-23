@@ -2,28 +2,11 @@ import ProductCard from "../../../components/ProductCard";
 import { supabase } from "../../../../lib/supabase";
 import { fetchProducts } from "@/src/lib/data-service";
 import Link from "next/link";
+import { Product } from "@/src/types/types";
 
 export const metadata = {
   title: "Products",
 };
-
-interface Product {
-  id: number;
-  created_at: string;
-  name: string;
-  image: string;
-  price: number;
-  rating: number;
-  collection: string;
-  description_en: string;
-  skin_type_en: string;
-  concern: string;
-  use_en: string;
-  description: string;
-  title_ka: string;
-  skin_type_ka: string;
-  use_ka: string;
-}
 
 interface ProductsProps {
   params: {

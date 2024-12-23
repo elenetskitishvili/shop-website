@@ -3,24 +3,6 @@ import { supabase } from "../../../../../lib/supabase";
 import { fetchProduct } from "@/src/lib/data-service";
 import Link from "next/link";
 
-interface Product {
-  id: number;
-  created_at: string;
-  name: string;
-  image: string;
-  price: number;
-  rating: number;
-  collection: string;
-  description_en: string;
-  skin_type_en: string;
-  concern: string;
-  use_en: string;
-  description: string;
-  title_ka: string;
-  skin_type_ka: string;
-  use_ka: string;
-}
-
 interface ProductPageProps {
   params: {
     locale: "en" | "ka";
