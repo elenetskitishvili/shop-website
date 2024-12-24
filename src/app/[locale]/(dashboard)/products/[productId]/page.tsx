@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { supabase } from "../../../../../lib/supabase";
+import { supabase } from "@/src/lib/supabase";
 import { fetchProduct } from "@/src/lib/data-service";
 import Link from "next/link";
 
@@ -13,14 +13,6 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const { locale, productId } = await params;
   const product = await fetchProduct(productId);
-
-  // AI recommended to write this instead of this: const product = await fetchProduct(productId);
-  // Fetch the product by ID
-  // const product: Product | null = await fetchProduct(productId);
-  // Handle invalid product
-  // if (!product) {
-  //   notFound();
-  // }
 
   // If the product with the ID was not found in the database.
   if (!product) {
@@ -36,6 +28,41 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </div>
     );
+  }
+
+  // Insert metadata into Supabase (without image)
+  const {
+    id,
+    created_at,
+    name,
+    price,
+    user_id,
+    stripe_product_id,
+    stripe_price_id,
+    description,
+  } = product;
+
+  try {
+    const { data, error } = await supabase.from("products").insert([
+      {
+        product_id: id,
+        created_at,
+        name,
+        price,
+        user_id,
+        stripe_product_id,
+        stripe_price_id,
+        description,
+      },
+    ]);
+
+    if (error) {
+      console.error("Error inserting metadata into Supabase:", error.message);
+    } else {
+      console.log("Metadata inserted successfully:", data);
+    }
+  } catch (error) {
+    console.error("Error inserting metadata into Supabase:", error);
   }
 
   return (

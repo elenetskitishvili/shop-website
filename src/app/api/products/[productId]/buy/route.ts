@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { fetchProduct } from "@/src/lib/data-service"; // Assuming this fetches your product details
+import { fetchProduct } from "@/src/lib/data-service";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -12,8 +12,7 @@ export async function POST(
 ) {
   const { productId } = params;
 
-  // Extract the locale from the request headers or the URL
-  const locale = request.nextUrl.locale || "en"; // Default to 'en' if locale is not provided
+  const locale = request.nextUrl.locale || "en";
 
   if (!productId) {
     return NextResponse.json(
@@ -31,6 +30,18 @@ export async function POST(
       );
     }
 
+    const {
+      id,
+      created_at,
+      name,
+      price,
+      user_id,
+      stripe_product_id,
+      stripe_price_id,
+      description,
+      image,
+    } = product;
+
     // Create a Stripe Checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -39,9 +50,11 @@ export async function POST(
           price_data: {
             currency: "usd",
             product_data: {
-              name: product.name,
+              name,
+              description,
+              images: [image],
             },
-            unit_amount: product.price,
+            unit_amount: price,
           },
           quantity: 1,
         },
@@ -49,6 +62,14 @@ export async function POST(
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/products/result?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/products/result/canceled`,
+      metadata: {
+        productId: id,
+        created_at,
+        user_id,
+        stripe_product_id,
+        stripe_price_id,
+        description,
+      },
     });
 
     return NextResponse.json({ url: session.url }, { status: 200 });
