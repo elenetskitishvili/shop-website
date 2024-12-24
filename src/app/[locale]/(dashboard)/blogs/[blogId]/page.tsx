@@ -15,13 +15,14 @@ export interface Blog {
 }
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     locale: "en" | "ka";
     blogId: string;
-  };
+  }>;
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage(props: BlogPageProps) {
+  const params = await props.params;
   const { locale, blogId } = params;
 
   const blog: Blog | null = await fetchBlog(blogId);

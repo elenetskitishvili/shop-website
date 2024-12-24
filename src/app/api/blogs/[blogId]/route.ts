@@ -1,10 +1,8 @@
 import { fetchBlog } from "@/src/lib/data-service";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { blogId: string } }
-) {
+export async function GET(request: NextRequest, props: { params: Promise<{ blogId: string }> }) {
+  const params = await props.params;
   const { blogId } = params;
 
   try {

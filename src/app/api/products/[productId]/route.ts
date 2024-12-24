@@ -7,10 +7,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-11-20.acacia",
 });
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { productId: string } }
-) {
+export async function GET(request: NextRequest, props: { params: Promise<{ productId: string }> }) {
+  const params = await props.params;
   const { productId } = params;
 
   try {
@@ -27,10 +25,8 @@ export async function GET(
 }
 
 // Add POST method for creating Stripe Checkout session
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { productId: string } }
-) {
+export async function POST(request: NextRequest, props: { params: Promise<{ productId: string }> }) {
+  const params = await props.params;
   const { productId } = params;
 
   // Fetch product details using your existing method

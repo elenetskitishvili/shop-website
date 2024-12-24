@@ -6,10 +6,10 @@ import { Label } from "@/src/app/components/ui/label";
 
 export default async function ResetPassword(props: {
   searchParams: Promise<Message>;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const { locale } = props.params;
+  const { locale } = (await props.params);
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <form className="flex flex-col w-full max-w-md p-4 gap-2 [&>input]:mb-4">
