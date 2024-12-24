@@ -21,12 +21,12 @@ function ProductCard({ product, locale }: ProductCardProps) {
         <div>
           <span className="block mb-2">$ {product.price / 100}</span>
           <div className="flex gap-4">
-            <Link
-              href={`/${locale}/products/${product.id}`}
+            <button
+              // href={`/${locale}/products/${product.id}`}
               className="inline-block text-2xl py-4 px-8 self-start border border-solid border-purple-950 visited:bg-purple-950 transition-all duration-300 ease-in-out mt-auto rounded-md text-purple-950 hover:border-purple-800 hover:text-purple-800 active:border-purple-800 dark:border-purple-200 dark:text-purple-200 dark:hover:border-purple-300 dark:hover:text-purple-300"
             >
               {locale === "ka" ? "კალათაში დამატება" : "Add to cart"}
-            </Link>
+            </button>
             <Link
               href={`/${locale}/products/${product.id}/buy`}
               className="inline-block text-2xl py-4 px-8 self-start border border-solid border-purple-950 visited:bg-purple-950 transition-all duration-300 ease-in-out mt-auto rounded-md text-purple-950 hover:border-purple-800 hover:text-purple-800 active:border-purple-800 dark:border-purple-200 dark:text-purple-200 dark:hover:border-purple-300 dark:hover:text-purple-300"

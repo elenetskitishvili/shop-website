@@ -1,5 +1,4 @@
 import ProductCard from "../../../components/ProductCard";
-import { supabase } from "../../../../lib/supabase";
 import { fetchProducts } from "@/src/lib/data-service";
 import Link from "next/link";
 import { Product } from "@/src/types/types";
@@ -12,7 +11,7 @@ interface ProductsProps {
   params: {
     locale: "en" | "ka";
   };
-  searchParams?: Record<string, string | string[] | undefined>; // Optional query parameters
+  searchParams?: Record<string, string | string[] | undefined>;
 }
 
 export default async function Products({

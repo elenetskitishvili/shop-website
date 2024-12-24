@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ThemeSwitcher from "./ThemeSwitcher";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -7,6 +6,7 @@ import LogoutBtn from "./LogoutBtn";
 import { signOutAction } from "../actions";
 import { Button } from "./ui/button";
 import { createClient } from "@/src/utils/supabase/server";
+import Cart from "./Cart";
 
 // import { getSession } from "@auth0/nextjs-auth0";
 
@@ -50,8 +50,9 @@ export default async function Header({ params }: HeaderProps) {
             <div className="h-14 w-14 rounded-full">&nbsp;</div>
           )} */}
           <div className="h-14 w-14 rounded-full">&nbsp;</div>
-
+          <Cart />
           <ThemeSwitcher />
+
           <LanguageSwitcher />
 
           {user && (
