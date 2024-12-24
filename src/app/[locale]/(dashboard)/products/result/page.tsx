@@ -1,5 +1,6 @@
 import { fetchSessionData } from "@/src/lib/stripe";
 import { createOrderInSupabase } from "@/src/app/actions/createOrder";
+import "./page.css";
 
 interface StripeSession {
   id: string;
@@ -57,24 +58,32 @@ export default async function ResultPage({
     }
 
     return (
-      <div>
-        <h1>Thank you for your purchase!</h1>
-        <p>Your payment was successful. Here's the order information:</p>
-        <div>
-          <p>
-            <strong>Order ID:</strong> {id}
-          </p>
-          <p>
-            <strong>Price:</strong> {`$${(amount / 100).toFixed(2)}`}
-          </p>
-          <p>
-            <strong>Status:</strong> {payment_status}
-          </p>
+      <div className="success-wrapper">
+        <div className="success-inner">
+          <h1>Thank you for your purchase!</h1>
+          <h3>Your payment was successful. Here's the order information:</h3>
+          <div className="order-info">
+            <p>
+              <strong>Order ID:</strong> {id}
+            </p>
+            <p>
+              <strong>Price:</strong> {`$${(amount / 100).toFixed(2)}`}
+            </p>
+            <p>
+              <strong>Status:</strong> {payment_status}
+            </p>
+          </div>
         </div>
       </div>
     );
   } catch (error) {
     console.error("Error processing order:", error);
-    return <div>Sorry, there was an error processing your order.</div>;
+    return (
+      <div className="purchase-failure">
+        <div className="failure-inner">
+          <p>Sorry, there was an error processing your order.</p>
+        </div>
+      </div>
+    );
   }
 }

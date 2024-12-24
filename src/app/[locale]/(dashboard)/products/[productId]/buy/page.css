@@ -40,7 +40,7 @@ h1 {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.03s ease-in-out;
+  transition: all 0.03  s ease-in-out;
 }
 
 .buy-button:hover {
