@@ -10,7 +10,7 @@ const BuyNowButton = ({ productId }: BuyNowButtonProps) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/en/products/${productId}/checkout`); // Adjust this URL to your checkout page
+    router.push(`/en/products/${productId}/checkout`);
   };
 
   return (

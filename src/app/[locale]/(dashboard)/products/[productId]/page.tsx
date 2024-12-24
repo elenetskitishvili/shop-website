@@ -3,6 +3,8 @@ import { supabase } from "@/src/lib/supabase";
 import { fetchProduct } from "@/src/lib/data-service";
 import Link from "next/link";
 
+import { ProductClient } from "@/src/app/components/ProductClient";
+
 interface ProductPageProps {
   params: {
     locale: "en" | "ka";
@@ -30,41 +32,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
     );
   }
 
-  // Insert metadata into Supabase (without image)
-  const {
-    id,
-    created_at,
-    name,
-    price,
-    user_id,
-    stripe_product_id,
-    stripe_price_id,
-    description,
-  } = product;
-
-  try {
-    const { data, error } = await supabase.from("products").insert([
-      {
-        product_id: id,
-        created_at,
-        name,
-        price,
-        user_id,
-        stripe_product_id,
-        stripe_price_id,
-        description,
-      },
-    ]);
-
-    if (error) {
-      console.error("Error inserting metadata into Supabase:", error.message);
-    } else {
-      console.log("Metadata inserted successfully:", data);
-    }
-  } catch (error) {
-    console.error("Error inserting metadata into Supabase:", error);
-  }
-
   return (
     <div className="max-w-screen-lg mx-auto flex-1 grid grid-cols-2 gap-x-10 items-center justify-items-center mt-16">
       <div>
@@ -85,6 +52,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <button className="inline-block text-2xl py-4 px-8 self-start border border-solid  border-purple-950 visited:bg-purple-950 transition-all duration-300 ease-in-out mt-auto rounded-md text-purple-950 hover:border-purple-800 hover:text-purple-800 active:border-purple-800 dark:border-purple-200  dark:text-purple-200 dark:hover:border-purple-300 dark:hover:text-purple-300">
           {locale === "ka" ? "კალათაში დამატება" : "Add to cart"}
         </button>
+        <div className="flex w-36 justify-center items-center p-3 border-2 border-green-500 text-lg rounded font-bold cursor-pointer transition-all duration-75 ease-in-out hover:bg-green-500 hover:text-white">
+          <ProductClient productId={productId} />
+        </div>
       </div>
     </div>
   );
