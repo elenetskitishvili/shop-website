@@ -9,6 +9,12 @@ const CartPage = async () => {
   const data = await getCartProducts();
   const products = data.props.products;
 
+  const totalPrice =
+    products.reduce(
+      (total: number, product: Product) => total + product.price,
+      0
+    ) / 100;
+
   if (products.length === 0) {
     return (
       <div className="text-center">
@@ -25,33 +31,48 @@ const CartPage = async () => {
   }
 
   return (
-    <div className="space-y-4 max-w-5xl mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
+    <div className="space-y-8 max-w-5xl mx-auto py-8">
+      <h1 className="text-3xl font-bold text-gray-800 mb-8">Your Cart</h1>
       <div className="space-y-6">
         {products.map((product: Product) => (
           <div
             key={product.id}
-            className="flex justify-between items-center border-b pb-4"
+            className="flex justify-between items-center bg-white shadow-md p-4 rounded-lg"
           >
             <div className="flex items-center space-x-4">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-16 h-16 object-cover rounded"
+                className="w-20 h-20 object-cover rounded-lg"
               />
               <div>
-                <h3 className="font-semibold">{product.name}</h3>
+                <h3 className="font-semibold text-lg text-gray-800">
+                  {product.name}
+                </h3>
                 <p className="text-sm text-gray-500">{product.description}</p>
-                <p className="text-lg font-semibold">
+                <p className="text-lg font-semibold text-gray-900">
                   ${(product.price / 100).toFixed(2)}
                 </p>
               </div>
             </div>
-            <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+            <button className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
               Remove
             </button>
           </div>
         ))}
+      </div>
+
+      <div className="flex justify-between items-center bg-gray-50 shadow-md p-6 rounded-lg mt-8">
+        <h2 className="text-xl font-semibold text-gray-800">Total</h2>
+        <p className="text-2xl font-semibold text-gray-900">
+          ${totalPrice.toFixed(2)}
+        </p>
+      </div>
+
+      <div className="mt-6 flex justify-end">
+        <button className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+          Checkout
+        </button>
       </div>
     </div>
   );
