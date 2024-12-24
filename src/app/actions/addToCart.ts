@@ -4,6 +4,7 @@ import { Product } from "@/src/types/types";
 interface ProductProps {
   product: Product;
 }
+
 export async function addToCartHandler({ product }: ProductProps) {
   const supabase = await createClient();
 
@@ -32,10 +33,23 @@ export async function addToCartHandler({ product }: ProductProps) {
     return { success: false, message: "Failed to fetch cart" };
   }
 
-  let updatedProducts = [];
+  let updatedProducts: Product[] = [];
 
   if (existingCart) {
-    updatedProducts = [...existingCart.products, product];
+    const productExists = existingCart.products.some(
+      (item: Product) => item.id === product.id
+    );
+
+    if (productExists) {
+      return {
+        success: false,
+        message: "Product is already in the cart",
+        products: existingCart.products,
+      };
+    }
+
+    updatedProducts = [product, ...existingCart.products];
+
     const { error: updateError } = await supabase
       .from("user_cart")
       .update({ products: updatedProducts })
