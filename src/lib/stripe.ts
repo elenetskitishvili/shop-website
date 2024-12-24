@@ -10,3 +10,13 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     url: "https://nextjs-with-stripe-typescript-demo.vercel.app",
   },
 });
+
+export async function fetchSessionData(sessionId: string) {
+  try {
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    return session;
+  } catch (error) {
+    console.error("Error retrieving Stripe session:", error);
+    return null; // Return null in case of error
+  }
+}
