@@ -1,0 +1,49 @@
+.buy-now-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 2rem;
+}
+
+.product-image {
+  width: 30rem;
+  border-radius: 20px;
+}
+
+.buy-now-right {
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+  width: 30rem;
+  justify-content: space-evenly;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: rgb(16 185 129);
+}
+
+.price {
+  font-size: 1.6rem;
+}
+
+.buy-button {
+  display: flex;
+  width: 9rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  border: 2px solid rgb(16 185 129);
+  font-size: 1.2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.03s ease-in-out;
+}
+
+.buy-button:hover {
+  background-color: rgb(16 185 129);
+  color: #fff;
+}
