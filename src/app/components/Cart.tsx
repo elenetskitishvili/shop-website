@@ -39,25 +39,22 @@ export default function Cart() {
           setCartCount(0);
         }
 
-        // Add realtime subscription for the user_cart table
         const channel = supabase
           .channel("cart-changes")
           .on(
             "postgres_changes",
             {
-              event: "*", // Listen for any insert, update, or delete events
+              event: "*",
               schema: "public",
               table: "user_cart",
               filter: `user_id=eq.${user.id}`,
             },
             (payload) => {
-              // Fetch the latest cart data when a change occurs
               fetchCartData();
             }
           )
           .subscribe();
 
-        // Cleanup subscription on unmount
         return () => {
           supabase.removeChannel(channel);
         };
