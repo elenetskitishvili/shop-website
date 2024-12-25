@@ -21,6 +21,7 @@ export default function CheckoutForm({
     formData.append("uiMode", uiMode);
     formData.append("priceId", "price_1QWjnEDzVRyJ9zCn2ZqfDTWs");
     formData.append("locale", locale);
+    formData.append("purchaseType", "subscription"); // Added purchaseType parameter
 
     const { url } = await createCheckoutSession(formData);
 
@@ -34,7 +35,7 @@ export default function CheckoutForm({
   return (
     <>
       <button
-        className="block bg-purple-800 hover:bg-purple-600 transition-all  text-white rounded-full px-10 py-5 mt-10 text-center"
+        className="block bg-purple-800 hover:bg-purple-600 transition-all text-white rounded-full px-10 py-5 mt-10 text-center"
         onClick={formAction}
         disabled={loading}
       >
