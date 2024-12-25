@@ -117,18 +117,23 @@ export async function createCheckoutSession(
   const mode: Stripe.Checkout.SessionCreateParams.Mode =
     purchaseType === "subscription" ? "subscription" : "payment";
 
+  const successUrl =
+    purchaseType === "subscription"
+      ? `${origin}/${locale}/pricing/result?session_id={CHECKOUT_SESSION_ID}`
+      : `${origin}/${locale}/cart/result?session_id={CHECKOUT_SESSION_ID}`;
+
+  const cancelUrl =
+    purchaseType === "subscription"
+      ? `${origin}/${locale}/subscribe/cancel`
+      : `${origin}/${locale}/cart`;
+
   const checkoutSession: Stripe.Checkout.Session =
     await stripe.checkout.sessions.create({
       mode,
       payment_method_types: ["card"],
       line_items: lineItems,
-      ...(ui_mode === "hosted" && {
-        success_url: `${origin}/${locale}/pricing/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${origin}/${locale}/subscribe/cancel`,
-      }),
-      ...(ui_mode === "embedded" && {
-        return_url: `${origin}/${locale}/subscribe/embedded?session_id={CHECKOUT_SESSION_ID}`,
-      }),
+      success_url: successUrl,
+      cancel_url: cancelUrl,
       ui_mode,
     });
 
