@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "@/src/utils/supabase/server";
 
 export default async function Profile() {
@@ -15,7 +16,7 @@ export default async function Profile() {
   const user = userResponse.data.user;
   return (
     <section className="h-full bg-gradient-to-tr py-12 from-emerald-500 to-emerald-200 dark:from-zinc-800 dark:to-zinc-800">
-      <form className="max-w-xl mx-auto bg-white rounded-xl flex flex-col gap-10 py-12 px-10 items-center dark:bg-gradient-to-t dark:from-emerald-950 dark:to-emerald-800">
+      <form className="max-w-xl mx-auto bg-white rounded-xl flex flex-col gap-10 pt-12 pb-4 px-10 items-center dark:bg-gradient-to-t dark:from-emerald-950 dark:to-emerald-800">
         <div className="w-52 h-52 rounded-full overflow-hidden shadow-sm border-4 border-emerald-500 dark:border-emerald-600">
           <img
             className="h-full w-auto object-cover"
@@ -36,6 +37,10 @@ export default async function Profile() {
             value={user.email}
             readOnly
           />
+        </div>
+
+        <div className="italic">
+          <Link href={"profile/orders"}>Order History</Link>
         </div>
       </form>
     </section>
