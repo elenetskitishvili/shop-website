@@ -1,4 +1,4 @@
-import { createClient } from "@/src/utils/supabase/server";
+import { createClient } from "@/src/utils/supabase/client";
 export async function getCartProducts() {
   const supabase = await createClient();
 
@@ -22,7 +22,6 @@ export async function getCartProducts() {
     .single();
 
   if (cartError) {
-    // console.error("Error fetching cart:", cartError);
     return {
       props: {
         products: [],

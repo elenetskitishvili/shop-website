@@ -1,19 +1,66 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { getCartProducts } from "@/src/app/actions/getCartProducts";
+import { removeFromCartHandler } from "@/src/app/actions/removeFromCart";
 import { Product } from "@/src/types/types";
 
-interface CartPageProps {
-  products: Product[];
-}
+const CartPage = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-const CartPage = async () => {
-  const data = await getCartProducts();
-  const products = data.props.products;
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getCartProducts();
+        const fetchedProducts = data.props.products;
+        setProducts(fetchedProducts);
 
-  const totalPrice =
-    products.reduce(
-      (total: number, product: Product) => total + product.price,
-      0
-    ) / 100;
+        const calculatedTotalPrice = fetchedProducts.reduce(
+          (total: number, product: Product) => total + product.price,
+          0
+        );
+        setTotalPrice(calculatedTotalPrice / 100);
+      } catch (error) {
+        console.error("Failed to fetch cart products:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const handleRemoveFromCart = async (productId: string) => {
+    try {
+      const result = await removeFromCartHandler({ productId });
+
+      if (result.success) {
+        setProducts(result.products);
+
+        const updatedTotalPrice = result.products.reduce(
+          (total: number, product: Product) => total + product.price,
+          0
+        );
+        setTotalPrice(updatedTotalPrice / 100);
+      } else {
+        console.error(result.message);
+      }
+    } catch (error) {
+      console.error("Error removing product:", error);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="text-center">
+        <p className="text-lg font-semibold mt-4 text-gray-500">
+          Loading your cart...
+        </p>
+      </div>
+    );
+  }
 
   if (products.length === 0) {
     return (
@@ -55,7 +102,10 @@ const CartPage = async () => {
                 </p>
               </div>
             </div>
-            <button className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+            <button
+              onClick={() => handleRemoveFromCart(product.id.toString())}
+              className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+            >
               Remove
             </button>
           </div>
