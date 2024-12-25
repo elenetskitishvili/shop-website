@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { getCartProducts } from "@/src/app/actions/getCartProducts";
 import { removeFromCartHandler } from "@/src/app/actions/removeFromCart";
 import { Product } from "@/src/types/types";
+import CheckoutFormCart from "@/src/app/components/CheckoutFormCart";
 
 const CartPage = () => {
+  const locale = "en";
   const [products, setProducts] = useState<Product[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -121,9 +123,11 @@ const CartPage = () => {
       </div>
 
       <div className="mt-6 flex justify-end">
-        <button className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-          Checkout
-        </button>
+        <CheckoutFormCart
+          uiMode={"hosted"}
+          locale={locale}
+          products={products}
+        />
       </div>
     </div>
   );
