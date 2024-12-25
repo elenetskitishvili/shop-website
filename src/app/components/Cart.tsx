@@ -9,10 +9,10 @@ export default function Cart() {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
+    const supabase = createClient();
+
     async function fetchCartData() {
       try {
-        const supabase = createClient();
-
         const {
           data: { user },
           error: userError,
@@ -29,7 +29,7 @@ export default function Cart() {
           .single();
 
         if (cartError) {
-          //   console.error("Error fetching cart:", cartError);
+          console.error("Cart error:", cartError);
           return;
         }
 
@@ -38,6 +38,29 @@ export default function Cart() {
         } else {
           setCartCount(0);
         }
+
+        // Add realtime subscription for the user_cart table
+        const channel = supabase
+          .channel("cart-changes")
+          .on(
+            "postgres_changes",
+            {
+              event: "*", // Listen for any insert, update, or delete events
+              schema: "public",
+              table: "user_cart",
+              filter: `user_id=eq.${user.id}`,
+            },
+            (payload) => {
+              // Fetch the latest cart data when a change occurs
+              fetchCartData();
+            }
+          )
+          .subscribe();
+
+        // Cleanup subscription on unmount
+        return () => {
+          supabase.removeChannel(channel);
+        };
       } catch (error) {
         console.error("An unexpected error occurred:", error);
       }
