@@ -6,7 +6,8 @@ type Params = {
   productId: string;
 };
 
-export default async function BuyNowPage({ params }: { params: Params }) {
+export default async function BuyNowPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const productId = params.productId;
 
   const product = await fetchProduct(productId);

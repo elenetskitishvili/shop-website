@@ -6,10 +6,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-11-20.acacia",
 });
 
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { productId: string } }
-) {
+export async function POST(request: NextRequest, props: { params: Promise<{ productId: string }> }) {
+  const params = await props.params;
   const { productId } = params;
 
   const locale = request.nextUrl.locale || "en";

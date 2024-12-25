@@ -7,11 +7,12 @@ export const metadata: Metadata = {
   title: "Pricing",
 };
 
-export default async function IndexPage({
-  params,
-}: {
-  params: { locale?: string };
-}): Promise<JSX.Element> {
+export default async function IndexPage(
+  props: {
+    params: Promise<{ locale?: string }>;
+  }
+): Promise<JSX.Element> {
+  const params = await props.params;
   const locale = (await params?.locale) || "en";
   return (
     <div className="max-w-[1100px] mx-auto px-14">

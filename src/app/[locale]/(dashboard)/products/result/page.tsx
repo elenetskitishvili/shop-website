@@ -21,13 +21,13 @@ export const metadata = {
   title: "Order Result",
 };
 
-export default async function ResultPage({
-  params,
-  searchParams,
-}: {
-  params: { locale: string };
-  searchParams: { session_id: string };
-}) {
+export default async function ResultPage(
+  props: {
+    params: Promise<{ locale: string }>;
+    searchParams: Promise<{ session_id: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const { session_id } = searchParams;
 
   if (!session_id) {

@@ -17,13 +17,14 @@ export interface Blog {
 }
 
 interface BlogsProps {
-  params: {
+  params: Promise<{
     locale: "en" | "ka";
-  };
-  searchParams?: Record<string, string | string[] | undefined>;
+  }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function Blogs({ params, searchParams }: BlogsProps) {
+export default async function Blogs(props: BlogsProps) {
+  const params = await props.params;
   const { locale } = params;
   const blogs: Blog[] = await fetchBlogs();
 
