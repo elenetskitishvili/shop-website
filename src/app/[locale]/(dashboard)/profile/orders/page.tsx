@@ -8,7 +8,7 @@ interface OrdersProps {
   };
 }
 
-async function Orders({ params }) {
+async function Orders({ params }: OrdersProps) {
   const { locale } = await params;
 
   const supabase = await createClient();
@@ -19,7 +19,7 @@ async function Orders({ params }) {
   let { data: orders, error } = await supabase
     .from("orders")
     .select("product_id, created_at, description, price")
-    .eq("user_id", "f3f6606a-1e39-47ea-9c5b-083c1b26d3c6");
+    .eq("user_id", user?.id);
 
   if (error) {
     return (
@@ -42,11 +42,11 @@ async function Orders({ params }) {
               <h2 className="text-zinc-500 dark:text-zinc-50 text-4xl">
                 Order History
               </h2>
-              <table className="table-auto border-collapse border">
+              <table className="table-auto border-collapse border ">
                 {/* Table Heading Row */}
                 <thead>
                   <tr>
-                    <th>Product ID</th>
+                    <th>ID</th>
                     <th>Order Created</th>
                     <th>Price</th>
                     {/* <th>Description</th> */}
@@ -56,16 +56,20 @@ async function Orders({ params }) {
                 <tbody>
                   {orders.map((order) => {
                     return (
-                      <tr className="bg-[#f2f2f2] border-collapse border">
+                      <tr className="bg-[#f2f2f2] dark:bg-zinc-900 border-collapse border">
                         <td>
                           <Link
-                            className="text-green-600 hover:text-green-700"
+                            className="text-green-600 hover:text-green-700 dark:text-white dark:hover:text-green-700"
                             href={`/${locale}/products/${order.product_id}`}
                           >
                             {order.product_id}
                           </Link>
                         </td>
-                        <td>{order.created_at}</td>
+                        <td>
+                          {dayjs(order.created_at).format(
+                            "DD MMMM, YYYY h:mm A"
+                          )}
+                        </td>
                         <td>$ {order.price / 100}</td>
                         {/* <td>{order.description}</td> */}
                       </tr>
