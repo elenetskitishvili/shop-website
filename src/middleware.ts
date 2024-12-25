@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
-import { createClient } from "./utils/supabase/server"; // Ensure this uses server-side Supabase client logic
+import { createClient } from "./utils/supabase/server";
 
 const restrictedPages = [
   "/en",
@@ -32,27 +32,22 @@ const authPages = [
 ];
 
 export default async function middleware(req: NextRequest) {
-  // Create a server-side Supabase client
   const supabase = await createClient();
 
-  // Call the default next-intl middleware
   const response = createMiddleware(routing)(req);
 
-  // Validate user session from Supabase
   const { data: sessionData } = await supabase.auth.getSession();
   const session = sessionData?.session;
 
-  const isAuthenticated = !!session; // Check if the session exists
+  const isAuthenticated = !!session;
   const currentPath = req.nextUrl.pathname;
 
-  // Redirect authenticated users from auth-related pages to the home page
   if (authPages.includes(currentPath) && isAuthenticated) {
     const locale = currentPath.startsWith("/ka") ? "ka" : "en";
     const homeUrl = new URL(`/${locale}`, req.url);
     return NextResponse.redirect(homeUrl);
   }
 
-  // Check if the requested page is restricted
   if (restrictedPages.includes(currentPath)) {
     if (!isAuthenticated) {
       const locale = currentPath.startsWith("/ka") ? "ka" : "en";
@@ -61,11 +56,9 @@ export default async function middleware(req: NextRequest) {
     }
   }
 
-  // Allow the request to proceed
   return response;
 }
 
 export const config = {
-  // Match only internationalized pathnames
   matcher: ["/", "/(ka|en)/:path*"],
 };

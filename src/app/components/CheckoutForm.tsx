@@ -21,7 +21,7 @@ export default function CheckoutForm({
     formData.append("uiMode", uiMode);
     formData.append("priceId", "price_1QWjnEDzVRyJ9zCn2ZqfDTWs");
     formData.append("locale", locale);
-    formData.append("purchaseType", "subscription"); // Added purchaseType parameter
+    formData.append("purchaseType", "subscription");
 
     const { url } = await createCheckoutSession(formData);
 
