@@ -1,25 +1,14 @@
 import ThemeSwitcher from "./ThemeSwitcher";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { Link } from "@/src/i18n/routing";
 
 import Navigation from "./Navigation";
-import LogoutBtn from "./LogoutBtn";
 import { signOutAction } from "../actions";
 import { Button } from "./ui/button";
 import { createClient } from "@/src/utils/supabase/server";
 import Cart from "./Cart";
 
-// import { getSession } from "@auth0/nextjs-auth0";
-
-interface HeaderProps {
-  params: {
-    locale?: string;
-  };
-}
-
-export default async function Header({ params }: HeaderProps) {
-  // const session = await getSession();
-  // const user = session?.user;
-  // const locale = params?.locale || "en";
+export default async function Header() {
   const locale = "en";
   const supabase = await createClient();
 
@@ -36,19 +25,25 @@ export default async function Header({ params }: HeaderProps) {
         <Navigation />
 
         <div className="flex items-center gap-10">
-          {/* {user ? (
+          {user ? (
             <>
-              <Link href={`/${locale}/profile`}>
+              <Link
+                href={`/profile`}
+                className="w-16 h-16 rounded-full overflow-hidden shadow-sm border-2 border-emerald-500 dark:border-emerald-600"
+              >
                 <img
-                  className="h-14 w-14 rounded-full"
-                  src={user.picture}
-                  alt={user.name}
+                  className="h-full w-auto object-cover"
+                  src={
+                    user?.user_metadata?.picture ||
+                    "/images/products-placeholder.png"
+                  }
+                  alt="user profile picture"
                 />
               </Link>
             </>
           ) : (
             <div className="h-14 w-14 rounded-full">&nbsp;</div>
-          )} */}
+          )}
           <div className="h-14 w-14 rounded-full">&nbsp;</div>
           <Cart />
           <ThemeSwitcher />
@@ -56,15 +51,12 @@ export default async function Header({ params }: HeaderProps) {
           <LanguageSwitcher />
 
           {user && (
-            <div className="flex items-center gap-4">
-              Hey, {user.email}!
-              <form action={signOutAction}>
-                <input type="hidden" name="locale" value={locale} />
-                <Button type="submit" variant={"outline"} className="text-3xl">
-                  Sign out
-                </Button>
-              </form>
-            </div>
+            <form action={signOutAction}>
+              <input type="hidden" name="locale" value={locale} />
+              <Button type="submit" variant={"outline"} className="text-3xl">
+                Sign out
+              </Button>
+            </form>
           )}
         </div>
       </div>
