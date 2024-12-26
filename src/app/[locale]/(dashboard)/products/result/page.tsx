@@ -1,6 +1,5 @@
 import { fetchSessionData } from "@/src/lib/stripe";
 import { createOrderInSupabase } from "@/src/app/actions/createOrder";
-import "./page.css";
 
 interface StripeSession {
   id: string;
@@ -21,12 +20,10 @@ export const metadata = {
   title: "Order Result",
 };
 
-export default async function ResultPage(
-  props: {
-    params: Promise<{ locale: string }>;
-    searchParams: Promise<{ session_id: string }>;
-  }
-) {
+export default async function ResultPage(props: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ session_id: string }>;
+}) {
   const searchParams = await props.searchParams;
   const { session_id } = searchParams;
 
@@ -58,11 +55,13 @@ export default async function ResultPage(
     }
 
     return (
-      <div className="success-wrapper">
-        <div className="success-inner">
-          <h1>Thank you for your purchase!</h1>
-          <h3>Your payment was successful. Here's the order information:</h3>
-          <div className="order-info">
+      <div className="flex justify-center items-center h-full">
+        <div className="flex w-[80%] h-[30rem] flex-col justify-center gap-8 text-white bg-emerald-600 rounded-lg p-8">
+          <h1 className="text-6xl">Thank you for your purchase!</h1>
+          <h3 className="text-3xl">
+            Your payment was successful. Here's the order information:
+          </h3>
+          <div className="flex flex-col justify-center p-2 rounded-lg h-48 gap-4 bg-white text-black">
             <p>
               <strong>Order ID:</strong> {id}
             </p>
@@ -79,8 +78,8 @@ export default async function ResultPage(
   } catch (error) {
     console.error("Error processing order:", error);
     return (
-      <div className="purchase-failure">
-        <div className="failure-inner">
+      <div className="flex h-full w-full justify-center items-center">
+        <div className="bg-red-500 w-[80%] h-80 flex justify-center items-center text-white">
           <p>Sorry, there was an error processing your order.</p>
         </div>
       </div>
