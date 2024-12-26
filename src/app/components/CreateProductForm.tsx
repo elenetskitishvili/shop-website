@@ -5,6 +5,13 @@ import { createProduct } from "../actions/createProduct";
 import { useState } from "react";
 import SpinnerMini from "./SpinnerMini";
 
+interface ErrorMessages {
+  Name?: string;
+  Price?: string | number;
+  Description?: string | string[];
+  Image?: string;
+}
+
 const productSchema = z.object({
   Name: z.string().min(1, { message: "Product Name is required" }),
   Price: z.number().min(0.01, { message: "Price must be greater than 0" }),
@@ -19,7 +26,12 @@ const productSchema = z.object({
 export function CreateProductForm() {
   const t = useTranslations("CreateProduct");
   const [error, setError] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string[]>([]);
+  const [errorMessage, setErrorMessage] = useState<ErrorMessages>({
+    Name: "",
+    Price: "",
+    Description: "",
+    Image: "",
+  });
   const [success, setSuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -37,7 +49,7 @@ export function CreateProductForm() {
     };
 
     try {
-      setErrorMessage([]);
+      setErrorMessage({ Name: "", Price: "", Description: "", Image: "" });
       setError(null);
       setSuccess(null);
       setLoading(true);
@@ -45,10 +57,10 @@ export function CreateProductForm() {
       const result = productSchema.safeParse(formValues);
 
       if (!result.success) {
-        setErrorMessage((prev) => [
-          ...prev,
-          ...result.error.issues.map((issue) => `${issue.message}`),
-        ]);
+        console.log(result.error.flatten());
+        const errorObj = result.error.flatten().fieldErrors;
+
+        setErrorMessage(errorObj);
 
         return;
       }
@@ -81,6 +93,9 @@ export function CreateProductForm() {
           className="py-3 px-5 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
         />
       </div>
+      {errorMessage?.Name && (
+        <div className="text-orange-700 text-xl">{errorMessage.Name}</div>
+      )}
 
       <div className="flex flex-col gap-2">
         <label htmlFor="price">{t("price")}</label>
@@ -93,6 +108,10 @@ export function CreateProductForm() {
           className="py-3 px-5 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
         />
       </div>
+      {errorMessage?.Price && (
+        <div className="text-orange-700 text-xl">{errorMessage.Price}</div>
+      )}
+
       <div className="flex flex-col gap-2">
         <label htmlFor="description">{t("description")}</label>
         <textarea
@@ -103,23 +122,33 @@ export function CreateProductForm() {
           className="py-3 px-5 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
         />
       </div>
+      {errorMessage?.Description && (
+        <div className="text-orange-700 text-xl ">
+          {errorMessage.Description}
+        </div>
+      )}
+
       <div className="flex flex-col gap-2">
         <label htmlFor="image">{t("image")}</label>
         <input type="file" id="image" name="image" accept="image/*" />
       </div>
+      {errorMessage?.Image && (
+        <div className="text-orange-700 text-xl">{errorMessage.Image}</div>
+      )}
+
       {loading && (
         <div className="flex items-center justify-center gap-5">
           <SpinnerMini />
           <p className=" text-2xl text-center">{t("creatingProduct")}</p>
         </div>
       )}
-      {errorMessage.length > 0 && (
+      {/* {errorMessage.length > 0 && (
         <div className="text-orange-700 text-2xl text-center">
           {errorMessage.map((message: string, index: number) => (
             <div key={index}>• {message}</div>
           ))}
         </div>
-      )}
+      )} */}
       {error && (
         <p className="text-orange-700 text-2xl text-center">
           {t("failMessage")}
