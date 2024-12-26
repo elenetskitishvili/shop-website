@@ -29,16 +29,17 @@ export default function CheckoutFormCart({
         "lineItems",
         JSON.stringify(
           products.map((product) => ({
+            id: product.id,
             price: product.stripe_price_id,
-            quantity: 1, // Replace with dynamic quantity if needed
+            quantity: 1,
           }))
         )
-      ); // Append `lineItems` as a JSON string
+      );
 
-      const { url } = await createCheckoutSession(formData); // Pass the FormData object
+      const { url } = await createCheckoutSession(formData);
 
       if (url) {
-        window.location.assign(url); // Redirect to Stripe Checkout
+        window.location.assign(url);
       }
     } catch (error) {
       console.error("Error creating checkout session:", error);
