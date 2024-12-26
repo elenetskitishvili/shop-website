@@ -16,8 +16,7 @@ export async function createProduct(formData: FormData) {
   if (!price || isNaN(price) || price <= 0)
     throw new Error("Valid price is required.");
   if (!description) throw new Error("Product description is required.");
-  if (!image || !(image instanceof File))
-    throw new Error("Valid product image is required.");
+  if (!image) throw new Error("Valid product image is required.");
 
   let imageUrl: string | null = null;
   let stripeProduct = null;

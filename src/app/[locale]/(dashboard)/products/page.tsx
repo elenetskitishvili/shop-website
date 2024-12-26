@@ -29,9 +29,12 @@ export default async function Products({
         </Link>
       </button>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-28 mb-24">
-        {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
+        {products
+          .slice()
+          .reverse()
+          .map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
       </ul>
     </section>
   );
