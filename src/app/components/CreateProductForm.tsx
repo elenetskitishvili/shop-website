@@ -6,10 +6,10 @@ import { useState } from "react";
 import SpinnerMini from "./SpinnerMini";
 
 interface ErrorMessages {
-  Name?: string;
-  Price?: string | number;
+  Name?: string | string[];
+  Price?: string | string[] | number;
   Description?: string | string[];
-  Image?: string;
+  Image?: string | string[];
 }
 
 const productSchema = z.object({
@@ -57,7 +57,6 @@ export function CreateProductForm() {
       const result = productSchema.safeParse(formValues);
 
       if (!result.success) {
-        console.log(result.error.flatten());
         const errorObj = result.error.flatten().fieldErrors;
 
         setErrorMessage(errorObj);
@@ -142,13 +141,6 @@ export function CreateProductForm() {
           <p className=" text-2xl text-center">{t("creatingProduct")}</p>
         </div>
       )}
-      {/* {errorMessage.length > 0 && (
-        <div className="text-orange-700 text-2xl text-center">
-          {errorMessage.map((message: string, index: number) => (
-            <div key={index}>• {message}</div>
-          ))}
-        </div>
-      )} */}
       {error && (
         <p className="text-orange-700 text-2xl text-center">
           {t("failMessage")}
