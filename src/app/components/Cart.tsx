@@ -28,16 +28,13 @@ export default function Cart() {
           .eq("user_id", user.id)
           .single();
 
-        if (cartError) {
-          console.error("Cart error:", cartError);
+        // If no cart exists, set cartCount to 0
+        if (cartError || !existingCart || !existingCart.products) {
+          setCartCount(0);
           return;
         }
 
-        if (existingCart && existingCart.products) {
-          setCartCount(existingCart.products.length);
-        } else {
-          setCartCount(0);
-        }
+        setCartCount(existingCart.products.length);
 
         const channel = supabase
           .channel("cart-changes")

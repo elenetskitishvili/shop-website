@@ -1,14 +1,5 @@
-import Link from "next/link";
-
-export interface Blog {
-  id: number;
-  created_at: string;
-  img: string;
-  title_en: string;
-  title_ka: string;
-  body_en: string;
-  body_ka: string;
-}
+import { Blog } from "@/src/types/types";
+import { Link } from "@/src/i18n/routing";
 
 interface BlogCardProps {
   blog: Blog;
@@ -19,7 +10,7 @@ export default function BlogCard({ blog, locale }: BlogCardProps) {
   return (
     <li className="">
       <Link
-        href={`/${locale}/blogs/${blog.id}`}
+        href={`/blogs/${blog.id}`}
         className="flex flex-col items-left justify-between gap-6  bg-white border-zinc-500 rounded-xl overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:shadow-md dark:bg-zinc-900"
       >
         <img
