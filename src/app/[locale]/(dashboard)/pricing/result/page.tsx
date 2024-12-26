@@ -3,11 +3,12 @@ import type { Stripe } from "stripe";
 import PrintObject from "@/src/app/components/PrintObject";
 import { stripe } from "@/src/lib/stripe";
 
-export default async function ResultPage({
-  searchParams,
-}: {
-  searchParams: { session_id: string };
-}): Promise<JSX.Element> {
+export default async function ResultPage(
+  props: {
+    searchParams: Promise<{ session_id: string }>;
+  }
+): Promise<JSX.Element> {
+  const searchParams = await props.searchParams;
   if (!searchParams.session_id)
     throw new Error("Please provide a valid session_id (`cs_test_...`)");
 

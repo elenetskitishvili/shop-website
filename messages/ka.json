@@ -51,5 +51,20 @@
     "addressLabel": "მისამართი",
     "address": "12 რუსთაველის ქუჩა, თბილისი, საქართველო",
     "followUs": "გამოგვყევით"
+  },
+  "CreateProduct": {
+    "name": "დასახელება",
+    "price": "ფასი",
+    "description": "აღწერა",
+    "image": "ატვირთეთ სურათი",
+    "creatingProduct": "პროდუქტი ემატება...",
+    "failMessage": "პროდუქტის შექმნა ვერ მოხერხდა. სცადეთ თავიდან.",
+    "creating": "პროდუქტი იქმნება...",
+    "createAnother": "კიდევ დამატება",
+    "retry": "ხელახლა ცდა",
+    "create": "შექმნა",
+    "successMessage": "პროდუქტი წარმატებით შეიქმნა!",
+    "descriptionPlaceholder": "აღწერეთ პროდუქტი...",
+    "createProduct": "შექმენით პროდუქტი"
   }
 }

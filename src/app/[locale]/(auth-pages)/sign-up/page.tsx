@@ -8,10 +8,10 @@ import { SmtpMessage } from "../smtp-message";
 
 export default async function Signup(props: {
   searchParams: Promise<Message>;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const { locale } = props.params;
+  const { locale } = (await props.params);
 
   if ("message" in searchParams) {
     return (

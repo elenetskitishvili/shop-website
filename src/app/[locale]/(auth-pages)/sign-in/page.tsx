@@ -7,10 +7,10 @@ import Link from "next/link";
 
 export default async function Login(props: {
   searchParams: Promise<Message>;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const { locale } = props.params;
+  const { locale } = (await props.params);
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <div className="">

@@ -1,27 +1,17 @@
 import { fetchBlog } from "@/src/lib/data-service";
 import ReactMarkdown from "react-markdown";
-
 import { notFound } from "next/navigation";
-import { supabase } from "../../../../../lib/supabase";
-
-export interface Blog {
-  id: number;
-  created_at: string;
-  img: string;
-  title_en: string;
-  title_ka: string;
-  body_en: string;
-  body_ka: string;
-}
+import { Blog } from "@/src/types/types";
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     locale: "en" | "ka";
     blogId: string;
-  };
+  }>;
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage(props: BlogPageProps) {
+  const params = await props.params;
   const { locale, blogId } = params;
 
   const blog: Blog | null = await fetchBlog(blogId);
