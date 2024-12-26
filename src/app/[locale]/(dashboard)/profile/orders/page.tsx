@@ -53,29 +53,32 @@ async function Orders({ params }: OrdersProps) {
                 </thead>
                 {/* Table Content Rows */}
                 <tbody>
-                  {orders.map((order) => {
-                    return (
-                      <tr
-                        key={order.id}
-                        className="bg-[#f2f2f2] dark:bg-zinc-900 border-collapse border"
-                      >
-                        <td>
-                          <Link
-                            className="text-green-600 hover:text-green-700 dark:text-white dark:hover:text-green-700"
-                            href={`/${locale}/products/${order.product_id}`}
-                          >
-                            See Product
-                          </Link>
-                        </td>
-                        <td>
-                          {dayjs(order.created_at).format(
-                            "DD MMMM, YYYY h:mm A"
-                          )}
-                        </td>
-                        <td>$ {order.price / 100}</td>
-                      </tr>
-                    );
-                  })}
+                  {orders
+                    .slice()
+                    .reverse()
+                    .map((order) => {
+                      return (
+                        <tr
+                          key={order.id}
+                          className="bg-[#f2f2f2] dark:bg-zinc-900 border-collapse border"
+                        >
+                          <td>
+                            <Link
+                              className="text-green-600 hover:text-green-700 dark:text-white dark:hover:text-green-700"
+                              href={`/${locale}/products/${order.product_id}`}
+                            >
+                              See Product
+                            </Link>
+                          </td>
+                          <td>
+                            {dayjs(order.created_at).format(
+                              "DD MMMM, YYYY h:mm A"
+                            )}
+                          </td>
+                          <td>$ {order.price / 100}</td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </table>
             </>
