@@ -51,6 +51,16 @@ export default async function ResultPage(props: {
     });
   });
 
+  const { error: clearCartError } = await supabase
+    .from("user_cart")
+    .update({ products: [] })
+    .eq("user_id", userId);
+
+  if (clearCartError) {
+    console.error("Error clearing the cart:", clearCartError);
+    throw new Error("Failed to clear the cart.");
+  }
+
   const orderInsertResults = await Promise.all(orderInsertPromises);
 
   const paymentIntent =
@@ -70,7 +80,7 @@ export default async function ResultPage(props: {
           have any questions, feel free to contact our support team.
         </p>
         <Link
-          href="/profile"
+          href="/profile/orders"
           className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-6 px-8 rounded-full transition-all"
         >
           See Orders
