@@ -56,6 +56,7 @@ export const signInAction = async (formData: FormData) => {
   if (error) {
     return encodedRedirect("error", `/${locale}/sign-in`, error.message);
   }
+  //create cart for user
   const {
     data: { user },
     error: userError,
@@ -64,13 +65,19 @@ export const signInAction = async (formData: FormData) => {
     console.error("User error:", userError);
     return;
   }
-
-  const { error: insertError } = await supabase.from("user_cart").insert([
-    {
-      user_id: user.id,
-      products: [],
-    },
-  ]);
+  const { data: existingCart, error: cartError } = await supabase
+    .from("user_cart")
+    .select("id, products")
+    .eq("user_id", user.id)
+    .single();
+  if (cartError) {
+    const { error: insertError } = await supabase.from("user_cart").insert([
+      {
+        user_id: user.id,
+        products: [],
+      },
+    ]);
+  }
 
   return redirect(`/${locale}/`);
 };
