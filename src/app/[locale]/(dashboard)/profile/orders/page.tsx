@@ -18,7 +18,7 @@ async function Orders({ params }: OrdersProps) {
 
   let { data: orders, error } = await supabase
     .from("orders")
-    .select("product_id, created_at, description, price")
+    .select("id, product_id, created_at, description, price")
     .eq("user_id", user?.id);
 
   if (error) {
@@ -49,20 +49,22 @@ async function Orders({ params }: OrdersProps) {
                     <th>ID</th>
                     <th>Order Created</th>
                     <th>Price</th>
-                    {/* <th>Description</th> */}
                   </tr>
                 </thead>
                 {/* Table Content Rows */}
                 <tbody>
                   {orders.map((order) => {
                     return (
-                      <tr className="bg-[#f2f2f2] dark:bg-zinc-900 border-collapse border">
+                      <tr
+                        key={order.id}
+                        className="bg-[#f2f2f2] dark:bg-zinc-900 border-collapse border"
+                      >
                         <td>
                           <Link
                             className="text-green-600 hover:text-green-700 dark:text-white dark:hover:text-green-700"
                             href={`/${locale}/products/${order.product_id}`}
                           >
-                            {order.product_id}
+                            See Product
                           </Link>
                         </td>
                         <td>
@@ -71,7 +73,6 @@ async function Orders({ params }: OrdersProps) {
                           )}
                         </td>
                         <td>$ {order.price / 100}</td>
-                        {/* <td>{order.description}</td> */}
                       </tr>
                     );
                   })}
