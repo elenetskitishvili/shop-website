@@ -81,7 +81,7 @@ export function CreateProductForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-lg p-8  shadow-md flex flex-col gap-10 min-w-[500px] mb-28"
+      className="rounded-lg p-6  shadow-md flex flex-col gap-7 min-w-[400px] mb-24 text-base"
     >
       <div className="flex flex-col gap-2">
         <label htmlFor="name">{t("name")}</label>
@@ -89,11 +89,11 @@ export function CreateProductForm() {
           type="text"
           id="name"
           name="name"
-          className="py-3 px-5 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
+          className="py-2 px-3 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
         />
       </div>
       {errorMessage?.Name && (
-        <div className="text-orange-700 text-xl">{errorMessage.Name}</div>
+        <div className="text-orange-700 text-base">{errorMessage.Name}</div>
       )}
 
       <div className="flex flex-col gap-2">
@@ -104,11 +104,11 @@ export function CreateProductForm() {
           name="price"
           min="0.01"
           step="0.01"
-          className="py-3 px-5 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
+          className="py-2 px-3 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
         />
       </div>
       {errorMessage?.Price && (
-        <div className="text-orange-700 text-xl">{errorMessage.Price}</div>
+        <div className="text-orange-700 text-base">{errorMessage.Price}</div>
       )}
 
       <div className="flex flex-col gap-2">
@@ -118,11 +118,11 @@ export function CreateProductForm() {
           name="description"
           rows={4}
           placeholder={t("descriptionPlaceholder")}
-          className="py-3 px-5 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
+          className="py-2 px-3 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
         />
       </div>
       {errorMessage?.Description && (
-        <div className="text-orange-700 text-xl ">
+        <div className="text-orange-700 text-base ">
           {errorMessage.Description}
         </div>
       )}
@@ -132,26 +132,26 @@ export function CreateProductForm() {
         <input type="file" id="image" name="image" accept="image/*" />
       </div>
       {errorMessage?.Image && (
-        <div className="text-orange-700 text-xl">{errorMessage.Image}</div>
+        <div className="text-orange-700 text-base">{errorMessage.Image}</div>
       )}
 
       {loading && (
         <div className="flex items-center justify-center gap-5">
           <SpinnerMini />
-          <p className=" text-2xl text-center">{t("creatingProduct")}</p>
+          <p className=" text-base text-center">{t("creatingProduct")}</p>
         </div>
       )}
       {error && (
-        <p className="text-orange-700 text-2xl text-center">
+        <p className="text-orange-700 text-base text-center">
           {t("failMessage")}
         </p>
       )}
       {success && (
-        <p className="text-green-700 text-2xl text-center">{success}</p>
+        <p className="text-green-700 text-base text-center">{success}</p>
       )}
       <button
         type="submit"
-        className={`rounded-xl bg-purple-900 text-white py-4 hover:bg-purple-800 transition-all ${
+        className={`rounded-base bg-purple-900 text-white py-4 hover:bg-purple-800 transition-all ${
           loading ? "opacity-50 cursor-not-allowed" : "opacity-100"
         }`}
         disabled={loading}

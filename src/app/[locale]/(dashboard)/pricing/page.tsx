@@ -7,23 +7,21 @@ export const metadata: Metadata = {
   title: "Pricing",
 };
 
-export default async function IndexPage(
-  props: {
-    params: Promise<{ locale?: string }>;
-  }
-): Promise<JSX.Element> {
+export default async function IndexPage(props: {
+  params: Promise<{ locale?: string }>;
+}): Promise<JSX.Element> {
   const params = await props.params;
   const locale = (await params?.locale) || "en";
   return (
-    <div className="max-w-[1100px] mx-auto px-14">
-      <div className="grid grid-cols-2 gap-16 my-20 ">
+    <div className="max-w-[1100px] mx-auto px-14 text-base">
+      <div className="grid grid-cols-2 gap-16 my-8 ">
         {/*  PREMIUM */}
-        <div className="px-12 py-10 shadow-lg shadow-purple-300 rounded-3xl bg-white">
-          <h2 className="font-semibold text-4xl mb-6 text-purple-700">
+        <div className="px-10 py-8 shadow-lg shadow-purple-300 rounded-3xl bg-white">
+          <h2 className="font-semibold text-2xl mb-3 text-purple-700">
             Premium Membership
           </h2>
 
-          <ul className="flex flex-col gap-5 list-disc">
+          <ul className="flex flex-col gap-2 list-disc">
             <li>
               <span className="font-semibold text-purple-950">
                 Exclusive Discounts:
@@ -74,14 +72,14 @@ export default async function IndexPage(
                 24/7 customer support with shorter response times (&lt;1 hour).
               </span>
             </li>
-            <li>
+            {/* <li>
               <span className="font-semibold text-purple-950">
                 Personalized Recommendations:
               </span>
               <span>
                 Tailored suggestions based on booking history and preferences.
               </span>
-            </li>
+            </li> */}
 
             <li>
               <span className="font-semibold text-purple-950">
@@ -96,8 +94,8 @@ export default async function IndexPage(
           <CheckoutForm uiMode="hosted" locale={locale} />
         </div>
         {/* FREE */}
-        <div className="px-12 py-10 rounded-3xl bg-white">
-          <h2 className="font-semibold text-4xl mb-6">Free Membership</h2>
+        <div className="px-12 py-10 rounded-3xl">
+          <h2 className="font-semibold text-2xl mb-6">Free Membership</h2>
           <ul className="flex flex-col gap-5 list-disc">
             <li>
               <span className="font-semibold">Standard Pricing: </span>

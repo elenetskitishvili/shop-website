@@ -87,7 +87,7 @@ const CartPage = () => {
         {products.map((product: Product) => (
           <div
             key={product.id}
-            className="flex justify-between items-center bg-white shadow-md p-4 rounded-lg"
+            className="flex justify-between items-center bg-white shadow-md px-4 py-2 rounded-lg"
           >
             <div className="flex items-center space-x-4">
               <img
@@ -99,7 +99,6 @@ const CartPage = () => {
                 <h3 className="font-semibold text-lg text-gray-800">
                   {product.name}
                 </h3>
-                <p className="text-sm text-gray-500">{product.description}</p>
                 <p className="text-lg font-semibold text-gray-900">
                   ${(product.price / 100).toFixed(2)}
                 </p>

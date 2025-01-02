@@ -21,7 +21,7 @@ export default async function Blogs(props: BlogsProps) {
 
   return (
     <section>
-      <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(30rem,1fr))] gap-16 mt-16 mb-24">
+      <ul className="max-w-screen-xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 mt-12 mb-24">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog.id} locale={locale} />
         ))}

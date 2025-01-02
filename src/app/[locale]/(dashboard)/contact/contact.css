@@ -1,8 +1,8 @@
 .contact__input {
   font-family: inherit;
-  font-size: 1.5rem;
+  font-size: 15px;
   color: inherit;
-  padding: 1.5rem 2rem;
+  padding: 15px 20px;
   border-radius: 2px;
   background-color: rgba(255, 255, 255);
   box-shadow: var(--shadow-light);
@@ -28,9 +28,9 @@
 
 .contact__form-label {
   display: block;
-  margin-left: 2rem;
-  margin-top: 0.7rem;
-  font-size: 1.4rem;
+  margin-left: 20px;
+  margin-top: 7px;
+  font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease-in-out;
 }
@@ -38,5 +38,5 @@
 .contact__input:placeholder-shown + .contact__form-label {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-4rem);
+  transform: translateY(-40px);
 }
