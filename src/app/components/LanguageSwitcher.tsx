@@ -18,7 +18,7 @@ export default function LanguageSwitcher() {
 
   return (
     <button
-      className="py-3 px-10 bg-emerald-100 rounded-xl text-black transition-all duration-300 hover:bg-emerald-200"
+      className="py-2 px-5 bg-emerald-100 rounded-lg text-base text-black transition-all duration-300 hover:bg-emerald-200"
       onClick={toggleLanguage}
     >
       {currentLocale === "en" ? "ქარ" : "Eng"}
