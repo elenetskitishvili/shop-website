@@ -7,6 +7,8 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export default function ThemeProvider({ children }: ThemeProviderProps) {
+export default function ThemeProvider({
+  children,
+}: ThemeProviderProps): JSX.Element {
   return <DarkModeProvider>{children}</DarkModeProvider>;
 }
