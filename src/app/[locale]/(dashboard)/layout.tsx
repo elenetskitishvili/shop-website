@@ -1,5 +1,3 @@
-import ThemeProvider from "../../providers/ThemeProvider";
-
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
@@ -13,14 +11,11 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
-
   return (
     <>
-      <ThemeProvider>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </ThemeProvider>
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
     </>
   );
 }
