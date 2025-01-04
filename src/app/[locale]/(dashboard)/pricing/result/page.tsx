@@ -1,6 +1,5 @@
 import type { Stripe } from "stripe";
 
-import PrintObject from "@/src/app/components/PrintObject";
 import { stripe } from "@/src/lib/stripe";
 
 export default async function ResultPage(props: {

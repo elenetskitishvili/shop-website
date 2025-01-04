@@ -1,34 +1,7 @@
 import { supabase } from "@/src/lib/supabase";
 import { notFound } from "next/navigation";
 import { Product } from "../types/types";
-
-export interface Blog {
-  id: number;
-  created_at: string;
-  img: string;
-  title_en: string;
-  title_ka: string;
-  body_en: string;
-  body_ka: string;
-}
-
-// interface Product {
-//   id: number;
-//   created_at: string;
-//   name: string;
-//   image: string;
-//   price: number;
-//   rating: number;
-//   collection: string;
-//   description_en: string;
-//   skin_type_en: string;
-//   concern: string;
-//   use_en: string;
-//   description: string;
-//   title_ka: string;
-//   skin_type_ka: string;
-//   use_ka: string;
-// }
+import { Blog } from "@/src/types/types";
 
 export const fetchBlogs = async function (): Promise<Blog[]> {
   try {

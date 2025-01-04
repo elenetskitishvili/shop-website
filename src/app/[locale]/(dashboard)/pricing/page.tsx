@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import CheckoutForm from "@/src/app/components/CheckoutForm";
+import CheckoutForm from "@/src/app/components/CheckoutFormSubscription";
 
 export const metadata: Metadata = {
   title: "Pricing",
