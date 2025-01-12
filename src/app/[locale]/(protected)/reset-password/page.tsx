@@ -9,7 +9,7 @@ export default async function ResetPassword(props: {
   params: Promise<{ locale: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const { locale } = (await props.params);
+  const { locale } = await props.params;
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <form className="flex flex-col w-full max-w-md p-4 gap-2 [&>input]:mb-4">
@@ -36,7 +36,7 @@ export default async function ResetPassword(props: {
           placeholder="Confirm password"
           required
         />
-        <SubmitButton formAction={resetPasswordAction} className="text-2xl">
+        <SubmitButton formAction={resetPasswordAction}>
           Reset password
         </SubmitButton>
         <FormMessage message={searchParams} />
