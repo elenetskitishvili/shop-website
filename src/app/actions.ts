@@ -168,3 +168,26 @@ export const signOutAction = async (formData: FormData) => {
   await supabase.auth.signOut();
   return redirect(`/${locale}/sign-in`);
 };
+
+// Sign In with GitHub
+export const signInWithGithubAction = async (formData: FormData) => {
+  const supabase = await createClient();
+  const locale = formData.get("locale")?.toString();
+  const origin = (await headers()).get("origin");
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: `${origin}/${locale}/auth/callback`,
+    },
+  });
+
+  if (error) {
+    console.error("OAuth Sign-In Error:", error.message);
+    return encodedRedirect("error", `/${locale}/sign-in`, error.message);
+  }
+
+  if (data.url) {
+    return redirect(data.url);
+  }
+};

@@ -1,4 +1,4 @@
-import { signInAction } from "@/src/app/actions";
+import { signInAction, signInWithGithubAction } from "@/src/app/actions";
 import { FormMessage, Message } from "@/src/app/components/form-message";
 import { SubmitButton } from "@/src/app/components/submit-button";
 import { Input } from "@/src/app/components/ui/input";
@@ -10,7 +10,8 @@ export default async function Login(props: {
   params: Promise<{ locale: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const { locale } = (await props.params);
+  const { locale } = await props.params;
+
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <div className="">
@@ -57,6 +58,13 @@ export default async function Login(props: {
             </SubmitButton>
             <FormMessage message={searchParams} />
           </div>
+        </form>
+        <form
+          action={signInWithGithubAction}
+          className="flex flex-row items-center gap-1 border-grey-300 border-2 p-2 rounded hover:border-gray-700 transition-colors dark:border-gray-500 dark:hover:border-white"
+        >
+          <input type="hidden" name="locale" value={locale} />
+          <button>Sign in with GitHub</button>
         </form>
       </div>
     </div>
