@@ -61,7 +61,7 @@ export default async function Login(props: {
         </form>
         <form
           action={signInWithGithubAction}
-          className="flex flex-row items-center gap-1 border-grey-300 border-2 p-2 rounded hover:border-gray-700 transition-colors dark:border-gray-500 dark:hover:border-white"
+          className="flex items-center justify-center gap-1 border-grey-300 border-2 p-2 rounded hover:border-gray-700 transition-colors dark:border-gray-500 dark:hover:border-white"
         >
           <input type="hidden" name="locale" value={locale} />
           <button>Sign in with GitHub</button>
