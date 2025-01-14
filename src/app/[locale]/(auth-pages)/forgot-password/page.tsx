@@ -4,14 +4,13 @@ import { SubmitButton } from "@/src/app/components/submit-button";
 import { Input } from "@/src/app/components/ui/input";
 import { Label } from "@/src/app/components/ui/label";
 import Link from "next/link";
-import { SmtpMessage } from "../smtp-message";
 
 export default async function ForgotPassword(props: {
   searchParams: Promise<Message>;
   params: Promise<{ locale: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const { locale } = (await props.params);
+  const { locale } = await props.params;
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <div className="">
@@ -43,7 +42,6 @@ export default async function ForgotPassword(props: {
             <FormMessage message={searchParams} />
           </div>
         </form>
-        <SmtpMessage />
       </div>
     </div>
   );

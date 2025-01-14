@@ -11,28 +11,28 @@ export default function Navigation() {
 
   return (
     <nav>
-      <ul className="flex gap-5">
-        <li className=" nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
+      <ul className="flex gap-3">
+        <li className=" nav__item relative py-4 px-3 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-600">
           <Link className="nav__link text-inherit" href={`/about`}>
             {t("about")}
           </Link>
         </li>
-        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
+        <li className="nav__item relative py-4 px-3 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-600">
           <Link className="nav__link text-inherit" href={`/products`}>
             {t("products")}
           </Link>
         </li>
-        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
+        <li className="nav__item relative py-4 px-3 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-600">
           <Link className="nav__link text-inherit" href={`/blogs`}>
             {t("blogs")}
           </Link>
         </li>
-        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
+        <li className="nav__item relative py-4 px-3 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-600">
           <Link className="nav__link text-inherit" href={`/contact`}>
             {t("contact")}
           </Link>
         </li>
-        <li className="nav__item relative py-9 px-7 cursor-pointer transition-all duration-300 ease-in-out hover:text-purple-700">
+        <li className="nav__item relative py-4 px-3 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-600">
           <Link className="nav__link text-inherit" href={`/pricing`}>
             {t("pricing")}
           </Link>

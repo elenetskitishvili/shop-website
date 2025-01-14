@@ -38,7 +38,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
   height: 100%;
 }
 
@@ -109,13 +109,13 @@ html {
   background-repeat: no-repeat;
 } */
 
-.loading,
+/* .loading,
 .error {
   flex: 1;
   margin-top: 25rem;
   text-align: center;
   font-size: 2.4rem;
-}
+} */
 
 /* custom scrollbar */
 
