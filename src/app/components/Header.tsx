@@ -52,7 +52,11 @@ export default async function Header() {
           {user && (
             <form action={signOutAction}>
               <input type="hidden" name="locale" value={locale} />
-              <Button type="submit" variant={"outline"}>
+              <Button
+                type="submit"
+                variant={"outline"}
+                data-cy="sign-out-button"
+              >
                 Sign out
               </Button>
             </form>

@@ -31,7 +31,12 @@ export default async function Login(props: {
             <Label htmlFor="email" className="text-xl">
               Email
             </Label>
-            <Input name="email" placeholder="you@example.com" required />
+            <Input
+              name="email"
+              placeholder="you@example.com"
+              required
+              data-cy="email-input"
+            />
             <div className="flex justify-between items-center">
               <Label htmlFor="password" className="text-xl">
                 Password
@@ -48,11 +53,13 @@ export default async function Login(props: {
               name="password"
               placeholder="Your password"
               required
+              data-cy="password-input"
             />
             <SubmitButton
               pendingText="Signing In..."
               formAction={signInAction}
               className="text-2xl"
+              data-cy="sign-in-button"
             >
               Sign in
             </SubmitButton>
