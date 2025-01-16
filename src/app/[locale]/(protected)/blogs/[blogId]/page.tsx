@@ -2,6 +2,7 @@ import { fetchBlog } from "@/src/lib/data-service";
 import ReactMarkdown from "react-markdown";
 import { notFound } from "next/navigation";
 import { Blog } from "@/src/types/types";
+import Image from "next/image";
 
 interface BlogPageProps {
   params: Promise<{
@@ -22,7 +23,7 @@ export default async function BlogPage(props: BlogPageProps) {
 
   return (
     <div className="max-w-screen-md mx-auto flex flex-col gap-8 mb-12">
-      <img src={blog.img} alt={blog.title_en} />
+      <Image src={blog.img} alt={blog.title_en} />
       <h1 className="max-w-full h-auto  text-2xl">
         {locale === "ka" ? blog.title_ka : blog.title_en}
       </h1>

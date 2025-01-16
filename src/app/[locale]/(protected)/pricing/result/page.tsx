@@ -1,6 +1,7 @@
 import type { Stripe } from "stripe";
 
 import { stripe } from "@/src/lib/stripe";
+import Link from "next/link";
 
 export default async function ResultPage(props: {
   searchParams: Promise<{ session_id: string }>;
@@ -29,12 +30,12 @@ export default async function ResultPage(props: {
         <p className="text-gray-600 mb-4">
           Enjoy exclusive benefits, discounts, and premium services.
         </p>
-        <a
+        <Link
           href="/"
           className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-5 rounded-full transition-all"
         >
           Go to the homepage
-        </a>
+        </Link>
       </div>
     </div>
   );

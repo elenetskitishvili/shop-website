@@ -90,6 +90,7 @@ export function CreateProductForm() {
           id="name"
           name="name"
           className="py-2 px-3 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
+          data-cy="product-name-input"
         />
       </div>
       {errorMessage?.Name && (
@@ -105,6 +106,7 @@ export function CreateProductForm() {
           min="0.01"
           step="0.01"
           className="py-2 px-3 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
+          data-cy="product-price-input"
         />
       </div>
       {errorMessage?.Price && (
@@ -119,6 +121,7 @@ export function CreateProductForm() {
           rows={4}
           placeholder={t("descriptionPlaceholder")}
           className="py-2 px-3 rounded-lg bg-white shadow-md border-b-4 border-b-transparent focus:outline-none focus:border-b-purple-700"
+          data-cy="product-description-input"
         />
       </div>
       {errorMessage?.Description && (
@@ -129,7 +132,13 @@ export function CreateProductForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="image">{t("image")}</label>
-        <input type="file" id="image" name="image" accept="image/*" />
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          data-cy="product-image-input"
+        />
       </div>
       {errorMessage?.Image && (
         <div className="text-orange-700 text-base">{errorMessage.Image}</div>
@@ -147,7 +156,12 @@ export function CreateProductForm() {
         </p>
       )}
       {success && (
-        <p className="text-green-700 text-base text-center">{success}</p>
+        <p
+          className="text-green-700 text-base text-center"
+          data-cy="product-creation-success-message"
+        >
+          {success}
+        </p>
       )}
       <button
         type="submit"
@@ -155,6 +169,7 @@ export function CreateProductForm() {
           loading ? "opacity-50 cursor-not-allowed" : "opacity-100"
         }`}
         disabled={loading}
+        data-cy="create-product-button"
       >
         {loading
           ? t("creating")

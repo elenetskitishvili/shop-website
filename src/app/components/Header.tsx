@@ -7,6 +7,7 @@ import { signOutAction } from "../actions";
 import { Button } from "./ui/button";
 import { createClient } from "@/src/utils/supabase/server";
 import Cart from "./Cart";
+import Image from "next/image";
 
 export default async function Header() {
   const locale = "en";
@@ -31,7 +32,7 @@ export default async function Header() {
                 href={`/profile`}
                 className="w-10 h-10 rounded-full overflow-hidden shadow-sm border-2 border-emerald-500 dark:border-emerald-600"
               >
-                <img
+                <Image
                   className="h-full w-auto object-cover"
                   src={
                     user?.user_metadata?.picture ||
@@ -52,7 +53,11 @@ export default async function Header() {
           {user && (
             <form action={signOutAction}>
               <input type="hidden" name="locale" value={locale} />
-              <Button type="submit" variant={"outline"}>
+              <Button
+                type="submit"
+                variant={"outline"}
+                data-cy="sign-out-button"
+              >
                 Sign out
               </Button>
             </form>

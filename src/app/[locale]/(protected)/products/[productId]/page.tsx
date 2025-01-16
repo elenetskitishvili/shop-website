@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 import { supabase } from "@/src/lib/supabase";
 import { fetchProduct } from "@/src/lib/data-service";
 import Link from "next/link";
-
-import { ProductClient } from "@/src/app/components/ProductClient";
+import Image from "next/image";
 
 interface ProductPageProps {
   params: {
@@ -35,7 +34,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="max-w-screen-lg mx-auto flex-1 grid grid-cols-2 gap-x-10 items-center justify-items-center mt-24">
       <div>
-        <img
+        <Image
           className="w-full h-96 object-contain"
           src={product.image || "/images/products-placeholder.png"}
           alt={product.name}
@@ -49,10 +48,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {locale === "ka" ? product.description : product.description}
         </p>
         <span className="text-xl">$ {product.price / 100}</span>
-
-        <div className="flex w-36 justify-center items-center p-3 border-2 border-emerald-500 text-emerald-500 text-base rounded font-bold cursor-pointer transition-all duration-75 ease-in-out hover:bg-emerald-500 hover:text-white">
-          <ProductClient productId={productId} />
-        </div>
       </div>
     </div>
   );

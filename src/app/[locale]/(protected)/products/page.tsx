@@ -24,7 +24,11 @@ export default async function Products({
   return (
     <section className="relative max-w-screen-xl mx-auto flex flex-col justify-center">
       <button className="absolute right-0 top-0 w-[200px] shadow-lg flex items-center justify-center p-2 my-6 text-xl text-white rounded-lg bg-emerald-500 hover:bg-emerald-600">
-        <Link href={`/${locale}/create-product`} className="w-full">
+        <Link
+          href={`/${locale}/create-product`}
+          className="w-full"
+          data-cy="create-product-link"
+        >
           Create a product
         </Link>
       </button>

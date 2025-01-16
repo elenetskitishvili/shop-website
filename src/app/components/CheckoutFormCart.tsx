@@ -54,6 +54,7 @@ export default function CheckoutFormCart({
         className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
         onClick={formAction}
         disabled={loading}
+        data-cy="buy-button"
       >
         {loading ? "Processing..." : "Checkout"}
       </button>
