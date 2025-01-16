@@ -1,12 +1,14 @@
 import { Link } from "@/src/i18n/routing";
 import { Product } from "@/src/types/types";
+
 import { addToCartHandler } from "../actions/addToCart";
+import DeleteProductForm from "./DeleteProductForm";
 
 interface ProductCardProps {
   product: Product;
 }
 
-function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   return (
     <li className="flex flex-col bg-zinc-50 transition-all duration-300 ease-in-out dark:bg-zinc-900 ">
       <Link
@@ -38,11 +40,10 @@ function ProductCard({ product }: ProductCardProps) {
                 Add to cart
               </button>
             </form>
+            <DeleteProductForm product={product} />
           </div>
         </div>
       </div>
     </li>
   );
 }
-
-export default ProductCard;
