@@ -1,10 +1,15 @@
 describe("Auth", () => {
+  let email: string;
+  let password: string;
+  let invalidPassword: string;
   beforeEach(() => {
+    cy.fixture("user.json").then((userData) => {
+      email = userData.validEmail;
+      password = userData.validPassword;
+      invalidPassword = userData.invalidPassword;
+    });
     cy.visit(`${Cypress.config("baseUrl")}/en/sign-in`);
   });
-
-  const email = Cypress.env("validEmail");
-  const password = Cypress.env("validPassword");
 
   it("Logs in successfully", () => {
     cy.login(email, password);
@@ -12,7 +17,7 @@ describe("Auth", () => {
   });
 
   it("Fails to log in", () => {
-    cy.login(email, "incorrect");
+    cy.login(email, invalidPassword);
     cy.url().should("not.eq", `${Cypress.config("baseUrl")}/en`);
   });
 

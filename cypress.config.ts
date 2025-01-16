@@ -6,9 +6,5 @@ export default defineConfig({
       // implement node event listeners here
     },
     baseUrl: "http://localhost:3000",
-    env: {
-      validEmail: "elene.tskitishvili504@gmail.com",
-      validPassword: "asdf1234",
-    },
   },
 });
