@@ -64,7 +64,7 @@ export default function Cart() {
   }, []);
 
   return (
-    <Link href={`/cart`} className="relative inline-block">
+    <Link href={`/cart`} className="relative inline-block" data-cy="cart-link">
       <span className="absolute -top-1 -right-1 flex items-center justify-center font-semibold text-sm bg-red-600 rounded-full w-5 h-5 text-white">
         {cartCount}
       </span>

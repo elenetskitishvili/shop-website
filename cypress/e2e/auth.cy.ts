@@ -8,7 +8,6 @@ describe("Auth", () => {
       password = userData.validPassword;
       invalidPassword = userData.invalidPassword;
     });
-    cy.visit(`${Cypress.config("baseUrl")}/en/sign-in`);
   });
 
   it("Logs in successfully", () => {

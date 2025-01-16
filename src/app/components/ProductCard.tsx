@@ -9,7 +9,11 @@ interface ProductCardProps {
 function ProductCard({ product }: ProductCardProps) {
   return (
     <li className="flex flex-col bg-zinc-50 transition-all duration-300 ease-in-out dark:bg-zinc-900 ">
-      <Link href={`/products/${product.id}`} className="block w-full">
+      <Link
+        href={`/products/${product.id}`}
+        className="block w-full"
+        data-cy="product-card"
+      >
         <img
           className="w-full h-72 object-cover"
           src={product.image || "/images/products-placeholder.png"}
@@ -29,6 +33,7 @@ function ProductCard({ product }: ProductCardProps) {
                   addToCartHandler({ product });
                 }}
                 className="inline-block text-lg py-2 px-4 self-start border border-solid border-green-600 bg-green-600 text-white rounded-md transition-all duration-300 ease-in-out mt-auto hover:bg-green-700 hover:border-green-700 focus:ring-4 focus:ring-green-500 active:bg-green-800  dark:border-green-500 dark:bg-green-500 dark:text-green-200 dark:hover:bg-green-600 dark:focus:ring-green-300"
+                data-cy="add-to-cart-button"
               >
                 Add to cart
               </button>

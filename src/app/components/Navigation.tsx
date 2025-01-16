@@ -18,7 +18,11 @@ export default function Navigation() {
           </Link>
         </li>
         <li className="nav__item relative py-4 px-3 cursor-pointer transition-all duration-300 ease-in-out hover:text-emerald-600">
-          <Link className="nav__link text-inherit" href={`/products`}>
+          <Link
+            className="nav__link text-inherit"
+            href={`/products`}
+            data-cy="products-link"
+          >
             {t("products")}
           </Link>
         </li>
