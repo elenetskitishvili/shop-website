@@ -3,8 +3,6 @@ import { supabase } from "@/src/lib/supabase";
 import { fetchProduct } from "@/src/lib/data-service";
 import Link from "next/link";
 
-import { ProductClient } from "@/src/app/components/ProductClient";
-
 interface ProductPageProps {
   params: {
     locale: "en" | "ka";
@@ -49,10 +47,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {locale === "ka" ? product.description : product.description}
         </p>
         <span className="text-xl">$ {product.price / 100}</span>
-
-        <div className="flex w-36 justify-center items-center p-3 border-2 border-emerald-500 text-emerald-500 text-base rounded font-bold cursor-pointer transition-all duration-75 ease-in-out hover:bg-emerald-500 hover:text-white">
-          <ProductClient productId={productId} />
-        </div>
       </div>
     </div>
   );
