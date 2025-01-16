@@ -1,5 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 export default function Footer() {
   const t = useTranslations("Footer");
   const currentYear: number = new Date().getFullYear();
@@ -9,36 +10,36 @@ export default function Footer() {
       <nav>
         <ul className="flex gap-10 items-center justify-center">
           <li>
-            <a
+            <Link
               href="/"
               className="font-heading text-lg font-medium text-emerald-500 transition-all duration-300 ease-in-out hover:text-emerald-600"
             >
               {t("faq")}
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="font-heading text-lg font-medium text-emerald-500 transition-all duration-300 ease-in-out hover:text-emerald-600"
             >
               {t("shipping")}
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="font-heading text-lg font-medium text-emerald-500 transition-all duration-300 ease-in-out hover:text-emerald-600"
             >
               {t("privacy")}
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="font-heading text-lg font-medium text-emerald-500 transition-all duration-300 ease-in-out hover:text-emerald-600"
             >
               {t("terms")}
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

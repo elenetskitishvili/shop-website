@@ -1,5 +1,6 @@
 import { Blog } from "@/src/types/types";
 import { Link } from "@/src/i18n/routing";
+import Image from "next/image";
 
 interface BlogCardProps {
   blog: Blog;
@@ -13,7 +14,7 @@ export default function BlogCard({ blog, locale }: BlogCardProps) {
         href={`/blogs/${blog.id}`}
         className="flex flex-col items-left justify-between gap-6  bg-white border-zinc-500 rounded-xl overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:shadow-md dark:bg-zinc-900"
       >
-        <img
+        <Image
           className="w-full h-60 object-cover object-right block"
           src={blog.img}
           alt={blog.title_en}

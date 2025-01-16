@@ -5,6 +5,7 @@ import { getCartProducts } from "@/src/app/actions/getCartProducts";
 import { removeFromCartHandler } from "@/src/app/actions/removeFromCart";
 import { Product } from "@/src/types/types";
 import CheckoutFormCart from "@/src/app/components/CheckoutFormCart";
+import Image from "next/image";
 
 const CartPage = () => {
   const locale = "en";
@@ -71,7 +72,7 @@ const CartPage = () => {
         <p className="text-lg font-semibold mt-4 text-gray-500">
           Your cart is empty
         </p>
-        <img
+        <Image
           src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png"
           alt="Your cart is empty"
           className="mx-auto mb-4 w-1/3"
@@ -90,7 +91,7 @@ const CartPage = () => {
             className="flex justify-between items-center bg-white shadow-md px-4 py-2 rounded-lg"
           >
             <div className="flex items-center space-x-4">
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
                 className="w-20 h-20 object-cover rounded-lg"

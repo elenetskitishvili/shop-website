@@ -19,7 +19,7 @@ export default async function Login(props: {
           <input type="hidden" name="locale" value={locale} />
           <h1 className="text-4xl font-medium">Sign in</h1>
           <p className="text-xl text-foreground mt-1">
-            Don't have an account?
+            Don&apos;t have an account?
             <Link
               className="text-foreground font-medium underline"
               href={`/${locale}/sign-up`}

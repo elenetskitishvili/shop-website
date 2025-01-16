@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/src/utils/supabase/server";
+import Image from "next/image";
 
 export default async function Profile() {
   const supabase = await createClient();
@@ -18,7 +19,7 @@ export default async function Profile() {
     <section className="h-full bg-gradient-to-tr py-12 from-emerald-500 to-emerald-200 dark:from-zinc-800 dark:to-zinc-800">
       <form className="max-w-xl mx-auto bg-white rounded-xl flex flex-col gap-10 pt-12 pb-4 px-10 items-center dark:bg-gradient-to-t dark:from-emerald-950 dark:to-emerald-800">
         <div className="w-28 h-28 rounded-full overflow-hidden shadow-sm border-4 border-emerald-500 dark:border-emerald-600">
-          <img
+          <Image
             className="h-full w-auto object-cover"
             src={
               user?.user_metadata?.picture || "/images/products-placeholder.png"

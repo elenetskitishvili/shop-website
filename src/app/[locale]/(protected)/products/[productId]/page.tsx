@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { supabase } from "@/src/lib/supabase";
 import { fetchProduct } from "@/src/lib/data-service";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductPageProps {
   params: {
@@ -33,7 +34,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="max-w-screen-lg mx-auto flex-1 grid grid-cols-2 gap-x-10 items-center justify-items-center mt-24">
       <div>
-        <img
+        <Image
           className="w-full h-96 object-contain"
           src={product.image || "/images/products-placeholder.png"}
           alt={product.name}

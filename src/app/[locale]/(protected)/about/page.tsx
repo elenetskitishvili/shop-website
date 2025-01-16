@@ -1,5 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function About() {
   const t = useTranslations("About");
@@ -47,7 +48,7 @@ export default function About() {
         </p>
       </div>
       <div className="justify-self-end rounded-xl shadow-base overflow-hidden">
-        <img
+        <Image
           className="block w-full"
           src="/images/about-image.jpg"
           alt="shopping bags, cart and gift card"

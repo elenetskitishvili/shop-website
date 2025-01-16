@@ -3,6 +3,7 @@ import { Product } from "@/src/types/types";
 
 import { addToCartHandler } from "../actions/addToCart";
 import DeleteProductForm from "./DeleteProductForm";
+import Image from "next/image";
 
 interface ProductCardProps {
   product: Product;
@@ -15,7 +16,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       data-cy="product-card"
     >
       <Link href={`/products/${product.id}`} className="block w-full">
-        <img
+        <Image
           className="w-full h-72 object-cover"
           src={product.image || "/images/products-placeholder.png"}
           alt={product.name}
