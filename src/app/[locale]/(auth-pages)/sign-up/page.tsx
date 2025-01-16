@@ -39,7 +39,12 @@ export default async function Signup(props: {
             <Label htmlFor="email" className="text-xl">
               Email
             </Label>
-            <Input name="email" placeholder="you@example.com" required />
+            <Input
+              name="email"
+              placeholder="you@example.com"
+              required
+              data-cy="signup-email-input"
+            />
             <Label htmlFor="password" className="text-xl">
               Password
             </Label>
@@ -49,11 +54,13 @@ export default async function Signup(props: {
               placeholder="Your password"
               minLength={6}
               required
+              data-cy="signup-password-input"
             />
             <SubmitButton
               formAction={signUpAction}
               pendingText="Signing up..."
               className="text-2xl"
+              data-cy="sign-up-button"
             >
               Sign up
             </SubmitButton>

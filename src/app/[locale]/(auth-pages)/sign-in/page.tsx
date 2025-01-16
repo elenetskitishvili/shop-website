@@ -23,6 +23,7 @@ export default async function Login(props: {
             <Link
               className="text-foreground font-medium underline"
               href={`/${locale}/sign-up`}
+              data-cy="sign-up-link"
             >
               Sign up
             </Link>
