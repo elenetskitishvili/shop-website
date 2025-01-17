@@ -30,9 +30,9 @@ export default async function Header() {
             <>
               <Link
                 href={`/profile`}
-                className="w-10 h-10 rounded-full overflow-hidden shadow-sm border-2 border-emerald-500 dark:border-emerald-600"
+                className="relative w-10 h-10 rounded-full overflow-hidden shadow-sm border-2 border-emerald-500 dark:border-emerald-600"
               >
-                <Image
+                <img
                   className="h-full w-auto object-cover"
                   src={
                     user?.user_metadata?.picture ||

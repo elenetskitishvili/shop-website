@@ -12,11 +12,11 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <li
-      className="relative flex flex-col bg-zinc-50 transition-all duration-300 ease-in-out dark:bg-zinc-900 "
+      className="flex flex-col bg-zinc-50 transition-all duration-300 ease-in-out dark:bg-zinc-900 "
       data-cy="product-card"
     >
-      <Link href={`/products/${product.id}`} className="block w-full">
-        <Image
+      <Link href={`/products/${product.id}`} className="relative block w-full">
+        <img
           className="w-full h-72 object-cover"
           src={product.image || "/images/products-placeholder.png"}
           alt={product.name}

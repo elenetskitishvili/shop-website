@@ -23,7 +23,7 @@ export default async function BlogPage(props: BlogPageProps) {
 
   return (
     <div className="max-w-screen-md mx-auto flex flex-col gap-8 mb-12">
-      <Image src={blog.img} alt={blog.title_en} />
+      <img src={blog.img} alt={blog.title_en} />
       <h1 className="max-w-full h-auto  text-2xl">
         {locale === "ka" ? blog.title_ka : blog.title_en}
       </h1>
