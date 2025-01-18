@@ -23,7 +23,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         />
       </Link>
       <div className="flex flex-col h-42 justify-between gap-6 py-10 px-5 text-base">
-        <h4>{product.name}</h4>
+        <h4 data-cy="product-name">{product.name}</h4>
         <div>
           <span className="block mb-2">$ {product.price / 100}</span>
           <div className="flex gap-4">
