@@ -34,7 +34,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="max-w-screen-lg mx-auto flex-1 grid grid-cols-2 gap-x-10 items-center justify-items-center mt-24">
       <div>
-        <Image
+        <img
           className="w-full h-96 object-contain"
           src={product.image || "/images/products-placeholder.png"}
           alt={product.name}

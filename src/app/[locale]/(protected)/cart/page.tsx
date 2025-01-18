@@ -72,7 +72,7 @@ const CartPage = () => {
         <p className="text-lg font-semibold mt-4 text-gray-500">
           Your cart is empty
         </p>
-        <Image
+        <img
           src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png"
           alt="Your cart is empty"
           className="mx-auto mb-4 w-1/3"
@@ -91,7 +91,7 @@ const CartPage = () => {
             className="flex justify-between items-center bg-white shadow-md px-4 py-2 rounded-lg"
           >
             <div className="flex items-center space-x-4">
-              <Image
+              <img
                 src={product.image}
                 alt={product.name}
                 className="w-20 h-20 object-cover rounded-lg"
